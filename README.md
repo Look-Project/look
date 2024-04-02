@@ -44,12 +44,12 @@ src/main
           │      │           ├─ request
           │      │           ├─ response
           │      ├─ freecycling
-          │      │      ├─ controller
-          │      │      ├─ service
-          │      │      ├─ dao
-          │      │      ├─ dto
-          │      │           ├─ request
-          │      │           ├─ response
+          │             ├─ controller
+          │             ├─ service
+          │             ├─ dao
+          │             ├─ dto
+          │                  ├─ request
+          │                  ├─ response
           │
           │
           ├─ comment (댓글 관련)
@@ -82,12 +82,12 @@ src/main
           │      │           ├─ request
           │      │           ├─ response
           │      ├─ freecycling
-          │      │      ├─ controller
-          │      │      ├─ service
-          │      │      ├─ dao
-          │      │      ├─ dto
-          │      │           ├─ request
-          │      │           ├─ response
+          │             ├─ controller
+          │             ├─ service
+          │             ├─ dao
+          │             ├─ dto
+          │                  ├─ request
+          │                  ├─ response
           │
           │
           ├─ common (프로젝트 전체에서 공통으로 쓸 파일 보관)
@@ -120,10 +120,10 @@ src/main
           │          │
           │          │
           │          ├─ js (js 파일 보관)
-          │          │    ├─ member
-          │          │    ├─ board
-          │          │    ├─ comment
-          │          │    ├─ common
+          │               ├─ member
+          │               ├─ board
+          │               ├─ comment
+          │               ├─ common
           │
           │
           │
