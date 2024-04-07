@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script><%@include file="/WEB-INF/lib/jquery-3.7.1.min.js" %></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/common/common.css">
+	<script><%@include file="/WEB-INF/lib/jquery-3.7.1.min.js" %></script>
 </head>
 <body>
 
