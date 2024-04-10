@@ -1,0 +1,133 @@
+#signup-outer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #F6F6F6;
+	width:100vw;
+	height:100vh;
+}
+
+#signup-inner {
+    background-color: white;
+    width: 25%;
+    height: 70%;
+    min-width: 400px;
+    min-height: 600px;
+    display:flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+#signup-contents {
+    display:flex;
+    flex-direction: column;
+	width: 65%;
+}
+
+.signup-input {
+	border-width: 0 0 1px;
+	width: 100%;
+	outline: none;
+	margin-top: 15px;
+	font-size: 15px;
+}
+
+#signup-form-id-inputlist {
+	display: flex;
+}
+
+#signup-form-id-input {
+	width: 70%;
+}
+
+#signup-form-id-duplicate-check {
+	width: 25%;
+	margin-left: 10px;
+    background: #c9c9ca;
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#signup-form-nickname-inputlist {
+	display: flex;
+}
+
+#signup-form-nickname-input {
+	width: 70%;
+}
+
+#signup-form-nickname-duplicate-check {
+	width: 25%;
+	margin-left: 10px;
+    background: #c9c9ca;
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#signup-contents-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+
+#signup-contents-logos > a {
+	text-align: center;
+}
+
+#signup-contents-logos > p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: math;
+}
+
+#signup-contents-logo {
+	width: 40%;
+}
+
+#signup-form {
+	margin-top: 50px;
+}
+
+.signup-margin {
+	margin-top: 15px;
+}
+
+.signup-span-font {
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 18px;
+}
+
+
+
+#signup-form-button-div {
+	margin-top: 50px;
+}
+
+#signup-button {
+	background: #716F6F;
+	color: white;
+	border: none;
+	width: 100%;
+	height: 40px;
+	font-weight: 700;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+#signup-contents-menulist {
+	margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+   	color:#8D8C8C;
+}
