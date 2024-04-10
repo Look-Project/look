@@ -10,6 +10,14 @@
     <title></title>
 </head>
 <body>
+
+	<!-- 글쓰기 버튼 -->
+	<a href="#" class="write-button">
+    	<img src="<%= request.getContextPath() %>/resources/image/board/workwear/Writing.png" 
+    			alt="Write" class="write-icon">
+	</a>
+
+
    <div id="wrap">
         <ul id="gallery">
             <li><a href="#">

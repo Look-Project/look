@@ -5,8 +5,9 @@
 }
 
 #wrap {
-	margin-top:50px;
+    margin-top: 50px;
 }
+
 nav {
     position: absolute;
     bottom: 10px;
@@ -70,4 +71,35 @@ nav ul li a {
     color: white;
     font-size: 12px;
     text-shadow: 1px 1px 2px black;
+}
+
+/* 글쓰기 버튼 스타일 */
+.write-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 글쓰기 버튼 아이콘 스타일 */
+.write-button img {
+    width: 50px; /* 아이콘의 너비 */
+    height: auto; /* 아이콘의 높이 자동 조정 */
+    margin-right: 5px; /* 아이콘과 텍스트 사이의 간격 조절 */
+}
+
+/* 글쓰기 버튼 호버 스타일 */
+.write-button:hover {
+    background-color: transparent;
 }
