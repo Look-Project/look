@@ -21,6 +21,7 @@ public class DBConnectionUtil {
             Context context = new InitialContext();
             DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/pool");
             Connection conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
 			return conn;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
