@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-    <resource-ref>
+  <resource-ref>
 		<description>connection</description>
 		<res-ref-name>jdbc/pool</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
