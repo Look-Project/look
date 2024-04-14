@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import board.workwear.dto.WorkwearDTO;
 import common.DBConnectionUtil;
 
 public class WorkwearDAO {
