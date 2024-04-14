@@ -29,7 +29,7 @@
                 <input type="file" name="" id="">
             </div>
         </div>
-        <div class="btn-w"><a href="#">작성</a></div>
+        <div class="btn-w"><a href="<%= request.getContextPath() %>/views/board/workwear/workwear.jsp">작성</a></div>
     </div>
 </body>
 </html>
