@@ -8,6 +8,6 @@
 	<script><%@include file="/WEB-INF/lib/jquery-3.7.1.min.js" %></script>
 </head>
 <body>
-
+	<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/common/common.js"></script>
 </body>
 </html>
