@@ -13,7 +13,7 @@
 	<div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
             <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-                <img src="<%= request.getContextPath() %>/resources/image/board/workwear/05.jpg" 
+                <img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" 
                 		alt="콜드브루">
             </div>
 
@@ -21,14 +21,14 @@
                     <br>
                     <div id="fifth">
                         <div class="emojiright">
-                            <p class="boardname">여행룩</p>
+                            <p class="boardname">워크웨어룩</p>
                         </div>
                     </div>
 
-                    <p class="seconddetail">기본 모자 <br/>
-                    젠틀몬스터 선글라스<br/>
-                    스투시나이키 아노락<br/>
-                    스투시 블랙카고바지 </p>
+                    <p class="seconddetail">
+                    	멜빵 바지로 웨크웨어룩을 꾸며 보았어요 ~ <br/>
+                    	처음 입어보는데 좋아요 !<br/>
+                    	궁금한거 있으시면 물어봐주세요 ^^<br/></p>
                     <p class="reviewnav">리뷰</p>
 
                     <div class="Allcomment"> <!--모든 댓글 내용을 담아내는 div 태그-->
@@ -40,15 +40,15 @@
                         </div>
 
                         <div class="comment">
-                            <span class="id">성현아 사랑해</span>
-                            <span class="ment">아노락 가격 알수 있을까요?</span>
+                            <span class="id">Amen</span>
+                            <span class="ment">점프수트 구매처 알수 있을까요???</span>
                             <button class="deletebutton">삭제</button>
                             <a href="#" class="commentheart"><i class="far fa-heart hearts"></i></a>
                         </div>
 
                         <div class="comment">
                             <span class="id">legend_dev</span>
-                            <span class="ment">진짜 젠클몬스터는 전설이다.
+                            <span class="ment">진짜 전설이다.
                             </span>
                             <button class="deletebutton">삭제</button>
                             <a href="#" class="commentheart"><i class="far fa-heart"></i></a>
