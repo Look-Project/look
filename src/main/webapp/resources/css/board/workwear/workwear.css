@@ -64,6 +64,14 @@ nav ul li a {
     text-shadow: 1px 1px 2px black;
 }
 
+.additional-text {
+    position: absolute;
+    bottom: 30px; /* 이미지의 하단으로부터의 거리 설정 */
+    left: 10px;
+    color: white;
+    font-size: 12px;
+    text-shadow: 1px 1px 2px black;
+}
 
 /* 글쓰기 버튼 스타일 */
 .write-button {
