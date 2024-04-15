@@ -3,35 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <jsp:include page="/views/common/header.jsp"/>
-    <link rel="stylesheet" type="text/css" 
-    		href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css">
-    <title></title>
+	<meta charset="UTF-8">
+	<%@ include file="/views/common/header.jsp"%>
+	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/borad/workwear/workwear.css">
+	
+<title></title>
 </head>
 <body>
    <div id="wrap">
         <ul id="gallery">
-            <li><a href="#">
+            <a>
+                <li>
                     <img src="<%= request.getContextPath() %>/resources/image/board/workwear/01.jpg" alt="1">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div>
-                </a></li>
-            <li><a href="#">
+                </li></a>
+            <a>
+                <li>
                     <img src="<%= request.getContextPath() %>/resources/image/board/workwear/02.jpg" alt="2">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div> 
-                </a></li>
-            <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/01.jpg" alt="3">
-                    <div class="text-overlay">글쓴이: 아무개</div>
-                    <div class="additional-text">추가 텍스트 내용</div>
-                </a></li>
-            <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/02.jpg" alt="4">
-                    <div class="text-overlay">글쓴이: 아무개</div>
-                    <div class="additional-text">추가 텍스트 내용</div> 
-                </a></li>
+                </li></a>
         </ul>
     </div>
 </body>
