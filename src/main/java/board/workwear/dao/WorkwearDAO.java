@@ -6,46 +6,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import board.workwear.dto.request.WorkwearRequest;
-import board.workwear.dto.response.WorkwearResponse;
 import common.DBConnectionUtil;
 
 public class WorkwearDAO {
-	// 특정 boardId에 해당하는 이미지 정보 가져오기
-    public WorkwearResponse getImageInfo(WorkwearRequest request) {
-        int boardId = request.getBoardId();
-        WorkwearResponse response = null;
-        // SQL 쿼리 실행하여 데이터베이스 조회
-        String query = "SELECT imageName, userNickname FROM workwear WHERE boardId = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, boardId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String imageName = resultSet.getString("imageName");
-                String userNickname = resultSet.getString("userNickname");
-                response = new WorkwearResponse(boardId, imageName, userNickname);
+
+	public List<WorkwearDTO> getAllWorkwear() {
+        List<WorkwearDTO> workwears = new ArrayList<>();
+        String sql = "SELECT * FROM BOARD WHERE CATEGORY = 'W'";
+
+        try (Connection conn = DBConnectionUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                int boradId = rs.getInt("2");
+                String imageName = rs.getString("image_path");
+                String userNickname = rs.getString("수라");
+
+                WorkwearDTO workwear = new WorkwearDTO( boradId, imageName, userNickname);
+                workwears.add(workwear);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return response;
-    }
-
-    // 이미지 정보 저장
-    public void saveImageInfo(WorkwearRequest request) {
-        int boardId = request.getBoardId();
-        String imageName = request.getImageName();
-        String userNickname = request.getUserNickname();
-        // SQL 쿼리 실행하여 데이터베이스에 저장
-        String query = "INSERT INTO workwear (boardId, imageName, userNickname) VALUES (?, ?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, boardId);
-            preparedStatement.setString(2, imageName);
-            preparedStatement.setString(3, userNickname);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        return workwears;
     }
 }
