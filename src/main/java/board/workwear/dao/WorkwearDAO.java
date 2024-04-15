@@ -1,12 +1,8 @@
 package board.workwear.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import board.workwear.dto.request.WorkwearRequest;
 import board.workwear.dto.response.WorkwearResponse;
 import common.DBConnectionUtil;
@@ -18,7 +14,7 @@ public class WorkwearDAO {
         WorkwearResponse response = null;
         // SQL 쿼리 실행하여 데이터베이스 조회
         String query = "SELECT imageName, userNickname FROM workwear WHERE boardId = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = (PreparedStatement) DBConnectionUtil.getConnection()) {
             preparedStatement.setInt(1, boardId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -39,7 +35,7 @@ public class WorkwearDAO {
         String userNickname = request.getUserNickname();
         // SQL 쿼리 실행하여 데이터베이스에 저장
         String query = "INSERT INTO workwear (boardId, imageName, userNickname) VALUES (?, ?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = (PreparedStatement) DBConnectionUtil.getConnection()) {
             preparedStatement.setInt(1, boardId);
             preparedStatement.setString(2, imageName);
             preparedStatement.setString(3, userNickname);
