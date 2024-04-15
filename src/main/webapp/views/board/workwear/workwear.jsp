@@ -12,8 +12,7 @@
 <body>
 
 	<!-- 글쓰기 버튼 -->
-	<a href="<%= request.getContextPath() %>/views/board/workwear/workwearWrite.jsp" 
-			class="write-button">
+	<a href="#" class="write-button">
     	<img src="<%= request.getContextPath() %>/resources/image/board/workwear/Writing.png" 
     			alt="Write" class="write-icon">
 	</a>
