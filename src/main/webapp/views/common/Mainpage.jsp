@@ -1,113 +1,17 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>-->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
+	<%@ include file="./common.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <link rel="stylesheet" href="Main_slideshow.css">
-    <script src="Main_slideshow.js"></script>
+    <link rel="stylesheet" href="../../resources/css/common/Mainpage.css">
+    <script src="../../resources/js/common/Mainpage_slideshow.js"></script>
         
     <style>
-      /* 상단 메뉴 전체 */
-      .top_body{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        border-bottom: 2px solid #F0F0F0;
-        margin : 0px 5% 0 0;
-      }
-      /* 상단 메뉴 영역 */
-      .top_base{
-        top:0px;
-        height: 100%;
-        width : 1440px;
-        display: flex;
-        margin-bottom: 5px;
-        flex-wrap: wrap;
-      }
-
-      /* 개인 메뉴 */
-      .personal_menu{
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        height:20px;
-      }
-      /* 개인 메뉴 항목별 */
-      .personal_menu .menu{
-        margin: 0 10px;
-        font-size:medium;
-        }
-
-      /* 게시판 선택 */
-      .logo_board{
-        display:flex;
-        width : 100%;
-        align-items: flex-end;
-        justify-content: space-between;
-      }
-      /* 게시판 선택 항목별 */
-      .logo_board .boardselect{
-        width :10%;
-      }
-      /* 로고이미지 */
-      .logo{
-        width :16%;
-        height : 130px;
-        left: 0px; 
-        top: 10px; 
-        display:flex;
-        margin-right: 40px;
-      }
-      /* -----------------여기까지가 헤더------------------------- */
-      /* 메인 컨텐츠 틀 */
-      .main_body{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin : 0.2% 0;
-
-      }
-      /* 메인 컨텐츠 내용 */
-      .main_contents{
-
-        height: 100%;
-        width : 1440px;
-        display: flex;
-        margin: 20px 0;
-        flex-wrap: wrap;
-      }
-      /* 슬라이드쇼 배너 */
-      .mainbanner{
-
-      }
-      /* 슬라이드쇼 이미지 */
-      .mainbanner .bannerimg{
-
-      }
-      /* 게시판 아이콘영역 */
-      .main_board{
-        width: 100%;
-        margin : 5% 0;
-        display: flex;
-        justify-content: space-between;
-      }
-      /* 게시판 아이콘 내용 */
-      .boardimg {
-        transition: opacity 0.3s ease; /* 투명도 변경을 부드럽게 하기 위한 transition 효과 */
-      }
-
-      
-footer{position: fixed; /* 화면에 고정 */
-    	bottom: 0; /* 화면 하단에 위치 */
-   		width: 100%; /* 전체 너비를 차지 */
-    	background-color: #000000; /* 배경색 지정 */
-    	color: #8D8C8C; /* 텍스트 색상 지정 */
-    	padding: 20px; /* 안쪽 여백 지정 */}
-
-
+ 
     </style>
     <body>
 
@@ -117,19 +21,29 @@ footer{position: fixed; /* 화면에 고정 */
         <div class="top_base">
           <!-- 마이메뉴 영역 -->
           <div class="personal_menu">
-            <div class="menu">고객센터</div>
-            <div class="menu">로그인</div>
-            <div class="menu">미이페이지</div>
+            <div class="tMenu">고객센터</div>
+            <div class="tMenu">로그인</div>
+            <div class="tMenu">마이페이지</div>
           </div>
           <!-- 로고 + 영역 -->
           <div class="logo_board">
+            <img class="logo" src="../../resources/image/common/Logo.png" />
+            <div><a href="" class="bMenu">Formal</a></div>
+            <div><a href="" class="bMenu">Street</a></div>
+            <div><a href="" class="bMenu">Workwear</a></div>
+            <div><a href="" class="bMenu">Vintage</a></div>
+            <div><a href="" class="bMenu">Freecycling</a></div>
+            </div>
+          </div>	 
+          <!-- 게시판 이미지로 작성할 때 사용될것 -->
+          <!-- <div class="logo_board">
             <img class="logo" src="../../resources/image/common/Logo.png" />
             <img class="boardselect"   src="../../resources/image/common/Formal_T.jpg" alt="Formal">
             <img class="boardselect"   src="../../resources/image/common/Street_T.jpg" alt="Street">
             <img class="boardselect"  src="../../resources/image/common/Workwear_T.jpg" alt="Workwear">
             <img class="boardselect"  src="../../resources/image/common/Vintage_T.jpg" alt="Activewear">
             <img class="boardselect"  src="../../resources/image/common/Free_T.jpg" alt="Freecycling">
-          </div> 
+          </div>  -->
         </div>
       </div>
 
@@ -137,33 +51,33 @@ footer{position: fixed; /* 화면에 고정 */
       <!-- 메인 컨텐츠 영역 -->
       <div class="main_body">
         <div class="main_contents">
-        <!-- 메인 배너 -->
+        <!-- 메인 슬라이드쇼 영역 -->
           <div class="mainbanner">
             <div class="slideshow-container">
               
               <div class="mySlides fade">
                 <div class="numbertext">1 / 4</div>
-                <img src="v2_main0.jpg" style="display:block; width:100%">
+                <img src="../../resources/image/common/main0_slideshow.jpg" style="display:block; width:100%">
               </div>
               
               <div class="mySlides fade">
                 <div class="numbertext">2 / 5</div>
-                <img src="v2_main1.jpg" style="width:100%">
+                <img src="../../resources/image/common/main1_slideshow.jpg" style="width:100%">
               </div>
               
               <div class="mySlides fade">
                 <div class="numbertext">3 / 5</div>
-                <img src="v2_main2.jpg" style="width:100%">
+                <img src="../../resources/image/common/main2_slideshow.jpg" style="width:100%">
               </div>
               
               <div class="mySlides fade">
                 <div class="numbertext">4 / 5</div>
-                <img src="v2_main3.jpg" style="width:100%">
+                <img src="../../resources/image/common/main3_slideshow.jpg" style="width:100%">
               </div>
               
                 <div class="mySlides fade">
                 <div class="numbertext">5 / 5</div>
-                <img src="v2_main4.jpg" style="width:100%">
+                <img src="../../resources/image/common/main4_slideshow.jpg" style="width:100%">
               </div>
 
               <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -182,7 +96,7 @@ footer{position: fixed; /* 화면에 고정 */
               </script>
             <!-- <img class="bannerimg" src="../../resources/image/common/Main.jpg" alt=""> -->
           </div>
-          <!-- 게시판 아이콘 -->
+          <!--메인 게시판 아이콘 영역 -->
           <div class="main_board">
             <!-- 개별 -->
             <img class="boardimg" id="img1" src="../../resources/image/common/Formal.jpg" alt="Formal" onmouseover="changeImage('img1', '../../resources/image/common/Formal_T.jpg')" onmouseout="resetImage('img1', '../../resources/image/common/Formal.jpg')">

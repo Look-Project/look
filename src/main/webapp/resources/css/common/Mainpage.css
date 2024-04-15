@@ -1,0 +1,218 @@
+/* 상단 메뉴 전체 */
+.top_body{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #F0F0F0;
+  margin : 0px 5% 0 0;
+  }
+  /* 상단 메뉴 영역 */
+  .top_base{
+  top:0px;
+  height: 100%;
+  width : 1440px;
+  display: flex;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+  }
+  
+  /* 개인 메뉴 */
+  .personal_menu{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  height:20px;
+  }
+  /* 개인 메뉴 항목별 */
+  .personal_menu .menu{
+  margin: 0 10px;
+  font-size:medium;
+  }
+  
+  /* 게시판 선택 */
+  .logo_board{
+  display:flex;
+  width : 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin : 0px 0px 5px 0;
+  }
+  /* 게시판 선택 항목별 */
+  .logo_board .boardselect{
+  width :10%;
+  }
+  
+  .tMenu {
+  color:#8D8C8C; 
+  text-decoration: none; 
+  font-size:14px;
+  display:inline-block; 
+  margin:0 10px;
+  }
+  
+  .bMenu {
+  color:#8D8C8C; 
+  text-decoration: none; 
+  font-size: 25px; 
+  }
+  
+  .tMenu:hover {
+  color: black;
+  font-weight: 800;
+  text-shadow: 1px 1px black;
+  }
+  
+  .bMenu:hover {
+  color: black;
+  font-weight: 800;
+  text-shadow: 1px 1px black;
+  }
+  /* 로고이미지 */
+  .logo{
+  width :16%;
+  height : 118px;
+  left: 0px; 
+  top: 10px; 
+  display:flex;
+  margin-right: 40px;
+  }
+  /* -----------------여기까지가 헤더------------------------- */
+  /* 메인 컨텐츠 틀 */
+  .main_body{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin : 0.2% 0;
+  
+  }
+  /* 메인 컨텐츠 내용 */
+  .main_contents{
+  
+  height: 100%;
+  width : 1440px;
+  display: flex;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  }
+  /* 슬라이드쇼 배너 */
+  .mainbanner{
+  
+  }
+  /* 슬라이드쇼 이미지 */
+  .mainbanner .bannerimg{
+  
+  }
+  /* 게시판 아이콘영역 */
+  .main_board{
+  width: 100%;
+  margin : 1.5% 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  }
+  /* 게시판 아이콘 내용 */
+  .boardimg {
+  transition: opacity 0.3s ease; /* 투명도 변경을 부드럽게 하기 위한 transition 효과 */
+  }
+  
+  
+  footer{position: fixed; /* 화면에 고정 */
+  bottom: 0; /* 화면 하단에 위치 */
+  width: 100%; /* 전체 너비를 차지 */
+  background-color: #000000; /* 배경색 지정 */
+  color: #8D8C8C; /* 텍스트 색상 지정 */
+  padding: 20px; /* 안쪽 여백 지정 */}
+  
+  
+/* 여기부터는 w3school slideshow 작성영역 */
+
+
+.mySlides {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 1440px;
+  height: 558px;
+  position: relative;
+}
+.numbertext img {
+    width:100%;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
