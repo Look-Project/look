@@ -4,9 +4,6 @@
     padding: 0; 
 }
 
-#wrap {
-	margin-top:50px;
-}
 nav {
     position: absolute;
     bottom: 10px;
@@ -33,7 +30,7 @@ nav ul li a {
 #gallery {
     list-style: none;
     padding: 0;
-    width: 1300px;
+    width: 1100px;
     margin: 0 auto; /* 가운데 정렬 */
 }
 
@@ -49,8 +46,8 @@ nav ul li a {
 
 #gallery li img {
     display: block;
-    width: 300px; /* 이미지의 너비를 원하는 크기로 지정 */
-    height: 300px; /* 높이를 자동으로 조정하여 가로세로 비율을 유지 */
+    width: 250px; /* 이미지의 너비를 원하는 크기로 지정 */
+    height: auto; /* 높이를 자동으로 조정하여 가로세로 비율을 유지 */
     transition: 0.6s ease-in-out;
 }
 

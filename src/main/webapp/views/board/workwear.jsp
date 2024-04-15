@@ -13,22 +13,22 @@
    <div id="wrap">
         <ul id="gallery">
             <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/05.jpg" alt="1">
+                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/01.jpg" alt="1">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div>
                 </a></li>
             <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/06.jpg" alt="2">
+                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/02.jpg" alt="2">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div> 
                 </a></li>
             <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" alt="3">
+                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/01.jpg" alt="3">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div>
                 </a></li>
             <li><a href="#">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/04.jpg" alt="4">
+                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/02.jpg" alt="4">
                     <div class="text-overlay">글쓴이: 아무개</div>
                     <div class="additional-text">추가 텍스트 내용</div> 
                 </a></li>
