@@ -16,7 +16,7 @@
 					<p>Everyone look at me</p>
 				</div>
 				<div id="login-contents-form">
-					<form id="login-form" action="<%= request.getContextPath()%>/member/login" method="post">
+					<form id="login-form">
 						<div id="login-form-id-div">
 							<div>
 								<span class="login-span-font">아이디</span>
@@ -34,7 +34,7 @@
 							</div>
 						</div>
 						<div id="login-form-button-div">
-							<input type="submit" id="login-button" value="로그인" />
+							<input type="button" id="login-button" value="로그인" />
 						</div>
 					</form>
 				</div>
@@ -44,5 +44,6 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/member/login.js"></script>
 </body>
 </html>
