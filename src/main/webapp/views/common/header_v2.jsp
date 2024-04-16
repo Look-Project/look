@@ -9,25 +9,19 @@
         </head>
         <link rel="stylesheet" href="Mainpage.css">
         <script src="Mainpage_slideshow.js"></script>
-            
-        <style>
-     
-        </style>
         <body>
-    
-    
           <!-- 상단메뉴 영역 -->
           <div class="top_body">
             <div class="top_base">
               <!-- 마이메뉴 영역 -->
               <div class="personal_menu">
-                <div class="tMenu">고객센터</div>
-                <div class="tMenu">로그인</div>
-                <div class="tMenu">마이페이지</div>
+                <div><a href="" class="tMenu">고객센터</a></div>
+                <div><a href="<%= request.getContextPath() %>/member/login" class="tMenu">로그인</a></div>
+                <div><a href="" class="tMenu">마이페이지</a></div>
               </div>
               <!-- 로고 + 영역 -->
               <div class="logo_board">
-                <img class="logo" src="../../resources/image/common/Logo.png" />
+                <a href="<%= request.getContextPath()%>/main"><img class="logo" src="<%= request.getContextPath() %>/resources/image/common/Logo.png" id="login-contents-logo"></a>
                 <div><a href="" class="bMenu">Formal</a></div>
                 <div><a href="" class="bMenu">Street</a></div>
                 <div><a href="" class="bMenu">Workwear</a></div>
