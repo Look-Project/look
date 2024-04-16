@@ -1,7 +1,9 @@
 package member.service;
 
 import member.dao.MemberDAO;
+import member.dto.request.MemberLoginRequest;
 import member.dto.request.MemberSignupRequest;
+import member.dto.response.MemberResponse;
 
 public class MemberService {
 	
@@ -27,6 +29,12 @@ public class MemberService {
 	
 	public boolean signup(MemberSignupRequest member) {
 		return memberDao.insertMember(member);
+	}
+	
+	public MemberResponse login(MemberLoginRequest member) {
+		MemberResponse findMember = memberDao.findMemberByLoginIdAndPassword(member)
+				.orElseThrow(() -> new RuntimeException("아이디 또는 비밀번호가 존재하지 않거나 틀렸습니다."));
+		return findMember;
 	}
 	
 }

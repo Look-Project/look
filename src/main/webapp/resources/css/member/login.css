@@ -106,3 +106,10 @@
     text-decoration: none;
     color: black;
 }
+
+.login-errors-words {
+    font-size: 10px;
+    margin-top: 5px;
+    color: red;
+    font-weight: 700;
+}

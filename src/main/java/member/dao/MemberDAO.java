@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import common.DBConnectionUtil;
+import member.dto.request.MemberLoginRequest;
 import member.dto.request.MemberSignupRequest;
+import member.dto.response.MemberResponse;
 
 public class MemberDAO {
 	
@@ -81,4 +84,33 @@ public class MemberDAO {
 		
 		return result > 0 ? true : false;
 	}
+	
+    public Optional<MemberResponse> findMemberByLoginIdAndPassword(MemberLoginRequest memberRequest) {
+		String sql = "select user_id, nickname, create_at from member where login_id = ? and login_pwd = ?";
+		
+		try {
+			con = DBConnectionUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberRequest.getLoginId());
+			pstmt.setString(2, memberRequest.getPassword());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				MemberResponse findMember = new MemberResponse();
+				findMember.setMemberId(rs.getInt("user_id"));
+				findMember.setNickname(rs.getString("nickname"));
+				findMember.setCreateAt(rs.getTimestamp("create_at").toLocalDateTime());
+				
+				return Optional.ofNullable(findMember);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.close(con, pstmt, rs);
+		}
+		
+		return Optional.empty();
+		
+    }
 }
