@@ -14,7 +14,7 @@
             
             <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
                 <img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" 
-                		alt="콜드브루">
+                		alt="">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
