@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import board.workwear.dto.request.WorkwearDetailRequest;
 import board.workwear.dto.request.WorkwearRequest;
+import board.workwear.dto.request.WorkwearWriteRequest;
+import board.workwear.dto.response.WorkwearDetailResponse;
 import board.workwear.dto.response.WorkwearResponse;
 import common.DBConnectionUtil;
 
@@ -48,5 +50,46 @@ public class WorkwearDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // 작업복 상세 정보 가져오기
+    public WorkwearDetailResponse getWorkwearDetail(WorkwearDetailRequest request) {
+        int boardId = request.getBoardId();
+        WorkwearDetailResponse workwearDetail = null;
+        String sql = "SELECT * FROM workwear WHERE boardId = ?";
+
+        try (Connection conn = DBConnectionUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, boardId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    String imageName = rs.getString("imageName");
+                    String userNickname = rs.getString("userNickname");
+                    workwearDetail = new WorkwearDetailResponse(boardId, imageName, userNickname);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return workwearDetail;
+    }
+
+    // 작업복 글 작성
+    public boolean writeWorkwear(WorkwearWriteRequest request) {
+        String sql = "INSERT INTO BOARD (title, content, file_path) VALUES (?, ?, ?)";
+
+        try (Connection conn = DBConnectionUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, request.getTitle());
+            pstmt.setString(2, request.getContent());
+            //pstmt.setString(3, request.getFilePath());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
