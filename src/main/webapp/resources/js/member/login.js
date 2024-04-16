@@ -1,6 +1,21 @@
 const MEMBER_LOGIN_URL = BASE_URL + "/member/login";
 const MAIN_PAGE_URL = BASE_URL + "/main";
 
+
+$('#login-form-id-input').on('keyup', function(e){
+    if (e.keyCode === 13 || e.key === "Enter") {
+    	$('#login-button').click();
+    }
+});
+
+$('#login-form-pw-input').on('keyup', function(e){
+    if (e.keyCode === 13 || e.key === "Enter") {
+    	$('#login-button').click();
+    }
+});
+
+
+
 $("#login-button").click(function(){
 	
 	const member = {
@@ -15,7 +30,7 @@ $("#login-button").click(function(){
 	        url: MEMBER_LOGIN_URL,
 	        type: "POST",
 			data: member,
-	        success:function(data){			
+	        success:function(data){
 				if(!!data.error) {
 					markingErrorMessage("#login-form-password-div", data.error);
 				}else {					
