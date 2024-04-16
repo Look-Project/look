@@ -16,7 +16,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import common.DBConnectionUtil;
+import common.SessionUtil;
 import member.dto.request.MemberSignupRequest;
+import member.dto.response.MemberResponse;
 import member.service.MemberService;
 
 @WebServlet(urlPatterns = "/member/signup")
@@ -27,7 +29,13 @@ public class SignupController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(SIGN_UP_VIEW_NAME).forward(request, response);
+		MemberResponse loginMember = SessionUtil.getSessionMember(request);
+		
+		if(loginMember != null) {
+			response.sendRedirect(request.getContextPath() + "/main");
+		}else {
+			request.getRequestDispatcher(SIGN_UP_VIEW_NAME).forward(request, response);
+		}
 	}
 
 	@Override
