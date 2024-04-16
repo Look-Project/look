@@ -1,5 +1,5 @@
 const MEMBER_LOGIN_URL = BASE_URL + "/member/login";
-const MAIN_PAGE_URL = BASE_URL + "/views/common/header.jsp";
+const MAIN_PAGE_URL = BASE_URL + "/main";
 
 $("#login-button").click(function(){
 	

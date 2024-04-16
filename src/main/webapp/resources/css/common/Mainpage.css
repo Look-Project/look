@@ -22,6 +22,7 @@
   display: flex;
   justify-content: flex-end;
   height:20px;
+  margin-top: 10px;
   }
   /* 개인 메뉴 항목별 */
   .personal_menu .menu{
@@ -69,7 +70,7 @@
   }
   /* 로고이미지 */
   .logo{
-  width :16%;
+  width :100%;
   height : 118px;
   left: 0px; 
   top: 10px; 

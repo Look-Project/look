@@ -24,7 +24,14 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(LOGIN_VIEW_NAME).forward(request, response);
+		MemberResponse loginMember = SessionUtil.getSessionMember(request);
+		
+		if(loginMember != null) {
+			response.sendRedirect(request.getContextPath() + "/main");
+		}else {
+			request.getRequestDispatcher(LOGIN_VIEW_NAME).forward(request, response);
+		}
+		
 	}
 
 	@Override

@@ -12,7 +12,7 @@
 		<div id="login-inner">
 			<div id="login-contents">
 				<div id="login-contents-logos">
-					<a href="<%= request.getContextPath()%>/views/common/header.jsp"><img src="<%= request.getContextPath() %>/resources/image/common/Logo.png" id="login-contents-logo"></a>
+					<a href="<%= request.getContextPath()%>/main"><img src="<%= request.getContextPath() %>/resources/image/common/Logo.png" id="login-contents-logo"></a>
 					<p>Everyone look at me</p>
 				</div>
 				<div id="login-contents-form">
