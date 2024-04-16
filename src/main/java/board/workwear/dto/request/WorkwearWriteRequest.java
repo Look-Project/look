@@ -1,15 +1,13 @@
-package board.workwear.dto;
+package board.workwear.dto.request;
 
-public class WorkwearWriteDTO {
+public class WorkwearWriteRequest {
     private String title;
     private String content;
-    private String filePath;
 
     // 생성자
-    public WorkwearWriteDTO(String title, String content, String filePath) {
+    public WorkwearWriteRequest(String title, String content) {
         this.title = title;
         this.content = content;
-        this.filePath = filePath;
     }
 
     // Getter 및 Setter 메서드
@@ -27,13 +25,5 @@ public class WorkwearWriteDTO {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 }
