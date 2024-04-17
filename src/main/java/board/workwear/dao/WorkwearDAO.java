@@ -17,14 +17,14 @@ public class WorkwearDAO {
         int boardId = request.getBoardId();
         WorkwearResponse response = null;
         // 데이터베이스에서 이미지 정보를 조회하는 SQL 쿼리
-        String query = "SELECT imageName, userNickname FROM workwear WHERE boardId = ?";
+        String query = "SELECT IMG_ID, NICKNAME FROM workwear WHERE BOARD_ID = ?";
         try (Connection con = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, boardId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    String imageName = resultSet.getString("imageName");
-                    String userNickname = resultSet.getString("userNickname");
+                    String imageName = resultSet.getString("IMG_ID");
+                    String userNickname = resultSet.getString("NICKNAME");
                     response = new WorkwearResponse(boardId, imageName, userNickname);
                 }
             }
@@ -40,7 +40,7 @@ public class WorkwearDAO {
         String imageName = request.getImageName();
         String userNickname = request.getUserNickname();
         // 데이터베이스에 이미지 정보를 저장하는 SQL 쿼리
-        String query = "INSERT INTO workwear (boardId, imageName, userNickname) VALUES (?, ?, ?)";
+        String query = "INSERT INTO workwear (BOARD_ID, IMG_ID, NICKNAME) VALUES (?, ?, ?)";
         try (Connection con = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, boardId);
@@ -56,15 +56,15 @@ public class WorkwearDAO {
     public WorkwearDetailResponse getWorkwearDetail(WorkwearDetailRequest request) {
         int boardId = request.getBoardId();
         WorkwearDetailResponse workwearDetail = null;
-        String sql = "SELECT * FROM workwear WHERE boardId = ?";
+        String sql = "SELECT * FROM workwear WHERE BOARD_ID = ?";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, boardId);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    String imageName = rs.getString("imageName");
-                    String userNickname = rs.getString("userNickname");
+                    String imageName = rs.getString("IMG_ID");
+                    String userNickname = rs.getString("NICKNAME");
                     workwearDetail = new WorkwearDetailResponse(boardId, imageName, userNickname);
                 }
             }

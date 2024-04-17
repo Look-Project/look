@@ -5,9 +5,9 @@ public class WorkwearWriteRequest {
     private String content;
 
     // 생성자
-    public WorkwearWriteRequest(String title, String content) {
-        this.title = title;
-        this.content = content;
+    public WorkwearWriteRequest(String TITLE, String CONTENTS) {
+        this.title = TITLE;
+        this.content = CONTENTS;
     }
 
     // Getter 및 Setter 메서드
@@ -15,15 +15,15 @@ public class WorkwearWriteRequest {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String TITLE) {
+        this.title = TITLE;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent(String CONTENTS) {
+        this.content = CONTENTS;
     }
 }

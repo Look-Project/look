@@ -14,15 +14,15 @@ public class CommentDAO {
 
     public List<CommentResponse> getAllComments() {
         List<CommentResponse> comments = new ArrayList<>();
-        String sql = "SELECT * FROM comments";
+        String sql = "SELECT * FROM BOARD_COMMENT";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
-                String id = rs.getString("id");
-                String comment = rs.getString("comment");
+                String id = rs.getString("USER_ID");
+                String comment = rs.getString("CONTENTS");
                 comments.add(new CommentResponse(id, comment));
             }
         } catch (SQLException e) {
@@ -33,7 +33,7 @@ public class CommentDAO {
     }
 
     public void addComment(CommentRequest request) {
-        String sql = "INSERT INTO comments (id, comment) VALUES (?, ?)";
+        String sql = "INSERT INTO BOARD_COMMENT (USER_ID, CONTENTS) VALUES (?, ?)";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
