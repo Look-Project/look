@@ -14,7 +14,7 @@ public class CommentDAO {
 
     public List<CommentResponse> getAllComments() {
         List<CommentResponse> comments = new ArrayList<>();
-        String sql = "SELECT * FROM boardComment";
+        String sql = "SELECT * FROM BOARD_COMMENT";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -33,7 +33,7 @@ public class CommentDAO {
     }
 
     public void addComment(CommentRequest request) {
-        String sql = "INSERT INTO boardComment (userId, contents) VALUES (?, ?)";
+        String sql = "INSERT INTO BOARD_COMMENT (userId, contents) VALUES (?, ?)";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
