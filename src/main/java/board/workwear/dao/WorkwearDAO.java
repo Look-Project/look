@@ -17,10 +17,9 @@ public class WorkwearDAO {
         int boardId = request.getBoardId();
         WorkwearResponse response = null;
         // 데이터베이스에서 이미지 정보를 조회하는 SQL 쿼리
-        String query = "SELECT imgID, nickname FROM board WHERE boardId = ? AND category = 'W';";
+        String query = "SELECT * FROM board WHERE category = 'W';";
         try (Connection con = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, boardId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     String imageName = resultSet.getString("imgId");

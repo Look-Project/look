@@ -14,8 +14,8 @@ public class WorkwearController {
     }
 
     // 특정 boardId에 해당하는 이미지 정보를 가져오는 컨트롤러 메서드
-    /*public WorkwearResponse getImageInfo(int boardId) {
-        WorkwearRequest request = new WorkwearRequest(boardId);
-        return workwearService.getImageInfo(request);
-    }*/
+    public WorkwearResponse getImageInfo(int boardId, String imgId, String nickname) {
+        WorkwearRequest request = new WorkwearRequest(boardId, imgId, nickname);
+        return workwearService.processWorkwearRequest(request);
+    }
 }
