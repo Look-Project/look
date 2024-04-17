@@ -6,10 +6,10 @@ public class WorkwearRequest {
     private String userNickname;
 
     // 생성자
-    public WorkwearRequest(int BOARD_ID, String IMG_ID, String NICKNAME) {
-        this.boardId = BOARD_ID;
-        this.imageName = IMG_ID;
-        this.userNickname = NICKNAME;
+    public WorkwearRequest(int boardId, String imgId, String nickname) {
+        this.boardId = boardId;
+        this.imageName = imgId;
+        this.userNickname = nickname;
     }
 
     // 각 속성의 Getter 및 Setter
@@ -17,23 +17,23 @@ public class WorkwearRequest {
         return boardId;
     }
 
-    public void setBoardId(int BOARD_ID) {
-        this.boardId = BOARD_ID;
+    public void setBoardId(int boardId) {
+        this.boardId = boardId;
     }
 
     public String getImageName() {
         return imageName;
     }
 
-    public void setImageName(String IMG_ID) {
-        this.imageName = IMG_ID;
+    public void setImageName(String imgId) {
+        this.imageName = imgId;
     }
 
     public String getUserNickname() {
         return userNickname;
     }
 
-    public void setUserNickname(String NICKNAME) {
-        this.userNickname = NICKNAME;
+    public void setUserNickname(String nickname) {
+        this.userNickname = nickname;
     }
 }

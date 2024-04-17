@@ -14,8 +14,8 @@ public class WorkwearDetailController {
     }
 
     // 특정 boardId에 해당하는 작업복 상세 정보를 가져오는 컨트롤러 메서드
-    public WorkwearDetailResponse getWorkwearDetail(int BOARD_ID) {
-        WorkwearDetailRequest request = new WorkwearDetailRequest(BOARD_ID);
+    public WorkwearDetailResponse getWorkwearDetail(int boardID) {
+        WorkwearDetailRequest request = new WorkwearDetailRequest(boardID);
         return workwearDetailService.getWorkwearDetail(request);
     }
 }

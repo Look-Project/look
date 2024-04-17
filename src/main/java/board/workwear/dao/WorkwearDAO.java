@@ -17,14 +17,14 @@ public class WorkwearDAO {
         int boardId = request.getBoardId();
         WorkwearResponse response = null;
         // 데이터베이스에서 이미지 정보를 조회하는 SQL 쿼리
-        String query = "SELECT IMG_ID, NICKNAME FROM workwear WHERE BOARD_ID = ?";
+        String query = "SELECT imgID, nickname FROM workwear WHERE boardId = ?";
         try (Connection con = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, boardId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    String imageName = resultSet.getString("IMG_ID");
-                    String userNickname = resultSet.getString("NICKNAME");
+                    String imageName = resultSet.getString("imgId");
+                    String userNickname = resultSet.getString("nickname");
                     response = new WorkwearResponse(boardId, imageName, userNickname);
                 }
             }
@@ -40,7 +40,7 @@ public class WorkwearDAO {
         String imageName = request.getImageName();
         String userNickname = request.getUserNickname();
         // 데이터베이스에 이미지 정보를 저장하는 SQL 쿼리
-        String query = "INSERT INTO workwear (BOARD_ID, IMG_ID, NICKNAME) VALUES (?, ?, ?)";
+        String query = "INSERT INTO workwear (boardId, imgId, nickname) VALUES (?, ?, ?)";
         try (Connection con = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, boardId);
@@ -56,15 +56,15 @@ public class WorkwearDAO {
     public WorkwearDetailResponse getWorkwearDetail(WorkwearDetailRequest request) {
         int boardId = request.getBoardId();
         WorkwearDetailResponse workwearDetail = null;
-        String sql = "SELECT * FROM workwear WHERE BOARD_ID = ?";
+        String sql = "SELECT * FROM workwear WHERE boardId = ?";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, boardId);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    String imageName = rs.getString("IMG_ID");
-                    String userNickname = rs.getString("NICKNAME");
+                    String imageName = rs.getString("imgId");
+                    String userNickname = rs.getString("nickname");
                     workwearDetail = new WorkwearDetailResponse(boardId, imageName, userNickname);
                 }
             }
@@ -76,7 +76,7 @@ public class WorkwearDAO {
 
     // 작업복 글 작성
     public boolean writeWorkwear(WorkwearWriteRequest request) {
-        String sql = "INSERT INTO BOARD (TITLE, CONTENTS, file_path) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO BOARD (title, contents, file_path) VALUES (?, ?, ?)";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

@@ -4,24 +4,24 @@ public class CommentResponse {
     private String id;
     private String comment;
 
-    public CommentResponse(String USER_ID, String CONTENTS) {
-        this.id = USER_ID;
-        this.comment = CONTENTS;
+    public CommentResponse(String userId, String contents) {
+        this.id = userId;
+        this.comment = contents;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String USER_ID) {
-        this.id = USER_ID;
+    public void setId(String userId) {
+        this.id = userId;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public void setComment(String CONTENTS) {
-        this.comment = CONTENTS;
+    public void setComment(String contents) {
+        this.comment = contents;
     }
 }

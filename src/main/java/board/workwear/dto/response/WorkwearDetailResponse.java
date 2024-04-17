@@ -5,33 +5,33 @@ public class WorkwearDetailResponse {
     private String imageName;
     private String userNickname;
 
-    public WorkwearDetailResponse(int BOARD_ID, String IMG_ID, String NICKNAME) {
-        this.boardId = BOARD_ID;
-        this.imageName = IMG_ID;
-        this.userNickname = NICKNAME;
+    public WorkwearDetailResponse(int boardId, String imgId, String nickname) {
+        this.boardId = boardId;
+        this.imageName = imgId;
+        this.userNickname = nickname;
     }
 
     public int getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(int BOARD_ID) {
-        this.boardId = BOARD_ID;
+    public void setBoardId(int boardId) {
+        this.boardId = boardId;
     }
 
     public String getImageName() {
         return imageName;
     }
 
-    public void setImageName(String IMG_ID) {
-        this.imageName = IMG_ID;
+    public void setImageName(String imgId) {
+        this.imageName = imgId;
     }
 
     public String getUserNickname() {
         return userNickname;
     }
 
-    public void setUserNickname(String NICKNAME) {
-        this.userNickname = NICKNAME;
+    public void setUserNickname(String nickname) {
+        this.userNickname = nickname;
     }
 }

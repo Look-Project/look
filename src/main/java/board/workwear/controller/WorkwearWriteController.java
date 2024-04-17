@@ -13,9 +13,9 @@ public class WorkwearWriteController {
     }
 
     // 작업복 글을 작성하는 컨트롤러 메서드
-    public boolean writeWorkwear(String TITLE, String CONTENTS) {
+    public boolean writeWorkwear(String title, String contents) {
         // 작업복 글 작성 시 파일 경로는 request에 의해 자동 생성되므로 제외합니다.
-        WorkwearWriteRequest request = new WorkwearWriteRequest(TITLE, CONTENTS);
+        WorkwearWriteRequest request = new WorkwearWriteRequest(title, contents);
         return workwearWriteService.writeWorkwear(request);
     }
 }
