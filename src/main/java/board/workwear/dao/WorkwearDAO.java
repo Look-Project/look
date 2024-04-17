@@ -76,7 +76,7 @@ public class WorkwearDAO {
 
     // 작업복 글 작성
     public boolean writeWorkwear(WorkwearWriteRequest request) {
-        String sql = "INSERT INTO BOARD (title, content, file_path) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO BOARD (TITLE, CONTENTS, file_path) VALUES (?, ?, ?)";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
