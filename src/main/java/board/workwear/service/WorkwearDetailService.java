@@ -6,13 +6,13 @@ import board.workwear.dto.response.WorkwearDetailResponse;
 
 public class WorkwearDetailService {
 
-    private WorkwearDAO WorkwearDAO;
+    private final WorkwearDAO workwearDAO;
 
     public WorkwearDetailService() {
-        this.WorkwearDAO = new WorkwearDAO();
+        this.workwearDAO = new WorkwearDAO();
     }
 
     public WorkwearDetailResponse getWorkwearDetail(WorkwearDetailRequest request) {
-        return WorkwearDAO.getWorkwearDetail(request);
+        return workwearDAO.getWorkwearDetail(request);
     }
 }
