@@ -78,11 +78,11 @@ public class VintageDAO {
 				vblr.add(tmp);
 			}
 			
-			//커넥션 반납
-			DBConnectionUtil.close(con, pstmt, rs);
-			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			//커넥션 반납
+			DBConnectionUtil.close(con, pstmt, rs);
 		}
 		return vblr;
 	}
