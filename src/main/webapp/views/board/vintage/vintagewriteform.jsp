@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="vwrite-container">
-	<form action="/action_page.php" class="submit">
+	<form action="<%=request.getContextPath() %>/vintage/write" method = "post" class="submit">
 		<div class="container">
       		<div class="col-25">
         	<label for="title">제목</label>
@@ -24,7 +24,7 @@
        			<label for="upload">파일 첨부</label>
     		</div>
     		<div class="col-75">
-				<input type="file" id="myFile" name="filename">
+				<input type="file" id="file" name="file">
 			</div>
 		</div>
 		<div class="container">
@@ -32,7 +32,7 @@
         		<label for="content">내용</label>
       		</div>
       		<div class="col-75">
-        		<textarea id="content" name="content" placeholder="내용을 입력하세요" style="height:200px"></textarea>
+        		<textarea id="contents" name="contents" placeholder="내용을 입력하세요" style="height:200px"></textarea>
     		</div>
     	</div>
     <div class="container">
