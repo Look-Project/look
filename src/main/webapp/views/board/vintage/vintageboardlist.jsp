@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/views/common/header.jsp"%>
+<%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboardlist.css">
 </head>
 <body>
@@ -153,7 +153,7 @@
 		</div>
 	</div>
 <button class="vwritebutton">
-	<a href="vintagewriteform.jsp">
+	<a href="<%=request.getContextPath() %>/vintage/write">
 	<img src="<%= request.getContextPath() %>/resources/image/board/vintage/write_icon.jpg" class="vwritebutton-icon">
 	</a>
 </button>
