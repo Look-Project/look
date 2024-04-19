@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="board.vintage.dto.response.VintageBoardListResponse" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +17,35 @@
 </head>
 <body>
 
+<%List<VintageBoardListResponse> list = (List<VintageBoardListResponse>)request.getAttribute("boardlist"); %>
+
 <div class="vorderby-wrap-div">
 	<div class="vorderby"><a href="#">최신순</a></div>
 	<div class="vorderby"><a href="#">조회수</a></div>
 </div>
 
 <div class="vgallery">
+<%
+	//for 반복문으로 div에 태그 추가
+	for(VintageBoardListResponse dto : list){
+		out.println("dto " + dto);
+%>
 	<div class="vgallery-line-frame">
 		<div class="vimg-frame">
 			<img src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage1.jpg" class="vgallery-img">
+
 			<div class="vcontent-frame">
-				<h3 class="vcontent-title">happy</h3>
+				<h3 class="vcontent-title"><%=dto.getNickname() %></h3>
 				<hr/>
-				<p class="vgallery-content">#빈티지룩 #시니어룩 #나이는 상관없어!!</p>
-			</div>
+				<p class="vgallery-content"><%=dto.getTitle() %></p>
+			</div>	
 		</div>
 		<div class="vimg-frame">
 			<img src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage2.jpg" class="vgallery-img">
 			<div class="vcontent-frame">
-				<h3 class="vcontent-title">happy</h3>
+				<h3 class="vcontent-title"><%=dto.getNickname() %></h3>
 				<hr/>
-				<p class="vgallery-content">#빈티지룩 #시니어룩 #나이는 상관없어!!</p>
+				<p class="vgallery-content"><%=dto.getTitle() %></p>
 			</div>
 		</div>
 		<div class="vimg-frame">
@@ -50,6 +65,9 @@
 			</div>
 		</div>
 	</div>
+<%
+	}
+%>	
 	<div class="vgallery-line-frame">
 		<div class="vimg-frame">
 			<img src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage5.jpg" class="vgallery-img">

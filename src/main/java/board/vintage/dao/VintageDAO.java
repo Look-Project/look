@@ -54,7 +54,7 @@ public class VintageDAO {
 		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
-				+ "inner join Board_IMG i "
+				+ "left outer join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
 				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' ";
 		
