@@ -8,7 +8,7 @@
     	<%@ include file="./common.jsp"%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
-        <link rel="stylesheet" href="Mainpage.css">
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/common/Mainpage.css">
         <script src="Mainpage_slideshow.js"></script>
         <body>
           <!-- 상단메뉴 영역 -->
