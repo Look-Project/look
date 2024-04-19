@@ -13,16 +13,17 @@ import board.vintage.service.VintageBoardService;
 
 @WebServlet(urlPatterns = "/vintage/write")
 public class VintageWriteController extends HttpServlet {
-	
+	private final String VINTAGE_BOARD_WRITE = "/views/board/vintage/vintagewriteform.jsp";
 	VintageBoardService vbs = new VintageBoardService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
+		request.getRequestDispatcher(VINTAGE_BOARD_WRITE).forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		VintageWriteRequest vwr = new VintageWriteRequest();
 		
 		vwr.setTitle(request.getParameter("title"));;

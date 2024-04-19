@@ -8,7 +8,7 @@
     	<%@ include file="./common.jsp"%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
-        <link rel="stylesheet" href="Mainpage.css">
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/common/Mainpage.css">
         <script src="Mainpage_slideshow.js"></script>
         <body>
           <!-- 상단메뉴 영역 -->
@@ -36,7 +36,7 @@
                 <div><a href="" class="bMenu">Formal</a></div>
                 <div><a href="" class="bMenu">Street</a></div>
                 <div><a href="" class="bMenu">Workwear</a></div>
-                <div><a href="" class="bMenu">Vintage</a></div>
+                <div><a href="<%= request.getContextPath() %>/vintage/boardlist" class="bMenu">Vintage</a></div>
                 <div><a href="" class="bMenu">Freecycling</a></div>
                 </div>
               </div>	 
