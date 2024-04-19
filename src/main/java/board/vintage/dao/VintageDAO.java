@@ -51,10 +51,12 @@ public class VintageDAO {
 		List<VintageBoardListResponse> vblr = new ArrayList<VintageBoardListResponse>();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT b.BOARD_ID, b.USER_ID, b.TITLE, b.CONTENTS, b.VIEWS, b.DELETE_YN, b.CREATE_AT, i.IMG_SRC "
-				+ "FROM BOARD b "
-				+ "left outer JOIN BOARD_IMG i ON b.BOARD_ID = i.BOARD_ID "
-				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N'";
+		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
+				+ "FROM BOARD b inner join MEMBER m "
+				+ "on b.USER_ID = m.USER_ID "
+				+ "inner join Board_IMG i "
+				+ "on b.BOARD_ID = i.BOARD_ID "
+				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' ";
 		
 		try {
 			//쿼리 실행할 객체 선언
@@ -65,14 +67,12 @@ public class VintageDAO {
 			
 			while(rs.next()) {
 				VintageBoardListResponse tmp = new VintageBoardListResponse();
-				tmp.setBoardId(rs.getInt(1));
-				tmp.setUserId(rs.getInt(2));
-				tmp.setTitle(rs.getString(3));
-				tmp.setContents(rs.getString(4));
-				tmp.setViews(rs.getInt(5));
-				tmp.setDeleteYn(rs.getString(6));
-				tmp.setCreateAt(rs.getDate(7));
-				tmp.setImgSrc(rs.getString(8));
+				
+				tmp.setNickname(rs.getString("NICKNAME"));
+				tmp.setTitle(rs.getString("TITLE"));
+				tmp.setImgSrc(rs.getString("IMG_SRC"));
+				tmp.setImgName(rs.getString("IMG_NAME"));
+				
 				
 				//불러온 값 저장
 				vblr.add(tmp);
