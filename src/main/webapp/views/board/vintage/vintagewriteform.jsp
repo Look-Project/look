@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="vwrite-container">
-	<form action="<%=request.getContextPath() %>/vintage/write" method = "post" class="submit">
+	<form action="<%=request.getContextPath() %>/vintage/write" method = "post" class="submit" enctype="multipart/form-data">
 		<div class="container">
       		<div class="col-25">
         	<label for="title">제목</label>
@@ -24,7 +24,7 @@
        			<label for="upload">파일 첨부</label>
     		</div>
     		<div class="col-75">
-				<input type="file" id="file" name="file">
+				<input type="file" name="uploadFile" multiple>
 			</div>
 		</div>
 		<div class="container">
