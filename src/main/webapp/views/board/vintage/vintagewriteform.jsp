@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/views/common/header.jsp"%>
+<%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintagewriteform.css">
 </head>
 <body>
