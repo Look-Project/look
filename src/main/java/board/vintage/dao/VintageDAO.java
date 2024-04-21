@@ -9,6 +9,7 @@ import java.util.List;
 import board.vintage.dto.request.VintageWriteRequest;
 import board.vintage.dto.response.VintageBoardListResponse;
 import common.DBConnectionUtil;
+import common.SessionUtil;
 
 public class VintageDAO {
 	Connection con = null;
@@ -28,7 +29,7 @@ public class VintageDAO {
 			pstmt = con.prepareStatement(sql);
 			
 			//값을 매핑하기
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1,vwr.getMemberId() );
 			pstmt.setString(2, vwr.getTitle());
 			pstmt.setString(3, vwr.getContents());
 			pstmt.setString(4, v);
@@ -56,7 +57,8 @@ public class VintageDAO {
 				+ "on b.USER_ID = m.USER_ID "
 				+ "left outer join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
-				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' ";
+				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' "
+				+ "ORDER BY b.CREATE_AT desc";
 		
 		try {
 			//쿼리 실행할 객체 선언
