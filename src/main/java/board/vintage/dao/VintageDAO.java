@@ -57,7 +57,8 @@ public class VintageDAO {
 				+ "on b.USER_ID = m.USER_ID "
 				+ "left outer join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
-				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' ";
+				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' "
+				+ "ORDER BY b.CREATE_AT desc";
 		
 		try {
 			//쿼리 실행할 객체 선언
