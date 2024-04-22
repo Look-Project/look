@@ -29,11 +29,6 @@
                     	멜빵 바지로 웨크웨어룩을 꾸며 보았어요 ~ <br/>
                     	처음 입어보는데 좋아요 !<br/>
                     	궁금한거 있으시면 물어봐주세요 ^^<br/></p>
-            <!-- 폼 추가 -->
-            <form id="workwearDetailForm" action="/workwearDetail" method="GET">
-                <input type="hidden" name="boardID" value="123"> <!-- 여기에 실제 boardID 값을 넣어주세요 -->
-                <button type="submit">작업복 상세 정보 가져오기</button>
-            </form>
                     <p class="reviewnav">리뷰</p>
 
                     <div class="Allcomment"> <!--모든 댓글 내용을 담아내는 div 태그-->
