@@ -1,19 +1,42 @@
 package board.workwear.service;
 
-import board.workwear.dao.WorkwearDAO;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import board.workwear.dto.request.WorkwearWriteRequest;
 
+//WorkwearWriteService.java
+
 public class WorkwearWriteService {
-    private WorkwearDAO workwearDAO; 
 
-    public WorkwearWriteService() {
-        this.workwearDAO = new WorkwearDAO(); 
-    }
+ public boolean writeWorkwear(WorkwearWriteRequest workwearWriteRequest) {
+     try {
+         // Establish database connection
+         Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "username", "password");
 
-    // 게시물을 작성하는 메서드
-    public boolean writeWorkwear(WorkwearWriteRequest request) {
-        // 파일을 업로드하고 실제 파일 경로를 가져오는 작업 등을 수행할 수 있음
-        // 여기서는 파일 경로를 그대로 전달하고 있다고 가정함
-        return workwearDAO.writeWorkwear(request); // 변수명 수정
-    }
+         // Define the SQL query
+         String sql = "INSERT INTO board (title, contents) VALUES (?, ?)";
+
+         // Create prepared statement
+         PreparedStatement statement = connection.prepareStatement(sql);
+         statement.setString(1, workwearWriteRequest.getTitle());
+         statement.setString(2, workwearWriteRequest.getContent());
+         //statement.setString(3, workwearWriteRequest.getMemberId());
+
+         // Execute the query
+         int rowsInserted = statement.executeUpdate();
+
+         // Close resources
+         statement.close();
+         connection.close();
+
+         // Check if data is successfully inserted
+         return rowsInserted > 0;
+     } catch (SQLException e) {
+         e.printStackTrace();
+         return false;
+     }
+ }
 }
+
