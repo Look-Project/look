@@ -1,18 +1,16 @@
 package board.workwear.dto.response;
 
-public class WorkwearResponse {
-	private int boardId;
+public class WorkwearDetailResponse {
+    private int boardId;
     private String imageName;
     private String userNickname;
 
-    // 생성자
-    public WorkwearResponse(int boardId, String imgId, String nickname) {
+    public WorkwearDetailResponse(int boardId, String imgId, String nickname) {
         this.boardId = boardId;
         this.imageName = imgId;
         this.userNickname = nickname;
     }
 
-    // 각 속성의 Getter 및 Setter
     public int getBoardId() {
         return boardId;
     }
