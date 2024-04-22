@@ -52,7 +52,7 @@ public class freecyclingWriteCon extends HttpServlet {
 			bservice.freecyclingInsertService(bdto);
 			
 			//메인으로 보내주기
-			RequestDispatcher dis = request.getRequestDispatcher("/views/board/freecycling/freecyclingMain.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("/controller/freecyclingListCon");
 		    dis.forward(request, response);
 		 	
 	}
