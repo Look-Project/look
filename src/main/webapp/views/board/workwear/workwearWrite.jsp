@@ -36,7 +36,7 @@
     <script>
         // 폼 데이터를 얻어와서 백엔드에 전송하고 화면 전환하는 함수
         function submitForm() {
-            var form = document.getElementById('workwearForm');
+            var form = document.getElementById('workwear');
             var formData = new FormData(form);
 
             // 서버로 데이터 전송
