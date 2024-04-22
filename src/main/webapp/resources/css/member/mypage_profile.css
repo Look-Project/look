@@ -1,0 +1,167 @@
+#width-100 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#profile-contents {
+	display: flex;
+	width: 1440px;
+	margin-top: 30px;
+}
+
+#profile-contents-left {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+}
+
+#profile-contents-right {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-top: 30px;
+}
+
+.profile-selector-box {
+	margin-top: 30px;
+}
+
+.profile-selector-box-main {
+	margin-top: 15px;
+}
+
+.profile-selector-box-main-menu {
+	margin-top: 5px;
+}
+
+#profile-user-image-div {
+	display: flex;
+	height: 300px;
+	width: 100%;
+	justify-content: center;
+}
+
+#profile-user-image-div>div {
+	width: 30%;
+}
+
+#profile-user-image {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#profile-user-update-btn-div {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.profile-common-button {
+	background-color: white;
+	border-radius: 30px;
+	width: 60px;
+	height: 30px;
+	border-color: #ADADAD;
+}
+
+.profile-span-font {
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 18px;
+}
+
+#profile-delete-btn {
+	margin-left: 15px;
+}
+
+#profile-nickname-div {
+	display: flex;
+	justify-content: center;
+	height: 10vh;
+	margin-top: 50px;
+}
+
+#profile-nickname-div>div {
+	width: 35%;
+	height: 100%;
+}
+
+#profile-nickname-inputlist {
+	height: 90%;
+}
+
+#profile-nickname-inputlist > form {
+	height: 100%;
+}
+
+#profile-nickname-input {
+	border-width: 0 0 1px;
+	width: 75%;
+	outline: none;
+	margin-top: 15px;
+	font-size: 15px;
+}
+
+#profile-nickname-send-btn {
+	width: 18%;
+	height: 40%;
+	margin-left: 10px;
+	background: #c9c9ca;
+	color: white;
+	border: none;
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#profile-intro-div {
+	display: flex;
+	justify-content: center;
+	height: 28vh;
+}
+
+#profile-intro-div>div {
+	width: 35%;
+	height: 100%;
+}
+
+#profile-intro-inputlist {
+	height: 70%;
+}
+
+#profile-intro-textarea {
+	margin-top: 15px;
+	font-size: 17px;
+	width: 96%;
+	height: 90%;
+	display: inline-block;
+	resize: none;
+	overflow: hidden;
+	outline: none;
+}
+
+#profile-intro-btn-div {
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+#profile-intro-send-btn {
+	width: 18%;
+	height: 80%;
+	background: #c9c9ca;
+	color: white;
+	border: none;
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#profile-intro-update-form {
+	height: 100%;
+}
