@@ -40,6 +40,7 @@ public class WorkwearWriteController extends HttpServlet {
         // Extract data from request parameters
         String title = request.getParameter("title");
         String contents = request.getParameter("contents");
+        
 
         // Create DTO object
         WorkwearWriteRequest workwearWriteRequest = new WorkwearWriteRequest(title, contents);
