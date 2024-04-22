@@ -17,7 +17,7 @@ public class WorkwearWriteController extends HttpServlet {
 
     private final String WORKWEAR_WRITE_FORM = "/views/board/workwear/workwearwrite.jsp";
     private final String LOGIN = "/views/member/login.jsp";
-    private final String WORKWEAR_BOARD_LIST = "/workwear/board";
+    private final String WORKWEAR_BOARD_LIST = "/workwear/workwear";
 
     private WorkwearWriteService workwearWriteService;
 

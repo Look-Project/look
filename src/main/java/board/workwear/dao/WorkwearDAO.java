@@ -12,43 +12,36 @@ import board.workwear.dto.response.WorkwearResponse;
 import common.DBConnectionUtil;
 
 public class WorkwearDAO {
-    // 특정 boardId에 해당하는 이미지 정보 가져오기
-    public WorkwearResponse getImageInfo(WorkwearRequest request) {
+    // 이미지 정보 가져오기 및 저장
+    public WorkwearResponse getImageInfoAndSave(WorkwearRequest request) {
         int boardId = request.getBoardId();
         WorkwearResponse response = null;
-        // 데이터베이스에서 이미지 정보를 조회하는 SQL 쿼리
-        String query = "SELECT * FROM board WHERE category = 'W';";
+        String imageName = request.getImageName();
+        String userNickname = request.getUserNickname();
+        String querySelect = "SELECT * FROM board WHERE category = 'W';";
+        String queryInsert = "INSERT INTO workwear (boardId, imgId, nickname) VALUES (?, ?, ?)";
+        
         try (Connection con = DBConnectionUtil.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement selectStatement = con.prepareStatement(querySelect);
+             PreparedStatement insertStatement = con.prepareStatement(queryInsert)) {
+            // 이미지 정보 조회
+            try (ResultSet resultSet = selectStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    String imageName = resultSet.getString("imgId");
-                    String userNickname = resultSet.getString("nickname");
+                    imageName = resultSet.getString("imgId");
+                    userNickname = resultSet.getString("nickname");
                     response = new WorkwearResponse(boardId, imageName, userNickname);
                 }
             }
+            
+            // 이미지 정보 저장
+            insertStatement.setInt(1, boardId);
+            insertStatement.setString(2, imageName);
+            insertStatement.setString(3, userNickname);
+            insertStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return response;
-    }
-
-    // 이미지 정보 저장
-    public void saveImageInfo(WorkwearRequest request) {
-        int boardId = request.getBoardId();
-        String imageName = request.getImageName();
-        String userNickname = request.getUserNickname();
-        // 데이터베이스에 이미지 정보를 저장하는 SQL 쿼리
-        String query = "INSERT INTO workwear (boardId, imgId, nickname) VALUES (?, ?, ?)";
-        try (Connection con = DBConnectionUtil.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, boardId);
-            preparedStatement.setString(2, imageName);
-            preparedStatement.setString(3, userNickname);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     // 작업복 상세 정보 가져오기
@@ -73,7 +66,7 @@ public class WorkwearDAO {
         return workwearDetail;
     }
 
- // 작업복 글 작성
+    // 작업복 글 작성
     public boolean writeWorkwear(WorkwearWriteRequest request) {
         String sql = "INSERT INTO board (title, contents, category) VALUES (?, ?, 'W')";
 
