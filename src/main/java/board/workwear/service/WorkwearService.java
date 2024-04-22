@@ -1,7 +1,5 @@
 package board.workwear.service;
 
-import java.util.List;
-import board.workwear.dao.WorkwearDAO;
 import board.workwear.dto.request.WorkwearRequest;
 import board.workwear.dto.response.WorkwearResponse;
 

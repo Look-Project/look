@@ -27,8 +27,10 @@ public class LoginController extends HttpServlet {
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);
 		
 		if(loginMember != null) {
+			//로그인이 되어 있을 경우 메인페이지로
 			response.sendRedirect(request.getContextPath() + "/main");
 		}else {
+			//로그인 페이지 반환
 			request.getRequestDispatcher(LOGIN_VIEW_NAME).forward(request, response);
 		}
 		
@@ -39,7 +41,6 @@ public class LoginController extends HttpServlet {
 		MemberLoginRequest member = new MemberLoginRequest();
 		member.setLoginId(request.getParameter("loginId"));
 		member.setPassword(request.getParameter("password"));
-		
 		JSONObject jObj = new JSONObject();
 		try {
 			MemberResponse findMember = memberService.login(member);
@@ -47,7 +48,12 @@ public class LoginController extends HttpServlet {
 		}catch(RuntimeException e) {
 			jObj.put("error", e.getMessage());
 		}
+		String redirectPath = (String) request.getSession().getAttribute("redirectPath");
 		
+		if(redirectPath != null) {
+			jObj.put("redirectPath", redirectPath);
+		}
+
         response.setContentType("application/x-json; charset=utf-8");
         response.getWriter().print(jObj);
 	}

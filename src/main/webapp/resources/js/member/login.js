@@ -33,7 +33,9 @@ $("#login-button").click(function(){
 	        success:function(data){
 				if(!!data.error) {
 					markingErrorMessage("#login-form-password-div", data.error);
-				}else {					
+				}else if(data.redirectPath){
+					location.href = BASE_URL + data.redirectPath;
+				}else {
 					location.href = MAIN_PAGE_URL;
 				}
 			},

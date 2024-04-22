@@ -1,4 +1,4 @@
-package member.dao;
+ package member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,7 +86,7 @@ public class MemberDAO {
 	}
 	
     public Optional<MemberResponse> findMemberByLoginIdAndPassword(MemberLoginRequest memberRequest) {
-		String sql = "select user_id, nickname, create_at from member where login_id = ? and login_pwd = ?";
+		String sql = "select user_id, nickname, profile_src, profile_name, intro, create_at from member where login_id = ? and login_pwd = ?";
 		
 		try {
 			con = DBConnectionUtil.getConnection();
@@ -100,6 +100,9 @@ public class MemberDAO {
 				MemberResponse findMember = new MemberResponse();
 				findMember.setMemberId(rs.getInt("user_id"));
 				findMember.setNickname(rs.getString("nickname"));
+				findMember.setProfileSrc(rs.getNString("profilE_src"));
+				findMember.setProfileName(rs.getNString("profile_name"));
+				findMember.setIntro(rs.getString("intro"));
 				findMember.setCreateAt(rs.getTimestamp("create_at").toLocalDateTime());
 				
 				return Optional.ofNullable(findMember);
@@ -113,4 +116,25 @@ public class MemberDAO {
 		return Optional.empty();
 		
     }
+    
+	public boolean updateMemberImgae(MemberResponse loginMember) {
+		String sql = "update member set profile_src = ?, profile_name = ? where user_id = ?";
+		int result = 0;
+		
+		try {
+			con = DBConnectionUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, loginMember.getProfileSrc());
+			pstmt.setString(2, loginMember.getProfileName());
+			pstmt.setInt(3, loginMember.getMemberId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.close(con, pstmt, null);
+		}
+		
+		return result > 0 ? true : false;
+	}
 }
