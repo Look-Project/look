@@ -13,22 +13,27 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 /* 상단div */
 .divTop{
-
+	width: 1920px;
+    height: 160px;
    display:flex; 
    justify-content :flex-end;
    flex-direction : row;
+   width: 1920px;
 }
 .divTopOrderby{
    margin-right:10px;
    color:black;
 }
 
-/*각 라인 div 공통 속성 적용*/
-.line1, .line2, .line3{
-	    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 12px 0;
+.divContents{
+	width: 30px;
+    height: auto;
+	
+}
+
+.divContents img{
+	width: 30px;
+    height: auto;
 	
 }
 
@@ -50,7 +55,7 @@ margin-right: 5px;
 		width: 340px;
 		height: 100px;
 	
-		background: #800080;
+		
 		border-radius: 10px;
 		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
         bottom: 0; /* 하단에 위치하도록 설정 */
@@ -61,7 +66,6 @@ margin-right: 5px;
 .content1_1 {
     width: 340px;
     height: 50px;
-    background: #FFA500; /* 오렌지색 */
     border-radius: 10px;
     position: absolute;
     bottom: 0px; /* .div1_1에서 60px 위에 위치하도록 설정 */
@@ -70,273 +74,6 @@ margin-right: 5px;
 }
 
 
-.div1_2{
-width: 340px;
-height: 380px;
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-	.innerdiv1_2{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-.div1_3{
-width: 340px;
-height: 380px;
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-	.innerdiv1_3{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-.div1_4{
-width: 340px;
-height: 380px;
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-left: 5px;
-}
-
-	.innerdiv1_4{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-/* Rectangle 2-1 */
-.div2_1{
-width: 340px;
-height: 380px;
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-
-}
-		.innerdiv2_1{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-/* Rectangle 2-2 */
-.div2_2{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-		.innerdiv2_2{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-
-/* Rectangle 2-3 */
-.div2_3{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-		.innerdiv2_3{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-	
-
-/* Rectangle 2-4 */
-.div2_4{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-
-margin-left: 5px;
-}
-		.innerdiv2_4{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-	
-
-/* Rectangle 3-1 */
-.div3_1{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-
-margin-left: 5px;
-}
-		.innerdiv3_1{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-
-/* Rectangle 3-2 */
-.div3_2{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-		.innerdiv3_2{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-
-/* Rectangle 3-3 */
-.div3_3{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-right: 5px;
-margin-left: 5px;
-}
-
-		.innerdiv3_3{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
-
-/* Rectangle 3-4 */
-.div3_4{
-width: 340px;
-height: 380px;
-
-
-background: #D9D9D9;
-border-radius: 10px;
-position: relative;
-margin-left: 5px;
-}
-
-		.innerdiv3_4{
-		width: 340px;
-		height: 100px;
-	
-		background: #800080;
-		border-radius: 10px;
-		position: absolute; /* .innerdiv1_1를 position: absolute로 설정 */
-        bottom: 0; /* 하단에 위치하도록 설정 */
-		margin-right: 5px;
-		
-	}
 
 /* 하단div */
 .divBottom_page{

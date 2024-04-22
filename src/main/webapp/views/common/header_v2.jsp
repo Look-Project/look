@@ -37,7 +37,7 @@
                 <div><a href="" class="bMenu">Street</a></div>
                 <div><a href="" class="bMenu">Workwear</a></div>
                 <div><a href="<%= request.getContextPath() %>/vintage/boardlist" class="bMenu">Vintage</a></div>
-                <div><a href="" class="bMenu">Freecycling</a></div>
+                <div><a href="<%= request.getContextPath()%>/controller/freecyclingListCon" class="bMenu">Freecycling</a></div>      
                 </div>
               </div>	 
               <!-- 게시판 이미지로 작성할 때 사용될것 -->
