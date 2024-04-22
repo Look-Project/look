@@ -34,8 +34,34 @@ public class WorkwearWriteController extends HttpServlet {
             request.getRequestDispatcher(LOGIN).forward(request, response);
         }
     }
-
+    
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // Extract data from request parameters
+        String title = request.getParameter("title");
+        String contents = request.getParameter("contents");
+
+        // Create DTO object
+        WorkwearWriteRequest workwearWriteRequest = new WorkwearWriteRequest(title, contents);
+
+        // Set member ID from session
+        workwearWriteRequest.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
+
+        // Call the service to write data to the database
+        boolean success = workwearWriteService.writeWorkwear(workwearWriteRequest);
+
+        if (success) {
+            // If data is successfully written to the database, redirect to board list page
+            response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD_LIST);
+        } else {
+            // If there was an error, handle it accordingly
+            // For example, you can redirect to an error page or display an error message
+            // For simplicity, let's just forward to an error page
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
+    }
+    
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Extract data from request parameters
         String title = request.getParameter("title");
@@ -52,5 +78,5 @@ public class WorkwearWriteController extends HttpServlet {
 
         // Redirect to board list page
         response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD_LIST);
-    }
+    }*/
 }
