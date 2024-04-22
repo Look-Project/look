@@ -12,22 +12,20 @@
 
 </head>
 <body>
-<%-- <c:set var="number" value="${number }"/>
-<c:forEach var="bdto" items="${v}">
-</c:forEach> --%>
-
-<!-- freecyclingListCon 컨트롤러에 의해 모델을 받아옴
-     List<FreecyclingBoardListViewDTO> listdto = bservice.freecyclingListViewService();
-	 request.setAttribute("listdto", listdto);
- -->
-
-
+ <c:if test="${msg }">
+<script>
+	<script type="text/javascript">
+	alert("수정시 비밀번호가 틀렸습니다.");
+</script>
+</c:if> 
 
 <div class="content">
 	<div class="divTop">
 		<div class="divTopOrderby">최신순</div>
 		<div class="divTopOrderby">조회수</div>
-		<div><a href="<%=request.getContextPath() %>/controller/freecyclingWriteCon">글쓰기</a></div>
+		<div class="divContents"><a href="<%=request.getContextPath() %>/controller/freecyclingWriteCon"> 
+			 <img src="../resources/image/board/freecycling/freecyclingcontents.jpg" />
+		</a></div>
 	</div>
 
 	
@@ -35,13 +33,18 @@
 	
 	
 	<c:forEach var="bdto" items="${listdto}">
+	<a href="<%=request.getContextPath() %>/controller/FreecyclingOneContentCon?num=${bdto.boardId }">
 	<div class="div1_1">
+		
+	
 		<img src="../resources/image/board/freecycling/freecycling.png"/>
 		<div class= "innerdiv1_1">${bdto.nickname}
+		<hr/>
 			<div class= "content1_1">${bdto.title}
 			</div>
 		</div>
 	</div>
+	</a>
 	</c:forEach>
 
 	
