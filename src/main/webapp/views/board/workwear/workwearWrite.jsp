@@ -34,7 +34,7 @@
     </div>
 
     <script>
-        // 폼 데이터를 얻어와서 백엔드에 전송하는 함수
+        // 폼 데이터를 얻어와서 백엔드에 전송하고 화면 전환하는 함수
         function submitForm() {
             var form = document.getElementById('workwearForm');
             var formData = new FormData(form);
@@ -47,6 +47,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data); // 백엔드로부터 받은 응답 처리
+                // 화면 전환 (예: workwear.jsp로 이동)
+                window.location.href = '/workwear.jsp'; // 화면 전환할 페이지의 경로로 수정하세요
             })
             .catch(error => {
                 console.error('Error:', error);

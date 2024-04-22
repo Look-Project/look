@@ -73,16 +73,15 @@ public class WorkwearDAO {
         return workwearDetail;
     }
 
-    // 작업복 글 작성
+ // 작업복 글 작성
     public boolean writeWorkwear(WorkwearWriteRequest request) {
-        String sql = "INSERT INTO BOARD (title, contents, file_path) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO board (title, contents, category) VALUES (?, ?, 'W')";
 
         try (Connection conn = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, request.getTitle());
             pstmt.setString(2, request.getContent());
-            //pstmt.setString(3, request.getFilePath());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
