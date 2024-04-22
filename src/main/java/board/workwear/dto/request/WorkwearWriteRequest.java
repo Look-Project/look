@@ -3,6 +3,7 @@ package board.workwear.dto.request;
 public class WorkwearWriteRequest {
     private String title;
     private String content;
+	private int memberId;
 
     // 생성자
     public WorkwearWriteRequest(String title, String contents) {
@@ -26,4 +27,9 @@ public class WorkwearWriteRequest {
     public void setContent(String contents) {
         this.content = contents;
     }
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+		
+	}
 }
