@@ -1,5 +1,7 @@
 package board.workwear.controller;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +12,13 @@ import board.workwear.dto.request.WorkwearWriteRequest;
 import board.workwear.service.WorkwearService;
 import common.SessionUtil;
 
-import java.io.IOException;
 
-@WebServlet("/workwear/write")
+
+@WebServlet(urlPatterns = "/workwear/write")
 public class WorkwearWriteController extends HttpServlet {
-	private final String WORKWEAR_BOARD_WRITE = "/views/board/workwear/workwerWrite.jsp";
+	private final String WORKWEAR_BOARD_WRITE = "/views/board/workwear/workwearWrite.jsp";
 	private final String LOGIN = "/views/member/login.jsp";
-	private final String VINTAGE_BOARD_LIST = "/vintage/boardlist";
+	private final String WORKWEAR_BOARD_LIST = "/workwear/boardlist";
 	WorkwearService wbs = new WorkwearService();
 	
 	@Override
@@ -38,7 +40,7 @@ public class WorkwearWriteController extends HttpServlet {
 		wwr.setContents(request.getParameter("contents"));
 		wwr.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
 		wbs.post(wwr);
-		response.sendRedirect(request.getContextPath() + VINTAGE_BOARD_LIST);
+		response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD_LIST);
 	}
 	
 }

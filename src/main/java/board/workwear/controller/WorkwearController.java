@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.workwear.service.WorkwearService;
 
-@WebServlet("/workwear/boardlist")
+@WebServlet(urlPatterns = "/workwear/boardlist")
 public class WorkwearController extends HttpServlet {
 
-    private final String WORKWEAR_BOARD_LIST = "/views/board/workwera/workewear.jsp";
+    private final String WORKWEAR_BOARD_LIST = "/views/board/workwear/workwear.jsp";
     WorkwearService wbs = new WorkwearService();
     
 	@Override
