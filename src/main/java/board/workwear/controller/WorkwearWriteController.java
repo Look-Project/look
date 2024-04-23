@@ -40,7 +40,9 @@ public class WorkwearWriteController extends HttpServlet {
 		wwr.setContents(request.getParameter("contents"));
 		wwr.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
 		wbs.post(wwr);
+	System.out.println(request.getParameter("title"));
 		response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD_LIST);
+		
 	}
 	
 }
