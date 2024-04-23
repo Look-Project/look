@@ -33,7 +33,7 @@
               <!-- 로고 + 영역 -->
               <div class="logo_board">
                 <a href="<%= request.getContextPath()%>/main"><img class="logo" src="<%= request.getContextPath() %>/resources/image/common/Logo.png" id="login-contents-logo"></a>
-                <div><a href="" class="bMenu">Formal</a></div>
+                <div><a href="<%= request.getContextPath() %>/views/board/formal/formal_list.jsp" class="bMenu">Formal</a></div>
                 <div><a href="<%= request.getContextPath() %>/views/board_street/street.jsp" class="bMenu">Street</a></div>
                 <div><a href="<%= request.getContextPath() %>/views/board/workwear/workwear.jsp" class="bMenu">Workwear</a></div>
                 <div><a href="<%= request.getContextPath() %>/vintage/boardlist" class="bMenu">Vintage</a></div>
