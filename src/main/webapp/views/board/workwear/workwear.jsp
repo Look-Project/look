@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <jsp:include page="/views/common/header.jsp"/>
+    <jsp:include page="/views/common/header_v2.jsp"/>
     <link rel="stylesheet" type="text/css" 
             href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css">
     <title></title>
