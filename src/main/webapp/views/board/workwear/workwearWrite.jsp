@@ -30,30 +30,8 @@
             </form>
         </div>
         <!-- 제출 버튼에 이벤트 리스너 추가 -->
-        <div class="btn-w"><button onclick="submitForm()">작성</button></div>
+        <div class="btn-w"><button onclick="">작성</button></div>
     </div>
 
-    <script>
-        // 폼 데이터를 얻어와서 백엔드에 전송하고 화면 전환하는 함수
-        function submitForm() {
-            var form = document.getElementById('workwear');
-            var formData = new FormData(form);
-
-            // 서버로 데이터 전송
-            fetch('/workwear/write', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // 백엔드로부터 받은 응답 처리
-                // 화면 전환 (예: workwear.jsp로 이동)
-                window.location.href = '/workwear.jsp'; // 화면 전환할 페이지의 경로로 수정하세요
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
 </body>
 </html>

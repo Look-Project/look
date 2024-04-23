@@ -27,18 +27,5 @@
         </ul>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 글쓰기 버튼을 클릭했을 때의 동작을 정의합니다.
-    document.querySelector('.write-button').addEventListener('click', function(event) {
-        // 기본 동작(링크 이동)을 방지합니다.
-        event.preventDefault();
-
-        // 버튼의 href 속성에 지정된 URL로 페이지 이동
-        window.location.href = this.getAttribute('href');
-    });
-});
-</script>
-
 </body>
 </html>
