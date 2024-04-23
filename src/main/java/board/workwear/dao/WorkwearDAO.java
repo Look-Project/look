@@ -3,15 +3,14 @@ package board.workwear.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import board.vintage.dto.request.VintageWriteRequest;
-import board.vintage.dto.response.VintageBoardListResponse;
 import board.workwear.dto.request.WorkwearWriteRequest;
 import board.workwear.dto.response.WorkwearResponse;
 import common.DBConnectionUtil;
+import common.SessionUtil;
+
 
 public class WorkwearDAO {
 	Connection con = null;
