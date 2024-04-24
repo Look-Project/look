@@ -33,20 +33,19 @@
 %>
 
 		<div class="vimg-frame">
-			<img src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage1.jpg" class="vgallery-img">
+			<img src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>" class="vgallery-img">
 			<div class="vcontent-frame">
 				<h3 class="vcontent-title"><%=dto.getNickname()%></h3>
 				<hr/>
 				<p class="vgallery-content"><%=dto.getTitle()%></p>
 			</div>
 		</div>
-
 <%
 }
 %>
 	</div>
 <button class="vwritebutton">
-	<a href="<%=request.getContextPath() %>/vintage/write">
+	<a href="<%= request.getContextPath() %>/vintage/write">
 	<img src="<%= request.getContextPath() %>/resources/image/board/vintage/write_icon.jpg" class="vwritebutton-icon">
 	</a>
 </button>
