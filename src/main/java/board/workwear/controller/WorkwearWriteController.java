@@ -65,7 +65,7 @@ public class WorkwearWriteController extends HttpServlet {
 					String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
 					
 					if(part.getSize() > 0) {
-						part.write("C:" + uploadPath + "\\" + newFileName);
+						part.write(uploadPath + "\\" + newFileName);
 						part.delete();
 						wwr.setImgSrc(uploadPath);
 						wwr.setImgName(newFileName);
