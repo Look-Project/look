@@ -5,6 +5,7 @@ import java.util.List;
 import board.vintage.dao.VintageDAO;
 import board.vintage.dto.request.VintageWriteRequest;
 import board.vintage.dto.response.VintageBoardListResponse;
+import board.vintage.dto.response.VintageBoardResponse;
 
 public class VintageBoardService {
 	
@@ -15,5 +16,8 @@ public class VintageBoardService {
 	}
 	public List<VintageBoardListResponse> getAllBoard() {
 		return vdao.getAllBoard();
+	}
+	public VintageBoardResponse getDetailBoard(int boardId) {
+		return vdao.getDetailBoard(boardId);
 	}
 }
