@@ -21,6 +21,7 @@
 	flex-direction: column;
 	width: 80%;
 	margin-top: 30px;
+	
 }
 
 .profile-selector-box {
@@ -168,23 +169,64 @@
 
 .member_manage_table{
 	width: 1000px;
-	height : 600px;
+	height : 700px;
 	display: flex;
 	justify-content: center;
+	flex-wrap:wrap;
 }
 
 table {
 	width: 100%;
 	border : 2px solid grey;
+	border-collapse:collapse;
+}
+
+th, td {
+     padding: 10px;
+     border-bottom: 1px solid grey;
+}
+
+tr{
+	vertical-align:center;
+	text-align:center;
+	border-top : 1px solid grey;
 	
 }
 
-th {
-	text-align : center;
-	border : 1px solid grey;
+/* 목록번호 들어갈 영역 */
+.board_num{
+    width:50%;
+    height : 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end
+}
+/* 목록번호 실사용 영역 */
+.board_num .num{
+    margin : 10px 2%;
 }
 
-td {
-	text-align : center;
-	border : 1px solid grey;
+/* 검색창이 들어갈 영역 */
+.searchbar{
+	width:50%;
+	display:flex;
+	justify-content: flex-start;
+    height : 40px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.searchbar .bar{
+	display:flex;
+	align-content: center;
+	height:26px;
+	
+}
+.searchbar .btn{
+	display:flex;
+	align-content: center;
+	width:50px;
+	height:30px;
+	margin:0 10px;
+	
 }
