@@ -1,8 +1,9 @@
-package board.freecycling.dto.request;
+package board.freecycling.dto.response;
 
 import java.util.Date;
 
-public class FreecyclingUpdaterequestDTO {
+public class FreeOneContentDTO {
+	
 	private String imgSrc;
 	private String imgName;
 	
@@ -97,4 +98,5 @@ public class FreecyclingUpdaterequestDTO {
 		this.nickname = nickname;
 	}
 
+	
 }
