@@ -42,7 +42,7 @@ public class CommentDAO {
 	}
 	
 	//모든 게시글 불러오는 메서드
-	public List<CommentResponse> getAllComment() {
+	public List<CommentResponse> getAllComment(int boardId) {
 		con = DBConnectionUtil.getConnection();
 		List<CommentResponse> crlr = new ArrayList<CommentResponse>();
 		
