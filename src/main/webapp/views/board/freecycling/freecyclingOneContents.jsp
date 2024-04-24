@@ -27,6 +27,7 @@
            
             <p>
             </p>
+        <form method="post">
          <table width="600" bordercolor="skyblue" >
 	<tr height="40">
 		<td align="center" width="120">글번호</td>
@@ -55,12 +56,13 @@
 	<tr height="80">
 		<td align="center" colspan="4">
 		
-		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreecyclingUpdaterequestCon?num=${viewdto.boardId }'">
+		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${viewdto.boardId }'">
 		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
 	
 </table>
+</form>
         </div>
     </div>
 </body>
