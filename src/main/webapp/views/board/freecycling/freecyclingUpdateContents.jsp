@@ -17,7 +17,7 @@
 	request.setAttribute("resListOneCondto", resListOneCondto);
 			
  -->
- <form action="<%=request.getContextPath() %>/controller/FreecyclingUpdateCon" method="post">
+ <form method="post">
  <div class="container">
             <c:set var="boardupdto" value="${boardupdto}" />
         <div class="image-section">
@@ -59,7 +59,7 @@
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="4">
-		
+		 
 		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreecyclingUpdateresponseCon?num=${boardupdto.boardId }'">
 		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">

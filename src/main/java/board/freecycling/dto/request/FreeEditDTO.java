@@ -2,7 +2,7 @@ package board.freecycling.dto.request;
 
 import java.util.Date;
 
-public class FreecyclingUpdaterequestDTO {
+public class FreeEditDTO {
 	private String imgSrc;
 	private String imgName;
 	

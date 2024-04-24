@@ -17,9 +17,10 @@
 	request.setAttribute("resListOneCondto", resListOneCondto);
 			
  -->
- 
+ <form action="<%=request.getContextPath() %>/controller/FreeInsertCon" method="post" enctype="multipart/form-data" >
+
  <div class="container">
-            <c:set var="viewdto" value="${viewdto}" />
+            <c:set var="onecondto" value="${onecondto}" />
         <div class="image-section">
             
         </div>
@@ -27,43 +28,47 @@
            
             <p>
             </p>
-        <form method="post">
-         <table width="600" bordercolor="skyblue" >
+         <table width="600" bordercolor="gray" >
 	<tr height="40">
 		<td align="center" width="120">글번호</td>
-		<td align="center" width="180">${viewdto.boardId }</td>
+		<td align="center" width="180">${onecondto.boardId }</td>
 		<td align="center" width="120">조회수</td>
-		<td align="center" width="180">${viewdto.views }
+		<td align="center" width="180">${onecondto.views }
 		</td>	
 	</tr>
 	<tr height="40">
 		<td align="center" width="120">작성자</td>
-		<td align="center" width="180">${viewdto.nickname }</td>
+		<td align="center" width="180">${onecondto.nickname }</td>
 		<td align="center" width="120">작성일</td>
-		<td align="center" width="180">${viewdto.createAt }
+		<td align="center" width="180">${onecondto.createAt }
 		</td>	
 	</tr>
 	<tr height="40">
 		<td align="center" width="120">제목</td>
-		<td align="center" colspan="3">${viewdto.title }
+		<td align="center" colspan="3" width="400"><input type="text" id="title" name="title" style="height: 30px; width: 400px;">
 		</td>	
 	</tr>
 	<tr height="80">
 		<td align="center" width="120">글내용</td>
-		<td align="center" colspan="3">${viewdto.contents }
+		<td align="center" colspan="3" width="400"><textarea id="contents" name="contents" style="height: 300px; width: 400px;"></textarea>
 		</td>	
 	</tr>
 	<tr height="80">
+		<td align="center" colspan="3">
+    <input type="file" id="userFile" name="filename" accept="image/*" >
+    </td>
+	</tr>
+	<tr height="80">
 		<td align="center" colspan="4">
-		
-		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${viewdto.boardId }'">
+		 
+		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${onecondto.boardId }'">
 		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
 	
 </table>
-</form>
         </div>
     </div>
+    </form>
 </body>
 </html>

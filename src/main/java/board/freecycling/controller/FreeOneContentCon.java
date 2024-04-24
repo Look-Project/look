@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.freecycling.dto.response.FreecyclingBoardContentsViewDTO;
-import board.freecycling.dto.response.FreecyclingBoardListViewDTO;
+import board.freecycling.dto.response.FreeOneContentDTO;
+import board.freecycling.dto.response.FreeMainListDTO;
 import board.freecycling.service.FreecyclingBoardService;
 import common.SessionUtil;
 import member.dto.response.MemberResponse;
 
 
 @WebServlet("/controller/FreecyclingOneContentCon")
-public class FreecyclingOneContentCon extends HttpServlet {
+public class FreeOneContentCon extends HttpServlet {
 	public final String FREECYCLING_ONECONTENTS_VIEW_NAME = "/views/board/freecycling/freecyclingOneContents.jsp";
        
 	
@@ -32,7 +32,7 @@ public class FreecyclingOneContentCon extends HttpServlet {
 		//서비스 메소드로 bdao 리턴 받아주기
 		 FreecyclingBoardService bservice = new FreecyclingBoardService();
 		 try {
-			FreecyclingBoardContentsViewDTO viewdto = bservice.freecyclingOneContentViewService(num);
+			FreeOneContentDTO viewdto = bservice.freecyclingOneContentViewService(num);
 			request.setAttribute("viewdto",viewdto);
 		} catch (SQLException e) {
 			
