@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="board.workwear.dto.response.WorkwearBoardResponse" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +12,11 @@
 <title></title>
 </head>
 <body>
-	<div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
+<%WorkwearBoardResponse wbr = (WorkwearBoardResponse)request.getAttribute("boarddetail"); %>
+<div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
-            <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-                <img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" 
+            <div class="img"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
+                <img src="<%=wbr.getImgSrc() %>/<%=wbr.getImgName() %>"  
                 		alt="">
             </div>
 
@@ -21,14 +24,12 @@
                     <br>
                     <div id="fifth">
                         <div class="emojiright">
-                            <p class="boardname">워크웨어룩</p>
+                            <p class="boardname"><%=wbr.getTitle() %></p>
                         </div>
                     </div>
 
                     <p class="seconddetail">
-                    	멜빵 바지로 웨크웨어룩을 꾸며 보았어요 ~ <br/>
-                    	처음 입어보는데 좋아요 !<br/>
-                    	궁금한거 있으시면 물어봐주세요 ^^<br/></p>
+                    	<%=wbr.getContents() %>
                     <p class="reviewnav">리뷰</p>
 
                     <div class="Allcomment"> <!--모든 댓글 내용을 담아내는 div 태그-->
@@ -57,5 +58,6 @@
                     <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment"
                             onkeyup="if(window.event.keyCode==13){test()}"> <!--후반부에 구현할 댓글 입력을 위한 input 태그-->
 			</div></div>
+
 </body>
 </html>
