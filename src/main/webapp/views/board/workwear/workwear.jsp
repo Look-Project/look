@@ -34,7 +34,7 @@ href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css"
 %>
 
 		<div class="wimg-frame">
-			<img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" class="wgallery-img">
+			<img src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>" class="wgallery-img">
 			<div class="wcontent-frame">
 				<h3 class="wcontent-title"><%=dto.getNickname()%></h3>
 				<hr/>
