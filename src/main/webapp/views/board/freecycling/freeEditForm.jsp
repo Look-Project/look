@@ -17,9 +17,10 @@
 	request.setAttribute("resListOneCondto", resListOneCondto);
 			
  -->
- <form method="post">
+ <form action="<%=request.getContextPath() %>/controller/FreeInsertCon" method="post" enctype="multipart/form-data" >
+
  <div class="container">
-            <c:set var="boardupdto" value="${boardupdto}" />
+            <c:set var="onecondto" value="${onecondto}" />
         <div class="image-section">
             
         </div>
@@ -30,16 +31,16 @@
          <table width="600" bordercolor="gray" >
 	<tr height="40">
 		<td align="center" width="120">글번호</td>
-		<td align="center" width="180">${boardupdto.boardId }</td>
+		<td align="center" width="180">${onecondto.boardId }</td>
 		<td align="center" width="120">조회수</td>
-		<td align="center" width="180">${boardupdto.views }
+		<td align="center" width="180">${onecondto.views }
 		</td>	
 	</tr>
 	<tr height="40">
 		<td align="center" width="120">작성자</td>
-		<td align="center" width="180">${boardupdto.nickname }</td>
+		<td align="center" width="180">${onecondto.nickname }</td>
 		<td align="center" width="120">작성일</td>
-		<td align="center" width="180">${boardupdto.createAt }
+		<td align="center" width="180">${onecondto.createAt }
 		</td>	
 	</tr>
 	<tr height="40">
@@ -54,13 +55,13 @@
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="3">
-    <input type="file" id="myFile" name="filename">
+    <input type="file" id="userFile" name="filename" accept="image/*" >
     </td>
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="4">
 		 
-		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreecyclingUpdateresponseCon?num=${boardupdto.boardId }'">
+		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${onecondto.boardId }'">
 		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
