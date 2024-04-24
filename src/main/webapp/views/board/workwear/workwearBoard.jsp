@@ -55,8 +55,8 @@
                             <a href="#" class="commentheart"><i class="far fa-heart"></i></a>
                         </div>
                     </div>
-                    <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment"
-                            onkeyup="if(window.event.keyCode==13){test()}"> <!--후반부에 구현할 댓글 입력을 위한 input 태그-->
+                    <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment">
+                    <button class="reviewbutton">작성</button>
 			</div></div>
 
 </body>

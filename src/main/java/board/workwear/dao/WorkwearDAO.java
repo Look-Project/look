@@ -75,7 +75,7 @@ public class WorkwearDAO {
 		List<WorkwearResponse> wblr = new ArrayList<WorkwearResponse>();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
+		String sql = "SELECT b.BOARD_ID, m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
 				+ "inner join Board_IMG i "
@@ -97,7 +97,7 @@ public class WorkwearDAO {
 				tmp.setTitle(rs.getString("TITLE"));
 				tmp.setImgSrc(rs.getString("IMG_SRC"));
 				tmp.setImgName(rs.getString("IMG_NAME"));
-				
+				tmp.setBoardId(rs.getInt("BOARD_ID"));
 				
 				//불러온 값 저장
 				wblr.add(tmp);
