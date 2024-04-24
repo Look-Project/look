@@ -8,8 +8,8 @@ import java.util.List;
 
 import board.vintage.dto.request.VintageWriteRequest;
 import board.vintage.dto.response.VintageBoardListResponse;
+import board.vintage.dto.response.VintageBoardResponse;
 import common.DBConnectionUtil;
-import common.SessionUtil;
 
 public class VintageDAO {
 	Connection con = null;
@@ -72,7 +72,7 @@ public class VintageDAO {
 		List<VintageBoardListResponse> vblr = new ArrayList<VintageBoardListResponse>();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
+		String sql = "SELECT m.NICKNAME, b.TITLE, b.BOARD_ID, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
 				+ "inner join Board_IMG i "
@@ -90,6 +90,7 @@ public class VintageDAO {
 			while(rs.next()) {
 				VintageBoardListResponse tmp = new VintageBoardListResponse();
 				
+				tmp.setBoardId(rs.getInt("BOARD_ID"));
 				tmp.setNickname(rs.getString("NICKNAME"));
 				tmp.setTitle(rs.getString("TITLE"));
 				tmp.setImgSrc(rs.getString("IMG_SRC"));
@@ -108,6 +109,49 @@ public class VintageDAO {
 		}
 		return vblr;
 	}
+	
+	//상세 게시글 불러오는 메서드
+		public VintageBoardResponse getDetailBoard(int boardId) {
+			con = DBConnectionUtil.getConnection();
+			VintageBoardResponse vbr = new VintageBoardResponse();
+			
+			//쿼리 실행 준비
+			String sql = "SELECT m.NICKNAME, b.BOARD_ID, b.TITLE, b.CONTENTS, i.IMG_SRC, i.IMG_NAME "
+					+ "FROM BOARD b inner join MEMBER m "
+					+ "on b.USER_ID = m.USER_ID "
+					+ "inner join Board_IMG i "
+					+ "on b.BOARD_ID = i.BOARD_ID "
+					+ "WHERE b.CATEGORY = 'V' AND b.DELETE_YN = 'N' AND b.BOARD_ID = ? "
+					+ "ORDER BY b.CREATE_AT desc";
+			
+			try {
+				//쿼리 실행할 객체 선언
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, boardId );
+				//쿼리 실행 후 결과 저장
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					vbr.setNickname(rs.getString("NICKNAME"));
+					vbr.setBoardId(rs.getInt("BOARD_ID"));
+					vbr.setTitle(rs.getString("TITLE"));
+					vbr.setContents(rs.getString("CONTENTS"));
+					vbr.setImgSrc(rs.getString("IMG_SRC"));
+					vbr.setImgName(rs.getString("IMG_NAME"));
+					System.out.println(rs.getString("NICKNAME"));
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				//커넥션 반납
+				DBConnectionUtil.close(con, pstmt, rs);
+			}
+			return vbr;
+		}
 	
 }
 
