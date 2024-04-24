@@ -4,8 +4,15 @@ public class WorkwearWriteRequest {
 	private String title; //글 제목
 	private String contents; //글 내용
 	private String imgName; //이미지 이름
+	private String imgSrc; //이미지 경로
 	private int memberId; //user_id
 	
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
 	public int getMemberId() {
 		return memberId;
 	}

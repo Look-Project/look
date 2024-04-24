@@ -25,9 +25,9 @@ public class WorkwearDAO {
 		String w = "W"; //게시판 카테고리
 		int res = 0;
 		try {
-			//실제로 USER_ID,TITLE,CONTENTS,CATEGORY에 해당하는 값을 테이블에 저장
-			String sql = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
-			pstmt = con.prepareStatement(sql);
+			//text 타입 게시글 insert
+			String boardText = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
+			pstmt = con.prepareStatement(boardText);
 			
 			//값을 매핑하기
 			pstmt.setInt(1,wwr.getMemberId() );
@@ -35,7 +35,27 @@ public class WorkwearDAO {
 			pstmt.setString(3, wwr.getContents());
 			pstmt.setString(4, w);
 			
-			//쿼리 실행
+			res = pstmt.executeUpdate();
+			
+			//마지막 게시글 board Id 받아오는 쿼리문
+			String boardId = "select max(BOARD_ID) from BOARD "; 
+			pstmt = con.prepareStatement(boardId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+			//이미지 파일 insert
+			String boardImg = "insert into board_img(board_id, img_src, img_name) values(?,?,?)";
+			pstmt = con.prepareStatement(boardImg);
+			
+			//값을 매핑하기
+			pstmt.setInt(1, res);
+			pstmt.setString(2, wwr.getImgSrc());
+			pstmt.setString(3, wwr.getImgName());
+			
 			res = pstmt.executeUpdate();
 			
 		}catch(Exception e){
@@ -56,7 +76,7 @@ public class WorkwearDAO {
 		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
-				+ "left outer join Board_IMG i "
+				+ "inner join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
 				+ "WHERE CATEGORY = 'W' AND DELETE_YN = 'N' "
 				+ "ORDER BY b.CREATE_AT desc";
