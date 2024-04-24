@@ -3,6 +3,7 @@ package board.workwear.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import board.workwear.service.WorkwearService;
 import common.SessionUtil;
 
 
-
+@MultipartConfig
 @WebServlet(urlPatterns = "/workwear/write")
 public class WorkwearWriteController extends HttpServlet {
 	private final String WORKWEAR_BOARD_WRITE = "/views/board/workwear/workwearWrite.jsp";
@@ -35,12 +36,11 @@ public class WorkwearWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		WorkwearWriteRequest wwr = new WorkwearWriteRequest();
-		
+
 		wwr.setTitle(request.getParameter("title"));
 		wwr.setContents(request.getParameter("contents"));
 		wwr.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
 		wbs.post(wwr);
-	System.out.println(request.getParameter("title"));
 		response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD_LIST);
 		
 	}
