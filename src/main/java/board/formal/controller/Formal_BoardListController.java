@@ -1,5 +1,5 @@
 package board.formal.controller;
-/*
+
 import java.io.IOException;
 import java.sql.Date;
 
@@ -32,5 +32,3 @@ public class FORMAL_BoardListController extends HttpServlet{
 	}
 	
 }
-*/
-

@@ -1,5 +1,5 @@
 package board.formal.controller;
-/*
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -42,4 +42,3 @@ public class Formal_WriteController extends HttpServlet {
 	}
 	
 }
-*/
