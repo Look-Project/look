@@ -16,7 +16,7 @@
         	<label for="title">제목</label>
       		</div>
       		<div class="col-75">
-        	<input type="text" id="title" name="title" placeholder="제목">
+        	<input type="text" id="title" name="title" placeholder="제목"></input>
       		</div>
     	</div>
     	<div class="container">
@@ -24,7 +24,7 @@
        			<label for="upload">파일 첨부</label>
     		</div>
     		<div class="col-75">
-				<input type="file" name="uploadFile" multiple>
+				<input type="file" name="uploadFile" accept="image/*" multiple></input>
 			</div>
 		</div>
 		<div class="container">
@@ -36,7 +36,7 @@
     		</div>
     	</div>
     <div class="container">
-      <input type="submit" value="Submit">
+      <input type="submit" value="글쓰기"></input>
     </div>
   </form>
 </div>

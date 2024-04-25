@@ -8,8 +8,8 @@ import java.util.List;
 
 import board.vintage.dto.request.VintageWriteRequest;
 import board.vintage.dto.response.VintageBoardListResponse;
+import board.vintage.dto.response.VintageBoardResponse;
 import common.DBConnectionUtil;
-import common.SessionUtil;
 
 public class VintageDAO {
 	Connection con = null;
@@ -24,9 +24,9 @@ public class VintageDAO {
 		String v = "V"; //게시판 카테고리
 		int res = 0;
 		try {
-			//실제로 USER_ID,TITLE,CONTENTS,CATEGORY에 해당하는 값을 테이블에 저장
-			String sql = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
-			pstmt = con.prepareStatement(sql);
+			//text 타입 게시글 insert
+			String boardText = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
+			pstmt = con.prepareStatement(boardText);
 			
 			//값을 매핑하기
 			pstmt.setInt(1,vwr.getMemberId() );
@@ -34,7 +34,27 @@ public class VintageDAO {
 			pstmt.setString(3, vwr.getContents());
 			pstmt.setString(4, v);
 			
-			//쿼리 실행
+			res = pstmt.executeUpdate();
+			
+			//마지막 게시글 board Id 받아오는 쿼리문
+			String boardId = "select max(BOARD_ID) from BOARD "; 
+			pstmt = con.prepareStatement(boardId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+			//이미지 파일 insert
+			String boardImg = "insert into board_img(board_id, img_src, img_name) values(?,?,?)";
+			pstmt = con.prepareStatement(boardImg);
+			
+			//값을 매핑하기
+			pstmt.setInt(1, res);
+			pstmt.setString(2, vwr.getImgSrc());
+			pstmt.setString(3, vwr.getImgName());
+			
 			res = pstmt.executeUpdate();
 			
 		}catch(Exception e){
@@ -52,10 +72,10 @@ public class VintageDAO {
 		List<VintageBoardListResponse> vblr = new ArrayList<VintageBoardListResponse>();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT m.NICKNAME, b.TITLE, i.IMG_SRC, i.IMG_NAME "
+		String sql = "SELECT m.NICKNAME, b.TITLE, b.BOARD_ID, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
-				+ "left outer join Board_IMG i "
+				+ "inner join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
 				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' "
 				+ "ORDER BY b.CREATE_AT desc";
@@ -70,6 +90,7 @@ public class VintageDAO {
 			while(rs.next()) {
 				VintageBoardListResponse tmp = new VintageBoardListResponse();
 				
+				tmp.setBoardId(rs.getInt("BOARD_ID"));
 				tmp.setNickname(rs.getString("NICKNAME"));
 				tmp.setTitle(rs.getString("TITLE"));
 				tmp.setImgSrc(rs.getString("IMG_SRC"));
@@ -88,6 +109,49 @@ public class VintageDAO {
 		}
 		return vblr;
 	}
+	
+	//상세 게시글 불러오는 메서드
+		public VintageBoardResponse getDetailBoard(int boardId) {
+			con = DBConnectionUtil.getConnection();
+			VintageBoardResponse vbr = new VintageBoardResponse();
+			
+			//쿼리 실행 준비
+			String sql = "SELECT m.NICKNAME, b.BOARD_ID, b.TITLE, b.CONTENTS, i.IMG_SRC, i.IMG_NAME "
+					+ "FROM BOARD b inner join MEMBER m "
+					+ "on b.USER_ID = m.USER_ID "
+					+ "inner join Board_IMG i "
+					+ "on b.BOARD_ID = i.BOARD_ID "
+					+ "WHERE b.CATEGORY = 'V' AND b.DELETE_YN = 'N' AND b.BOARD_ID = ? "
+					+ "ORDER BY b.CREATE_AT desc";
+			
+			try {
+				//쿼리 실행할 객체 선언
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, boardId );
+				//쿼리 실행 후 결과 저장
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					vbr.setNickname(rs.getString("NICKNAME"));
+					vbr.setBoardId(rs.getInt("BOARD_ID"));
+					vbr.setTitle(rs.getString("TITLE"));
+					vbr.setContents(rs.getString("CONTENTS"));
+					vbr.setImgSrc(rs.getString("IMG_SRC"));
+					vbr.setImgName(rs.getString("IMG_NAME"));
+					System.out.println(rs.getString("NICKNAME"));
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				//커넥션 반납
+				DBConnectionUtil.close(con, pstmt, rs);
+			}
+			return vbr;
+		}
 	
 }
 

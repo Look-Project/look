@@ -8,7 +8,14 @@ public class VintageBoardListResponse {
 	private String title;
 	private String imgSrc;
 	private String imgName;
+	private int boardId;
 	
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
 	public String getNickname() {
 		return nickname;
 	}

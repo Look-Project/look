@@ -1,13 +1,13 @@
 package board.freecycling.dto.response;
 
-public class FreecyclingBoardListViewDTO {
+public class FreeMainListDTO {
 	
 	private String nickname;
 	private String title;
 	private int boardId;
 	
-	private String img_src;
-	private String img_name;
+	private String imgSrc;
+	private String imgName;
 	
 	
 	public String getNickname() {
@@ -30,18 +30,19 @@ public class FreecyclingBoardListViewDTO {
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
 	}
-	public String getImg_src() {
-		return img_src;
+	public String getImgSrc() {
+		return imgSrc;
 	}
-	public void setImg_src(String img_src) {
-		this.img_src = img_src;
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
 	}
-	public String getImg_name() {
-		return img_name;
+	public String getImgName() {
+		return imgName;
 	}
-	public void setImg_name(String img_name) {
-		this.img_name = img_name;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
+	
 	
 	
 }

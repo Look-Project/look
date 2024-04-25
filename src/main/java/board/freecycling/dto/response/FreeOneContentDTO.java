@@ -2,7 +2,7 @@ package board.freecycling.dto.response;
 
 import java.util.Date;
 
-public class FreecyclingBoardContentsViewDTO {
+public class FreeOneContentDTO {
 	
 	private String imgSrc;
 	private String imgName;
@@ -12,7 +12,6 @@ public class FreecyclingBoardContentsViewDTO {
 	private String contents;
 	private int views;
 	private Date createAt;
-	
 	
 	private String nickname;
 

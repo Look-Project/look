@@ -35,16 +35,6 @@
 	margin-top: 5px;
 }
 
-.mypage-non-selector {
-	text-decoration: none;
-	color: #999999;
-}
-
-.mypage-selector {
-	color: red;
-	font-weight: 700;
-}
-
 #profile-user-image-div {
 	display: flex;
 	height: 300px;
@@ -174,4 +164,27 @@
 
 #profile-intro-update-form {
 	height: 100%;
+}
+
+.member_manage_table{
+	width: 1000px;
+	height : 600px;
+	display: flex;
+	justify-content: center;
+}
+
+table {
+	width: 100%;
+	border : 2px solid grey;
+	
+}
+
+th {
+	text-align : center;
+	border : 1px solid grey;
+}
+
+td {
+	text-align : center;
+	border : 1px solid grey;
 }

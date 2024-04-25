@@ -1,24 +1,25 @@
-package board.freecycling.dto.response;
+package board.formal.dto.response;
 
-public class FreecyclingUpdateresponseDTO {
+import java.sql.Date;
 
+public class Formal_BoardListResponse {
+	
+	private String nickname;
 	private String title;
-	private String contents;
 	private String imgSrc;
 	private String imgName;
 	
-
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getContents() {
-		return contents;
-	}
-	public void setContents(String contents) {
-		this.contents = contents;
 	}
 	public String getImgSrc() {
 		return imgSrc;
@@ -32,6 +33,5 @@ public class FreecyclingUpdateresponseDTO {
 	public void setImgName(String imgName) {
 		this.imgName = imgName;
 	}
-	
 	
 }

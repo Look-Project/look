@@ -63,11 +63,11 @@
           <!--메인 게시판 아이콘 영역 -->
           <div class="main_board">
             <!-- 개별 -->
-            <img class="boardimg" id="img1" src="<%= request.getContextPath() %>/resources/image/common/Formal.jpg" alt="Formal" onmouseover="changeImage('img1', '../../resources/image/common/Formal_T.jpg')" onmouseout="resetImage('img1', '../../resources/image/common/Formal.jpg')">
-            <img class="boardimg" id="img2" src="<%= request.getContextPath() %>/resources/image/common/Street.jpg" alt="Street" onmouseover="changeImage('img2', '../../resources/image/common/Street_T.jpg')" onmouseout="resetImage('img2', '../../resources/image/common/Street.jpg')">
-            <img class="boardimg" id="img3" src="<%= request.getContextPath() %>/resources/image/common/Workwear.jpg" alt="Workwear" onmouseover="changeImage('img3', '../../resources/image/common/Workwear_T.jpg')" onmouseout="resetImage('img3', '../../resources/image/common/Workwear.jpg')">
-            <img class="boardimg" id="img4" src="<%= request.getContextPath() %>/resources/image/common/Vintage.jpg" alt="Activewear" onmouseover="changeImage('img4', '../../resources/image/common/Vintage_T.jpg')" onmouseout="resetImage('img4', '../../resources/image/common/Vintage.jpg')">
-            <img class="boardimg" id="img5" src="<%= request.getContextPath() %>/resources/image/common/Free.jpg" alt="Freecycling" onmouseover="changeImage('img5', '../../resources/image/common/Free_T.jpg')" onmouseout="resetImage('img5', '../../resources/image/common/Free.jpg')">
+            <img class="boardimg" id="img1" src="<%= request.getContextPath() %>/resources/image/common/Formal.jpg" alt="Formal" onmouseover="changeImage('img1', '<%= request.getContextPath() %>/resources/image/common/Formal_T.jpg')" onmouseout="resetImage('img1', '<%= request.getContextPath() %>/resources/image/common/Formal.jpg')">
+            <img class="boardimg" id="img2" src="<%= request.getContextPath() %>/resources/image/common/Street.jpg" alt="Street" onmouseover="changeImage('img2', '<%= request.getContextPath() %>/resources/image/common/Street_T.jpg')" onmouseout="resetImage('img2', '<%= request.getContextPath() %>/resources/image/common/Street.jpg')">
+            <img class="boardimg" id="img3" src="<%= request.getContextPath() %>/resources/image/common/Workwear.jpg" alt="Workwear" onmouseover="changeImage('img3', '<%= request.getContextPath() %>/resources/image/common/Workwear_T.jpg')" onmouseout="resetImage('img3', '<%= request.getContextPath() %>/resources/image/common/Workwear.jpg')">
+            <img class="boardimg" id="img4" src="<%= request.getContextPath() %>/resources/image/common/Vintage.jpg" alt="Activewear" onmouseover="changeImage('img4', '<%= request.getContextPath() %>/resources/image/common/Vintage_T.jpg')" onmouseout="resetImage('img4', '<%= request.getContextPath() %>/resources/image/common/Vintage.jpg')">
+            <img class="boardimg" id="img5" src="<%= request.getContextPath() %>/resources/image/common/Free.jpg" alt="Freecycling" onmouseover="changeImage('img5', '<%= request.getContextPath() %>/resources/image/common/Free_T.jpg')" onmouseout="resetImage('img5', '<%= request.getContextPath() %>/resources/image/common/Free.jpg')">
         
           </div>
         </div>

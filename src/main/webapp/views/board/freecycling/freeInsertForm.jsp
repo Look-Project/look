@@ -10,19 +10,21 @@
 
 </head>
 <body>
-<form action="<%=request.getContextPath() %>/controller/freecyclingWriteCon" method="post">
+<form action="<%=request.getContextPath() %>/controller/FreeInsertCon" method="post" enctype="multipart/form-data" >
 	<div class="container" align="center">
    
 	<label for="title">제목</label>
-    <input type="text" id="title" name="title" >
+    <input type="text" id="title" name="title" class="title" >
 
     <label for="contents">내용</label>
     <textarea id="contents" name="contents" style="height:100px"></textarea>
+    
 	<div>
-    <input type="file" id="myFile" name="filename">
+    <input type="file" id="userFile" name="filename" accept="image/*" >
   	</div>
+  	
 	<button onclick="location.href='<%=request.getContextPath()%>/controller/freecyclingListCon'">전체 게시글보기</button>
-    <input type="submit" value="Submit" align = "right">
+    <input type="submit" value="submit" id="submitBtn" class="inputSub">
 
 	</div>
 </form>

@@ -1,12 +1,20 @@
-package board.workwear.dto.response;
+package board.vintage.dto.response;
 
-public class WorkwearResponse {
-	
+public class VintageBoardResponse {
 	private String nickname;
 	private String title;
+	private String contents;
 	private String imgSrc;
 	private String imgName;
+	private int boardId;
 	
+	
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
 	public String getNickname() {
 		return nickname;
 	}
@@ -18,6 +26,12 @@ public class WorkwearResponse {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	public String getImgSrc() {
 		return imgSrc;

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <jsp:include page="/views/common/header.jsp"/>
+    <jsp:include page="/views/common/header_v2.jsp"/>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/board/workwear/workwearBoard.css">
     
 <title></title>
@@ -57,33 +57,5 @@
                     <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment"
                             onkeyup="if(window.event.keyCode==13){test()}"> <!--후반부에 구현할 댓글 입력을 위한 input 태그-->
 			</div></div>
-			
-			<script>
-        // 폼이 서브밋될 때 실행될 함수 정의
-        document.getElementById("workwearDetailForm").addEventListener("submit", function(event) {
-            // 기본 동작(폼의 서버 전송) 막기
-            event.preventDefault();
-
-            // 폼 데이터 가져오기
-            var formData = new FormData(this);
-
-            // 서버로 데이터를 전송할 수 있는 방법 (Ajax 등)을 사용하여 formData를 전송
-            // 이 부분을 해당 프로젝트에서 사용하는 방식에 맞게 수정해야 합니다.
-            // 아래는 간단한 Ajax 예제입니다.
-            var xhr = new XMLHttpRequest();
-            xhr.open(this.method, this.action, true);
-            xhr.onload = function () {
-                // 서버로부터의 응답 처리
-                if (xhr.status === 200) {
-                    // 성공적으로 데이터를 받았을 때의 처리
-                    console.log(xhr.responseText); // 받은 데이터를 콘솔에 출력하거나, 필요한 처리를 진행하세요.
-                } else {
-                    // 실패했을 때의 처리
-                    console.error(xhr.statusText); // 오류 메시지 출력 또는 필요한 처리를 진행하세요.
-                }
-            };
-            xhr.send(formData); // 폼 데이터 전송
-        });
-    </script>
 </body>
 </html>
