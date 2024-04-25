@@ -9,7 +9,6 @@ import java.util.List;
 
 import board.freecycling.dto.request.FreeEditDTO;
 import board.freecycling.dto.request.FreeInsertDTO;
-import board.freecycling.dto.request.FreecyclingUpdateDTO;
 import board.freecycling.dto.response.FreeOneContentDTO;
 import board.freecycling.dto.response.FreeMainListDTO;
 import common.DBConnectionUtil;
@@ -108,11 +107,11 @@ public class freecyclingBoardDAO {
 	  }
 	  
 //게시글 상세보기
-	  public FreeOneContentDTO getoneBoard(int num) throws SQLException {
+	  public FreeOneContentDTO getoneBoard(int num) {
 		   
 		  con = DBConnectionUtil.getConnection();
 				//한 게시글에 대한 정보를 리턴해주는 쿼리를 작성
-		  String sql = "select m.nickname, b.board_id, b.create_at, b.title, b.contents, b.views, bi.img_name, bi.img_src "
+		  String sql = "select m.user_id, m.nickname, b.board_id, b.create_at, b.title, b.contents, b.views, bi.img_name, bi.img_src "
 				  + "from member m inner join board b "
 				  + "on m.user_id = b.user_id "
 				  + "inner join board_img bi "
@@ -120,14 +119,13 @@ public class freecyclingBoardDAO {
 				  + "where b.board_id=? ";
 		  FreeOneContentDTO onedto = new FreeOneContentDTO();
 	  try { 
-		    //조회수 증가 함수 호출
-		    viewUp(num);
+		  	pstmt = con.prepareStatement(sql);
+
 		 	//쿼리실행
-		    pstmt = con.prepareStatement(sql);
 			//pstmt.executeUpdate();
 			
-		  pstmt.setInt(1, num);
-		  rs = pstmt.executeQuery();
+		    pstmt.setInt(1, num);
+		    rs = pstmt.executeQuery();
 		  
 	    while(rs.next()) {
 	    	onedto.setImgSrc(rs.getString("img_src"));
@@ -138,7 +136,12 @@ public class freecyclingBoardDAO {
 	    	onedto.setViews(rs.getInt("views"));
 	    	onedto.setCreateAt(rs.getDate("create_at"));
 	    	onedto.setNickname(rs.getString("nickname"));
+	    	onedto.setUserId(rs.getInt("user_id"));
 		}
+	    
+	    //조회수 증가 함수 호출
+	    viewUp(num);
+	    
 	  } catch (Exception e) {
 		  System.out.println("게시글 상세보기 시 에러발생");
 			e.printStackTrace();
@@ -151,17 +154,20 @@ public class freecyclingBoardDAO {
 //게시글 조회수 증가
 		
 	  	public void viewUp(int num) {
-		  String sql = "UPDATE board SET " + " views=views+1 "
-		  + " WHERE board_id=?"; 
+	  	  con = DBConnectionUtil.getConnection();
+		  String viewsql = "UPDATE board SET " + " views=views+1 "
+				  		    + " WHERE board_id=?"; 
 		  try { 
-		  pstmt = con.prepareStatement(sql);
+		  pstmt = con.prepareStatement(viewsql);
 		  pstmt.setInt(1, num); 
 		  pstmt.executeQuery(); 
 		  }catch(Exception e) {
 		 System.out.println("게시물 조회수 증가 중 예외 발생"); 
-		 e.printStackTrace(); } }
-		 	    
-	    
+		 e.printStackTrace();
+		  }finally {
+				DBConnectionUtil.close(con, pstmt, rs);
+		}
+	  	}
 //FreeEditCon 게시글 수정 
 	  public int updateBoard(FreeEditDTO dto) {
 		  con = DBConnectionUtil.getConnection();
@@ -227,4 +233,29 @@ public class freecyclingBoardDAO {
 			return res;
 	 
 	  }
+	  
+// 게시글 페이지 처리를 위한 전체 게시글 갯수 끌어오는 함수
+		
+		public int getAllCount() {
+			con = DBConnectionUtil.getConnection();
+			int count = 0;
+			
+			try {
+				String sql="select count(*) from board where delete_yn = 'N' ";
+				pstmt=con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {//데이터가 있다면
+					count=rs.getInt(1);
+					
+				}
+			 } catch (Exception e) {
+			  System.out.println("게시글 숫자 반환 메서드 에러발생");
+				e.printStackTrace();
+			} finally {
+				DBConnectionUtil.close(con, pstmt, rs);
+			}
+		   return count;
+		  }
+
+	
 }

@@ -30,7 +30,7 @@ public class FreecyclingBoardService {
 	
 	
 	//상세게시글 리스트 출력 메소드
-	public FreeOneContentDTO freeOneContentService(int num) throws SQLException { 
+	public FreeOneContentDTO freeOneContentService(int num)  { 
 		return bdao.getoneBoard(num);
 	}
 	
@@ -60,4 +60,8 @@ public class FreecyclingBoardService {
 		        }
 		    
 		    }
-		    }
+}
+		    
+/*
+ * // 페이징처리 호출 public int boardPage() { return bdao.getAllCount(); } }
+ */
