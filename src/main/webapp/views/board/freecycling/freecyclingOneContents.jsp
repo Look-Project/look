@@ -15,18 +15,18 @@
    List<FreecyclingBoardContentsViewDTO> resListOneCondto = bservice.freecyclingOneContentViewService();
    //3.model
 	request.setAttribute("resListOneCondto", resListOneCondto);
-			
  -->
  
  <div class="container">
             <c:set var="viewdto" value="${viewdto}" />
         <div class="image-section">
-            
+        	<img src="${viewdto.imgSrc}/${viewdto.imgName}" class="viewIMG">
         </div>
         <div class="content-section">
            
             <p>
             </p>
+        <form method="post">
          <table width="600" bordercolor="skyblue" >
 	<tr height="40">
 		<td align="center" width="120">글번호</td>
@@ -54,13 +54,16 @@
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="4">
-		
-		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreecyclingUpdaterequestCon?num=${viewdto.boardId }'">
-		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
+	<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
+	 <c:if test="${authMember}">
+		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${viewdto.boardId }'">
+		 <input type="button" value="삭제하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeDeleteCon?num=${viewdto.boardId }'">
+	</c:if>
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
 	
 </table>
+</form>
         </div>
     </div>
 </body>

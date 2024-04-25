@@ -1,44 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="board.workwear.dto.response.WorkwearResponse" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <jsp:include page="/views/common/header.jsp"/>
-    <link rel="stylesheet" type="text/css" 
-            href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css">
-    <title></title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<%@ include file="/views/common/header_v2.jsp"%>
+<link rel="stylesheet" type="text/css" 
+href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css">
 </head>
 <body>
 
-    <!-- 글쓰기 버튼 -->
-    <a href="<%= request.getContextPath() %>/views/board/workwear/workwearWrite.jsp" class="write-button">
-        <img src="<%= request.getContextPath() %>/resources/image/board/workwear/Writing.png" 
-                alt="Write" class="write-icon">
-    </a>
+<%List<WorkwearResponse> list = (List<WorkwearResponse>)request.getAttribute("boardlist"); %>
 
+<div class="worderby-wrap-div">
+	<div class="worderby"><a href="#">최신순</a></div>
+	<div class="worderby"><a href="#">조회수</a></div>
+</div>
 
-   <div id="wrap">
-        <ul id="gallery">
-            <li><a href="<%= request.getContextPath() %>/views/board/workwear/workwearBoard01.jsp">
-                    <img src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" alt="1">
-                    <div class="text-overlay">글쓴이: 아무개</div>
-                </a></li>
-        </ul>
-    </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 글쓰기 버튼을 클릭했을 때의 동작을 정의합니다.
-    document.querySelector('.write-button').addEventListener('click', function(event) {
-        // 기본 동작(링크 이동)을 방지합니다.
-        event.preventDefault();
-
-        // 버튼의 href 속성에 지정된 URL로 페이지 이동
-        window.location.href = this.getAttribute('href');
-    });
-});
-</script>
+<div class="wgallery">
+	<div class="wgallery-line-frame">
+<%
+	//for 반복문으로 div에 태그 추가
+	for(WorkwearResponse dto : list){
+		//out.println("dto " + dto);
+%>
+		<a href="<%= request.getContextPath() %>/workwear/detail?boardId=<%= dto.getBoardId()%>">
+		<div class="wimg-frame">
+			<img src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>" class="wgallery-img">
+			<div class="wcontent-frame">
+				<h3 class="wcontent-title"><%=dto.getNickname()%></h3>
+				<hr/>
+				<p class="wgallery-content"><%=dto.getTitle()%></p>
+			</div>
+		</div>
+	</a>
+<%
+}
+%>
+	</div>
+<button class="wwritebutton">
+	<a href="<%=request.getContextPath() %>/workwear/write">
+	<img src="<%= request.getContextPath() %>/resources/image/board/workwear/Writing.png" class="wwritebutton-icon">
+	</a>
+</button>
+</div>
 
 </body>
 </html>

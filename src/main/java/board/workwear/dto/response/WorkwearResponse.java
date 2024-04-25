@@ -1,39 +1,42 @@
 package board.workwear.dto.response;
 
 public class WorkwearResponse {
+	
+	private String nickname;
+	private String title;
+	private String imgSrc;
+	private String imgName;
 	private int boardId;
-    private String imageName;
-    private String userNickname;
 
-    // 생성자
-    public WorkwearResponse(int boardId, String imgId, String nickname) {
-        this.boardId = boardId;
-        this.imageName = imgId;
-        this.userNickname = nickname;
-    }
-
-    // 각 속성의 Getter 및 Setter
-    public int getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(int boardId) {
-        this.boardId = boardId;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imgId) {
-        this.imageName = imgId;
-    }
-
-    public String getUserNickname() {
-        return userNickname;
-    }
-
-    public void setUserNickname(String nickname) {
-        this.userNickname = nickname;
-    }
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	
 }
