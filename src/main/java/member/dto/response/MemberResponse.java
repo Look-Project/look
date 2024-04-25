@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class MemberResponse {
 	private int memberId;
+	private String password;
 	private String nickname; //닉네임
 	private String profileSrc;
 	private String profileName;
@@ -11,6 +12,12 @@ public class MemberResponse {
 	private LocalDateTime createAt; //가입일
 	
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getIntro() {
 		return intro;
 	}

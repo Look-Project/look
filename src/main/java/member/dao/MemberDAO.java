@@ -86,7 +86,7 @@ public class MemberDAO {
 	}
 	
     public Optional<MemberResponse> findMemberByLoginIdAndPassword(MemberLoginRequest memberRequest) {
-		String sql = "select user_id, nickname, profile_src, profile_name, intro, create_at from member where login_id = ? and login_pwd = ?";
+		String sql = "select user_id, login_pwd, nickname, profile_src, profile_name, intro, create_at from member where login_id = ? and login_pwd = ?";
 		
 		try {
 			con = DBConnectionUtil.getConnection();
@@ -99,6 +99,7 @@ public class MemberDAO {
 			if(rs.next()) {
 				MemberResponse findMember = new MemberResponse();
 				findMember.setMemberId(rs.getInt("user_id"));
+				findMember.setPassword(rs.getString("login_pwd"));
 				findMember.setNickname(rs.getString("nickname"));
 				findMember.setProfileSrc(rs.getNString("profilE_src"));
 				findMember.setProfileName(rs.getNString("profile_name"));
