@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.vintage.service.VintageBoardService;
 import comment.vintage.service.VintageCommentService;
+import common.SessionUtil;
 
 @WebServlet(urlPatterns = "/vintage/detail")
 public class VintageBoardController extends HttpServlet{
@@ -21,6 +22,7 @@ public class VintageBoardController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardId = Integer.parseInt(request.getParameter("boardId").trim());
+		//SessionUtil.getSessionMember(request).getMemberId();
 		request.setAttribute("boarddetail", vbs.getDetailBoard(boardId));
 		request.setAttribute("commentslist", vcs.getAllComments(boardId));
 		request.getRequestDispatcher(VINTAGE_BOARD).forward(request, response);
