@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
  .imgbox {
-	width : 100%;
+	width : 90%;
  	display: flex;
     justify-content: center;   
-    margin : 100px;
+    margin : auto;
     padding-top : 10px;
  }    
  .img {
@@ -24,7 +24,7 @@
 	    display: flex;
 	    flex-direction: row;
    	    width : 100%;
-   		height:20px;  
+   		height: 20px;  
 	    border-radius : 70%;
    }
    
@@ -34,11 +34,12 @@
    		border-radius : 100%;
    }
  
- .writer {
-  	justify-content : flext-end;
- 	display: flex;
-	width : 5000px;
-	height : 5000px;
+ .write {
+    display : flex;
+	width : 80px;
+	height : 80px;
+	justify-content: center;
+	margin-left: auto;
  }
 
  
