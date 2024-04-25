@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<form action="<%=request.getContextPath() %>/controller/FreeEditCon" method="post" enctype="multipart/form-data" >
+<form action="<%=request.getContextPath() %>/controller/FreeInsertCon" method="post" enctype="multipart/form-data" >
 	<div class="container" align="center">
    
 	<label for="title">제목</label>

@@ -36,6 +36,7 @@ public class FreeInsertCon extends HttpServlet {
 	    
 	    if (loginMember == null) {
 	        // 로그인 되지 않은 경우 처리
+	    	
 	        request.getRequestDispatcher(LOGIN).forward(request, response);
 	    } else {
 	        // 로그인 된 경우에는 글쓰기 폼으로 포워딩
@@ -75,7 +76,8 @@ public class FreeInsertCon extends HttpServlet {
 					//System.out.println("사용자가 전달한 파일명 => " + part.getSubmittedFileName());
 					
 					if(part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
-		                  response.sendRedirect(request.getContextPath() + FREECYCLING_WRITE_VIEW);
+		                 // response.sendRedirect(request.getContextPath() + FREECYCLING_WRITE_VIEW);
+		                  response.sendRedirect(FREECYCLING_WRITE_VIEW);
 		               }
 					
 		            String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
