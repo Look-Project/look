@@ -11,6 +11,7 @@ public class SessionUtil {
 	public static void setSessionMember(HttpServletRequest request, MemberResponse member) {
 		HttpSession session = request.getSession();
 		session.setAttribute(SESSION_ID, member);
+		
 	}
 	
 	public static MemberResponse getSessionMember(HttpServletRequest request) {

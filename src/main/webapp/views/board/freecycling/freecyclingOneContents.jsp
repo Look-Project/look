@@ -54,9 +54,11 @@
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="4">
-		
+	<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
+	 <c:if test="${authMember}">
 		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${viewdto.boardId }'">
 		 <input type="button" value="삭제하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeDeleteCon?num=${viewdto.boardId }'">
+	</c:if>
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
 	
