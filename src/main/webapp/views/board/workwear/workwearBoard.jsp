@@ -41,13 +41,14 @@
 							<span class="id"><%=dto.getNickname()%></span>
                             <span class="ment"><%=dto.getContents()%></span>
                         </div>
-                    
+                    <%}%>
                     </div>
-<form action="<%= request.getContextPath() %>/workwear/detail?boardId=<%= dto.getCommentId()%>" 
-			method = "post" class="submit" enctype="multipart/form-data">                    
+            
                     <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment">
-                    <button class="reviewbutton">작성</button></form>
-			<%}%></div></div>
+                    <button class="reviewbutton">작성</button>
+                    
+                    
+			</div></div>
 
 </body>
 </html>
