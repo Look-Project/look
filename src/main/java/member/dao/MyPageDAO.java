@@ -95,5 +95,22 @@ public class MyPageDAO {
 		return result > 0 ? true : false;
 	}
 	
-	
+	public boolean deleteMember(int userId) {
+		String sql = "delete from member where user_id = ?";
+		int result = 0;
+		
+		try {
+			con = DBConnectionUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.close(con, pstmt, null);
+		}
+		
+		return result > 0 ? true : false;
+	}
 }

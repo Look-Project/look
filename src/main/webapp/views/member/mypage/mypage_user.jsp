@@ -70,7 +70,7 @@
 						<p>작성한 게시물과 댓글 또한 전부 삭제가 되어  <strong>복구</strong>가  <strong>불가능</strong>합니다.</p>
 					</div>
 					<div>
-						<form id="mypage-member-delete-form">
+						<form id="mypage-member-delete-form" action="<%= request.getContextPath() %>/mypage/user-delete" method="post">
 							<button id="mypage-member-delete-send-btn" type="submit">회원탈퇴</button>
 						</form>
 					</div>
