@@ -141,7 +141,6 @@ public class VintageDAO {
 					vbr.setContents(rs.getString("CONTENTS"));
 					vbr.setImgSrc(rs.getString("IMG_SRC"));
 					vbr.setImgName(rs.getString("IMG_NAME"));
-					System.out.println(rs.getString("NICKNAME"));
 				}
 				
 			}catch(Exception e) {
