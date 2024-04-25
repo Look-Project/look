@@ -9,17 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.vintage.service.VintageBoardService;
+import comment.vintage.service.VintageCommentService;
 
 @WebServlet(urlPatterns = "/vintage/detail")
 public class VintageBoardController extends HttpServlet{
 
 	private final String VINTAGE_BOARD = "/views/board/vintage/vintageboard.jsp";
 	VintageBoardService vbs = new VintageBoardService();
+	VintageCommentService vcs = new VintageCommentService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardId = Integer.parseInt(request.getParameter("boardId").trim());
 		request.setAttribute("boarddetail", vbs.getDetailBoard(boardId));
+		request.setAttribute("commentslist", vcs.getAllComments(boardId));
 		request.getRequestDispatcher(VINTAGE_BOARD).forward(request, response);
 	}
 
