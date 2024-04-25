@@ -13,7 +13,6 @@ public class FreeOneContentDTO {
 	private int views;
 	private Date createAt;
 	
-	
 	private String nickname;
 
 

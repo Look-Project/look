@@ -118,31 +118,26 @@ public class freecyclingBoardDAO {
 				  + "inner join board_img bi "
 				  + "on b.board_id = bi.board_id "
 				  + "where b.board_id=? ";
-		  FreeOneContentDTO blonedto = new FreeOneContentDTO();
-	  try {
-		//하나의 게시글을 읽었다는 조회수 증가
-		/*
-		 * if (board_id != null) { String countsql =
-		 * "UPDATE board SET views = views + 1 WHERE board_id = ?"; pstmt =
-		 * con.prepareStatement(countsql); pstmt.setInt(1, board_id); } else { //
-		 * board_id가 null인 경우에 대한 처리 }
-		 * 
-		 */			//쿼리실행
-		//	pstmt.executeUpdate();
+		  FreeOneContentDTO onedto = new FreeOneContentDTO();
+	  try { 
+		    //조회수 증가 함수 호출
+		    viewUp(num);
+		 	//쿼리실행
+		    pstmt = con.prepareStatement(sql);
+			//pstmt.executeUpdate();
 			
-		  pstmt = con.prepareStatement(sql);
 		  pstmt.setInt(1, num);
 		  rs = pstmt.executeQuery();
 		  
 	    while(rs.next()) {
-	    	blonedto.setImgSrc(rs.getString("img_src"));
-	    	blonedto.setImgName(rs.getString("img_name"));
-	    	blonedto.setBoardId(rs.getInt("board_id"));
-	    	blonedto.setTitle(rs.getString("title"));
-	    	blonedto.setContents(rs.getString("contents"));
-	    	blonedto.setViews(rs.getInt("views"));
-	    	blonedto.setCreateAt(rs.getDate("create_at"));
-	    	blonedto.setNickname(rs.getString("nickname"));
+	    	onedto.setImgSrc(rs.getString("img_src"));
+	    	onedto.setImgName(rs.getString("img_name"));
+	    	onedto.setBoardId(rs.getInt("board_id"));
+	    	onedto.setTitle(rs.getString("title"));
+	    	onedto.setContents(rs.getString("contents"));
+	    	onedto.setViews(rs.getInt("views"));
+	    	onedto.setCreateAt(rs.getDate("create_at"));
+	    	onedto.setNickname(rs.getString("nickname"));
 		}
 	  } catch (Exception e) {
 		  System.out.println("게시글 상세보기 시 에러발생");
@@ -150,138 +145,86 @@ public class freecyclingBoardDAO {
 		} finally {
 			DBConnectionUtil.close(con, pstmt, rs);
 		}
-	   return blonedto;
+	   return onedto;
 	  }
-	  
-//FreecyclingUpdaterequestCon 수정할 글 읽어오기 메서드	  
-	  public FreecyclingUpdateDTO getoneUpdateBoard(int num) {
-		    con = DBConnectionUtil.getConnection();
-		    FreecyclingUpdateDTO boardupReqdto = new FreecyclingUpdateDTO();
-		
-			try {
-				//한 게시글에 대한 정보를 리턴해주는 쿼리를 작성
-				String sql = "select m.nickname, b.board_id, b.create_at, b.title, b.contents, b.views, bi.img_name, bi.img_src "
-						  + "from member m inner join board b "
-						  + "on m.user_id = b.user_id "
-						  + "left outer join board_img bi "
-						  + "on b.board_id = bi.board_id "
-						  + "where b.board_id=? ";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					boardupReqdto.setImgSrc(rs.getString("img_src"));
-					boardupReqdto.setImgName(rs.getString("img_name"));
-					boardupReqdto.setBoardId(rs.getInt("board_id"));
-					boardupReqdto.setTitle(rs.getString("title"));
-					boardupReqdto.setContents(rs.getString("contents"));
-					boardupReqdto.setViews(rs.getInt("views"));
-					boardupReqdto.setCreateAt(rs.getDate("create_at"));
-					boardupReqdto.setNickname(rs.getString("nickname"));
-				}
-			  } catch (Exception e) {
-				  System.out.println("수정할 게시글 폼 가져오기 에러발생");
-					e.printStackTrace();
-				} finally {
-					DBConnectionUtil.close(con, pstmt, rs);
-				}
-			   return boardupReqdto;
-			  }
-//FreecyclingUpdateresponseCon 게시글 수정 
-	  public void updateBoard(int num,FreecyclingUpdateDTO boardupdto) {
-		  con = DBConnectionUtil.getConnection();
-		  //PreparedStatement pstmt2 = null;
-			try {
-				String sql = "UPDATE board SET title = ?, contents = ? "
-						   + "WHERE board_id = ? ";
-//				String sql2 = "UPDATE board_img SET img_src = ?, img_name = ? "
-//				           	+ "WHERE board_id = ? ; ";
 
-		    
-				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1, boardupdto.getTitle());
-				pstmt.setString(2, boardupdto.getContents());
-				pstmt.setInt(3,num);
-				
-//				pstmt2=con.prepareStatement(sql2);
-//				pstmt2.setString(1, upresdto.getImgSrc());
-//				pstmt2.setString(2, upresdto.getImgName());
-//				pstmt2.setInt(3,num);
-				//pstmt.setString(4, "imgSrc");
-				//pstmt.setString(5, "imgname");
-				
-				pstmt.executeUpdate();
-//				pstmt2.executeUpdate();
-			  } catch (Exception e) {
+//게시글 조회수 증가
+		
+	  	public void viewUp(int num) {
+		  String sql = "UPDATE board SET " + " views=views+1 "
+		  + " WHERE board_id=?"; 
+		  try { 
+		  pstmt = con.prepareStatement(sql);
+		  pstmt.setInt(1, num); 
+		  pstmt.executeQuery(); 
+		  }catch(Exception e) {
+		 System.out.println("게시물 조회수 증가 중 예외 발생"); 
+		 e.printStackTrace(); } }
+		 	    
+	    
+//FreeEditCon 게시글 수정 
+	  public int updateBoard(FreeEditDTO dto) {
+		  con = DBConnectionUtil.getConnection();
+			int res = 0;			
+			String c = "C";
+			
+			try {
+				//text 타입 게시글 insert
+		         String boardText = "update board SET title = ?, contents = ? WHERE board_id = ?";
+		         pstmt = con.prepareStatement(boardText);
+		         
+		         //값을 매핑하기
+		         pstmt.setString(1, dto.getTitle());
+		         pstmt.setString(2, dto.getContents());
+		         pstmt.setInt(3, dto.getBoardId());
+		         
+		         res = pstmt.executeUpdate();
+		         
+		        
+		         //이미지 파일 insert
+		         String boardImg = "update board_img set img_src = ?, img_name= ? WHERE board_id = ?";
+		         pstmt = con.prepareStatement(boardImg);
+		         
+		         //값을 매핑하기
+		         pstmt.setString(1, dto.getImgSrc());
+		         pstmt.setString(2, dto.getImgName());
+		         pstmt.setInt(3, dto.getBoardId());
+		         
+		         res = pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("데이터 삽입 시 에러발생");
 				e.printStackTrace();
 			} finally {
 				DBConnectionUtil.close(con, pstmt, rs);
-//				DBConnectionUtil.close(null,pstmt2,null);
 			}
-			
-	  }
-	  
-//FreeEditCon의 doget요청시 게시글 수정폼 보여주는 메서드
-	    // 게시글 데이터를 받아 DB에 저장되어 있던 내용을 갱신합니다(파일 업로드 지원).
-		/*
-		 * public int updatePost(MVCBoardDTO dto) { int result = 0; try { // 쿼리문 템플릿 준비
-		 * String query = "UPDATE mvcboard" +
-		 * " SET title=?, name=?, content=?, ofile=?, sfile=? " +
-		 * " WHERE idx=? and pass=?";
-		 * 
-		 * // 쿼리문 준비 psmt = con.prepareStatement(query); psmt.setString(1,
-		 * dto.getTitle()); pstmt.setString(2, dto.getName()); psmt.setString(3,
-		 * dto.getContent()); pstmt.setString(4, dto.getOfile()); psmt.setString(5,
-		 * dto.getSfile()); pstmt.setString(6, dto.getIdx()); psmt.setString(7,
-		 * dto.getPass());
-		 * 
-		 * // 쿼리문 실행 result = psmt.executeUpdate(); } catch (Exception e) {
-		 * System.out.println("게시물 수정 중 예외 발생"); e.printStackTrace(); } return result; }
-		 */    
-//게시글 상세보기
-/*		  public FreeEditDTO getEditBoard(int num) throws SQLException {
-			   
-			  con = DBConnectionUtil.getConnection();
-					//한 게시글에 대한 정보를 리턴해주는 쿼리를 작성
-			  String sql = "select m.nickname, b.board_id, b.create_at, b.title, b.contents, b.views, bi.img_name, bi.img_src "
-					  + "from member m inner join board b "
-					  + "on m.user_id = b.user_id "
-					  + "left outer join board_img bi "
-					  + "on b.board_id = bi.board_id "
-					  + "where b.board_id=? ";
-			  FreecyclingBoardContentsViewDTO blonedto = new FreecyclingBoardContentsViewDTO();
+			return res;
+	 
+}
+
+//FreeDeleteCon 게시글 삭제 
+	  public int deleteBoard(int num) throws SQLException {
+		  con = DBConnectionUtil.getConnection();
+		  int res = 0;
+		  
 		  try {
-			//하나의 게시글을 읽었다는 조회수 증가
-			
-			 * if (board_id != null) { String countsql =
-			 * "UPDATE board SET views = views + 1 WHERE board_id = ?"; pstmt =
-			 * con.prepareStatement(countsql); pstmt.setInt(1, board_id); } else { //
-			 * board_id가 null인 경우에 대한 처리 }
-			 * 
-			 			//쿼리실행
-			//	pstmt.executeUpdate();
-				
-			  pstmt = con.prepareStatement(sql);
-			  pstmt.setInt(1, num);
-			  rs = pstmt.executeQuery();
-			  
-		    while(rs.next()) {
-		    	blonedto.setImgSrc(rs.getString("img_src"));
-		    	blonedto.setImgName(rs.getString("img_name"));
-		    	blonedto.setBoardId(rs.getInt("board_id"));
-		    	blonedto.setTitle(rs.getString("title"));
-		    	blonedto.setContents(rs.getString("contents"));
-		    	blonedto.setViews(rs.getInt("views"));
-		    	blonedto.setCreateAt(rs.getDate("create_at"));
-		    	blonedto.setNickname(rs.getString("nickname"));
-			}
-		  } catch (Exception e) {
-			  System.out.println("게시글 상세보기 시 에러발생");
+				//text 타입 게시글 insert
+		         String sql = "update board SET delete_yn = 'Y' WHERE category = 'C' and board_id = ? ";
+		         pstmt = con.prepareStatement(sql);
+		         
+		         //값을 매핑하기
+		         
+		         pstmt.setInt(1, num);
+		         
+		         res = pstmt.executeUpdate();
+		         
+		       
+			} catch (Exception e) {
+				System.out.println("데이터 삭제 시 에러발생");
 				e.printStackTrace();
 			} finally {
 				DBConnectionUtil.close(con, pstmt, rs);
 			}
-		   return FreeEditDTO;
-		  }*/
+			return res;
+	 
+	  }
 }

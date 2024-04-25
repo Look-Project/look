@@ -10,9 +10,10 @@
   <%@ include file="/views/common/header_v2.jsp"%>
 	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/freecyclingCss/freecyclingMainCss.css">
 
+
 </head>
 <body>
-
+ 
 <div class="content">
 	<div class="divTop">
 		<div class="divTopOrderby">최신순</div>

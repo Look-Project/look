@@ -15,13 +15,12 @@
    List<FreecyclingBoardContentsViewDTO> resListOneCondto = bservice.freecyclingOneContentViewService();
    //3.model
 	request.setAttribute("resListOneCondto", resListOneCondto);
-			
  -->
  
  <div class="container">
             <c:set var="viewdto" value="${viewdto}" />
         <div class="image-section">
-            
+        	<img src="${viewdto.imgSrc}/${viewdto.imgName}" class="viewIMG">
         </div>
         <div class="content-section">
            
@@ -57,7 +56,7 @@
 		<td align="center" colspan="4">
 		
 		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${viewdto.boardId }'">
-		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
+		 <input type="button" value="삭제하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeDeleteCon?num=${viewdto.boardId }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
 	
