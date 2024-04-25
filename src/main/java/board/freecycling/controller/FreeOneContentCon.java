@@ -31,14 +31,22 @@ public class FreeOneContentCon extends HttpServlet {
 		 
 		//서비스 메소드로 bdao 리턴 받아주기
 		 FreecyclingBoardService bservice = new FreecyclingBoardService();
-		 try {
+		 
 			FreeOneContentDTO viewdto = bservice.freeOneContentService(num);
 			request.setAttribute("viewdto",viewdto);
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}			  
-			 	//3.model
+		
+		
+		//글쓴이와 동일한 회원인지 검증 후 수정, 삭제하기 버튼 보여줌	
+		 
+		
+			 if(loginMember != null) {
+				 if(loginMember.getMemberId()==viewdto.getUserId()) {
+					request.setAttribute("authMember",true);
+				 }else {
+					 request.setAttribute("authMember",false); 
+				 }
+			 }
+		 
 			//메인으로 보내주기
 			RequestDispatcher dis = request.getRequestDispatcher(FREECYCLING_ONECONTENTS_VIEW_NAME);
 			dis.forward(request, response);

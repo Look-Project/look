@@ -14,7 +14,7 @@ public class FreeOneContentDTO {
 	private Date createAt;
 	
 	private String nickname;
-
+	private int userId;
 
 	public String getImgSrc() {
 		return imgSrc;
@@ -95,6 +95,16 @@ public class FreeOneContentDTO {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	

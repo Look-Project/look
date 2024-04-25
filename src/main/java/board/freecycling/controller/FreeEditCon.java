@@ -41,11 +41,7 @@ public class FreeEditCon extends HttpServlet {
         freecyclingBoardDAO bdao = new freecyclingBoardDAO();
         FreeOneContentDTO onecondto = null;
        
-		try {
-			onecondto = bdao.getoneBoard(num);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		onecondto = bdao.getoneBoard(num);
 		request.setAttribute("onecondto", onecondto);
 		
 		if (loginMember == null) {
