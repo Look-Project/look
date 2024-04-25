@@ -4,10 +4,6 @@ public class CommentRequest {
     private String nickname;
     private String comment;
 
-    public CommentRequest(String nickname, String contents) {
-        this.nickname = nickname;
-        this.comment = contents;
-    }
 
     public String getNickname() {
         return nickname;
