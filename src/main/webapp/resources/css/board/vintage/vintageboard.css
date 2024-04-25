@@ -88,13 +88,17 @@ ul {
   margin-left: 5px;
 }
 
-.reviewcomment {
+.inputcomments {
   font-size: 13px;
   font-weight: bold;
   color: rgb(151, 143, 143);
   background-color: rgb(243, 240, 240);
   margin-top: 20px;
-  padding: 7px;
-  width: 100%;
+  /* padding: 7px; */
+  width: 80%;
+  height : 20px;
   border: 1px solid rgb(243, 240, 240);
 } /* 리뷰 입력창을 위한 CSS*/
+.commentButton{
+	
+}
