@@ -32,20 +32,18 @@ public class FreeOneContentCon extends HttpServlet {
 		//서비스 메소드로 bdao 리턴 받아주기
 		 FreecyclingBoardService bservice = new FreecyclingBoardService();
 		 try {
-			FreeOneContentDTO viewdto = bservice.freecyclingOneContentViewService(num);
+			FreeOneContentDTO viewdto = bservice.freeOneContentService(num);
 			request.setAttribute("viewdto",viewdto);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}			  
 			 	//3.model
-						
 			//메인으로 보내주기
 			RequestDispatcher dis = request.getRequestDispatcher(FREECYCLING_ONECONTENTS_VIEW_NAME);
 			dis.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		doGet(request, response);
 	}
 
