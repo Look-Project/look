@@ -15,7 +15,8 @@ public class CommentService {
 	public void post(CommentRequest cr){
 		cdao.insertComment(cr);
 	}
-	public List<CommentResponse> getAllComment() {
-		return cdao.getAllComment();
+	public List<CommentResponse> getAllComment(int boardId) {
+		return cdao.getAllComment(boardId);
 	}
+	
 }

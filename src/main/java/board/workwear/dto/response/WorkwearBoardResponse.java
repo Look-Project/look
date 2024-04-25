@@ -1,13 +1,17 @@
 package board.workwear.dto.response;
 
-public class WorkwearResponse {
-	
+import java.sql.Date;
+
+public class WorkwearBoardResponse {
+
 	private String nickname;
 	private String title;
+	private String contents;
 	private String imgSrc;
 	private String imgName;
 	private int boardId;
-
+	
+	
 	public int getBoardId() {
 		return boardId;
 	}
@@ -25,6 +29,12 @@ public class WorkwearResponse {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	public String getImgSrc() {
 		return imgSrc;

@@ -32,7 +32,7 @@ href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css"
 	for(WorkwearResponse dto : list){
 		//out.println("dto " + dto);
 %>
-
+		<a href="<%= request.getContextPath() %>/workwear/detail?boardId=<%= dto.getBoardId()%>">
 		<div class="wimg-frame">
 			<img src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>" class="wgallery-img">
 			<div class="wcontent-frame">
@@ -41,7 +41,7 @@ href="<%= request.getContextPath() %>/resources/css/board/workwear/workwear.css"
 				<p class="wgallery-content"><%=dto.getTitle()%></p>
 			</div>
 		</div>
-
+	</a>
 <%
 }
 %>
