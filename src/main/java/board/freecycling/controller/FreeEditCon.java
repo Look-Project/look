@@ -1,25 +1,25 @@
 package board.freecycling.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.oreilly.servlet.MultipartRequest;
+import javax.servlet.http.Part;
 
 import board.freecycling.dao.freecyclingBoardDAO;
+import board.freecycling.dto.request.FreeEditDTO;
+import board.freecycling.dto.request.FreeInsertDTO;
 import board.freecycling.dto.response.FreeOneContentDTO;
+import board.freecycling.service.FreecyclingBoardService;
+import common.FileUploadUtil;
 import common.SessionUtil;
 import member.dto.response.MemberResponse;
 
@@ -29,6 +29,7 @@ public class FreeEditCon extends HttpServlet {
 	
 	private final String LOGIN = "/views/member/login.jsp";
 	public final String FREE_EDIT_VIEW = "/views/board/freecycling/freeEditForm.jsp";
+	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,10 +37,10 @@ public class FreeEditCon extends HttpServlet {
     	int num = Integer.parseInt(request.getParameter("num"));
     	System.out.println("num="+num);
     	MemberResponse loginMember = SessionUtil.getSessionMember(request);
-    	
     	//기존 게시물 내용을 담은 DTO 객체 저장한 다음 Edit.jsp로 포워드
         freecyclingBoardDAO bdao = new freecyclingBoardDAO();
         FreeOneContentDTO onecondto = null;
+       
 		try {
 			onecondto = bdao.getoneBoard(num);
 		} catch (SQLException e) {
@@ -57,90 +58,78 @@ public class FreeEditCon extends HttpServlet {
     }
   
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    	doGet(request,response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-        // 1. 파일 업로드 처리 =============================
-        // 업로드 디렉터리의 물리적 경로 확인
- /*       String saveDirectory = req.getServletContext().getRealPath("/Uploads");
+    	String contentType = request.getContentType();
+		FreeEditDTO dto = new FreeEditDTO();
+		Map<String,String> insmap= new HashMap<String,String>();
+		
+		if(contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
+			
+			// getParts()를 통해 Body에 넘어온 데이터들을 각각의  Part로 쪼개어 리턴
+			Collection<Part> parts = request.getParts();
+			
+			for(Part part : parts) {
+				//System.out.println();
+				//System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(), part.getContentType(), part.getSize());
+				/**
+				 * input 태그의 type속성이 file일 경우 if문을 실행
+				 * 그 외의 type일 경우 else문을 실행
+				 */
+			
+				if(part.getHeader("Content-Disposition").contains("filename=")) {
+					String todayDate = FileUploadUtil.getTodayDateString();
+					
+					String uploadPath = FREECYCLING_UPLOAD_PATH + todayDate;
+					//System.out.println("저장하고자 하는 파일의 경로 => " + uploadPath);
+					
+					FileUploadUtil.createUploadDirectory(uploadPath);
+					//System.out.println("사용자가 전달한 파일명 => " + part.getSubmittedFileName());
+					
+					if(part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
+		                  response.sendRedirect(request.getContextPath() + FREE_EDIT_VIEW);
+		               }
+					
+		            String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
+					//System.out.printf("업로드 파일 명 : %s \n", newFileName);
+					//System.out.println("최종적으로 저장되는 파일의 경로 + 파일명 => " + uploadPath + "\\" + newFileName);
+					
+					if(part.getSize() > 0) {
+						part.write("C:"+uploadPath + "\\" + newFileName);
+						part.delete();
+						dto.setImgSrc(uploadPath);
+						dto.setImgName(newFileName);
+						
+					}
+				}else {
+					//게시글의 제목 및 내용과 같은 input태그의 경우 실행되는 로직으로, 해당 데이터들을 저장하고자 한다면 여기에 작성하면 됩니다.
+					
+					String formValue = request.getParameter(part.getName());
+					insmap.put(part.getName(), formValue);
+					//System.out.printf("name : %s, value : %s  \n", part.getName(), formValue); //콘솔확인용
+				}//else end
 
-        // 초기화 매개변수로 설정한 첨부 파일 최대 용량 확인
-        ServletContext application = this.getServletContext();
-        int maxPostSize = Integer.parseInt(application.getInitParameter("maxPostSize"));
-
-        // 파일 업로드
-        MultipartRequest mr = FileUtil.uploadFile(req, saveDirectory, maxPostSize);
-
-        if (mr == null) {
-            // 파일 업로드 실패
-            JSFunction.alertBack(resp, "첨부 파일이 제한 용량을 초과합니다.");
-            return;
-        }
-
-        // 2. 파일 업로드 외 처리 =============================
+			}//for end
+		}//if end
+    	
         // 수정 내용을 매개변수에서 얻어옴
-        String idx = mr.getParameter("idx");
-        String prevOfile = mr.getParameter("prevOfile");
-        String prevSfile = mr.getParameter("prevSfile");
+    	MemberResponse loginMember = SessionUtil.getSessionMember(request);
+    	//int memberId = request.getParameter("memberId") ;
+    	FreecyclingBoardService freeservice = new FreecyclingBoardService();
 
-        String name = mr.getParameter("name");
-        String title = mr.getParameter("title");
-        String content = mr.getParameter("content");
-            
-        // 비밀번호는 session에서 가져옴
-        HttpSession session = req.getSession();
-        String pass = (String)session.getAttribute("pass");
-
+        String title = request.getParameter("title");
+        System.out.println("title="+title);
+        
+        int boardId = Integer.parseInt(request.getParameter("boardId"));
+        String contents = request.getParameter("contents");
+    	
         // DTO에 저장
-        MVCBoardDTO dto = new MVCBoardDTO();
-        dto.setIdx(idx);
-        dto.setName(name);
-        dto.setTitle(title);
-        dto.setContent(content);
-        dto.setPass(pass);
-            
-        // 원본 파일명과 저장된 파일 이름 설정
-        String fileName = mr.getFilesystemName("ofile");
-        if (fileName != null) {
-            // 첨부 파일이 있을 경우 파일명 변경
-            // 새로운 파일명 생성
-            String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-            String ext = fileName.substring(fileName.lastIndexOf("."));
-            String newFileName = now + ext;
-
-            // 파일명 변경
-            File oldFile = new File(saveDirectory + File.separator + fileName);
-            File newFile = new File(saveDirectory + File.separator + newFileName);
-            oldFile.renameTo(newFile);
-
-            // DTO에 저장
-            dto.setOfile(fileName);  // 원래 파일 이름
-            dto.setSfile(newFileName);  // 서버에 저장된 파일 이름
-
-            // 기존 파일 삭제
-            FileUtil.deleteFile(req, "/Uploads", prevSfile);
-        }
-        else {
-            // 첨부 파일이 없으면 기존 이름 유지
-            dto.setOfile(prevOfile);
-            dto.setSfile(prevSfile);
-        }
+    	dto.setBoardId(boardId);
+    	dto.setTitle(title);
+    	dto.setContents(contents);
 
         // DB에 수정 내용 반영
-        MVCBoardDAO dao = new MVCBoardDAO();
-        int result = dao.updatePost(dto);
-        dao.close();
-
-        // 성공 or 실패?
-        if (result == 1) {  // 수정 성공
-            session.removeAttribute("pass");
-            resp.sendRedirect("../mvcboard/view.do?idx=" + idx);
-        }
-        else {  // 수정 실패
-            JSFunction.alertLocation(resp, "비밀번호 검증을 다시 진행해주세요.",
-                "../mvcboard/view.do?idx=" + idx);
-        }
-*/    }
-   
+        freeservice.freeEditService(dto);
+		response.sendRedirect(request.getContextPath() + "/controller/freecyclingListCon");
+    }
 }

@@ -3,17 +3,19 @@ package board.freecycling.dto.request;
 import java.util.Date;
 
 public class FreeEditDTO {
+	
 	private String imgSrc;
 	private String imgName;
 	
+	private int memberId;
 	private int boardId;
+	private String nickname;
+	
 	private String title;
 	private String contents;
-	private int views;
-	private Date createAt;
 	
 	
-	private String nickname;
+	
 
 
 	public String getImgSrc() {
@@ -35,7 +37,16 @@ public class FreeEditDTO {
 		this.imgName = imgName;
 	}
 
-	
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+
 	
 	
 	public int getBoardId() {
@@ -45,6 +56,16 @@ public class FreeEditDTO {
 
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
+	}
+
+	
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 
@@ -67,34 +88,5 @@ public class FreeEditDTO {
 		this.contents = contents;
 	}
 
-
-	public int getViews() {
-		return views;
-	}
-
-
-	public void setViews(int views) {
-		this.views = views;
-	}
-
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-
-	public String getNickname() {
-		return nickname;
-	}
-
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 
 }

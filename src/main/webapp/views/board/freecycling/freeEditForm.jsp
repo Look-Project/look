@@ -17,7 +17,7 @@
 	request.setAttribute("resListOneCondto", resListOneCondto);
 			
  -->
- <form action="<%=request.getContextPath() %>/controller/FreeInsertCon" method="post" enctype="multipart/form-data" >
+ <form action="<%=request.getContextPath() %>/controller/FreeEditCon" method="post" enctype="multipart/form-data" >
 
  <div class="container">
             <c:set var="onecondto" value="${onecondto}" />
@@ -45,12 +45,12 @@
 	</tr>
 	<tr height="40">
 		<td align="center" width="120">제목</td>
-		<td align="center" colspan="3" width="400"><input type="text" id="title" name="title" style="height: 30px; width: 400px;">
+		<td align="center" colspan="3" width="400"><input type="text" id="title" name="title" value="${onecondto.title}" style="height: 30px; width: 400px;">
 		</td>	
 	</tr>
 	<tr height="80">
 		<td align="center" width="120">글내용</td>
-		<td align="center" colspan="3" width="400"><textarea id="contents" name="contents" style="height: 300px; width: 400px;"></textarea>
+		<td align="center" colspan="3" width="400"><textarea id="contents" name="contents" style="height: 300px; width: 400px;">${onecondto.contents}</textarea>
 		</td>	
 	</tr>
 	<tr height="80">
@@ -60,8 +60,8 @@
 	</tr>
 	<tr height="80">
 		<td align="center" colspan="4">
-		 
-		 <input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/FreeEditCon?num=${onecondto.boardId }'">
+		 <input type="hidden" name="boardId" id="boardId" value="${onecondto.boardId }">
+		 <input type="submit" value="수정하기" >
 		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/controller/freecyclingListCon'">
 	</tr>
