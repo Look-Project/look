@@ -35,6 +35,16 @@
 	margin-top: 5px;
 }
 
+.mypage-non-selector {
+	text-decoration: none;
+	color: #999999;
+}
+
+.mypage-selector {
+	color: red;
+	font-weight: 700;
+}
+
 #profile-user-image-div {
 	display: flex;
 	height: 300px;
