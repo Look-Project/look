@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page import="board.vintage.dto.response.VintageBoardResponse" %>
+<%@ page import="java.util.List, 
+board.vintage.dto.response.VintageBoardResponse,
+comment.vintage.dto.response.VintageCommentResponse" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 </head>
 <body>
 <%VintageBoardResponse vbr = (VintageBoardResponse)request.getAttribute("boarddetail"); %>
+<%List<VintageCommentResponse> list = (List<VintageCommentResponse>)request.getAttribute("commentslist"); %>
 <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
             <div class="img"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
@@ -21,6 +23,7 @@
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
                     <br>
+                    <div><%=vbr.getBoardId() %></div>
                     <div id="fifth">
                         <div class="emojiright">
                             <p class="boardname"><%=vbr.getTitle() %></p>
@@ -31,32 +34,34 @@
                     	<%=vbr.getContents() %>
                     <p class="reviewnav">리뷰</p>
 
-                    <div class="Allcomment"> <!--모든 댓글 내용을 담아내는 div 태그-->
-                        <div class="comment"> <!-- comment class는 각각 하나의 댓글을 담아냄 -->
-                            <span class="id">SuRa</span>
-                            <span class="ment">너무 멋져요!</span>
+                    <div class="Allcomment"> 
+                    <!--모든 댓글 내용을 담아내는 div 태그-->
+                        <div class="comment"> 
+<%
+	//for 반복문으로 span에 태그 추가
+	for(VintageCommentResponse dto : list){
+		//out.println("dto " + dto);
+%><!-- comment class는 각각 하나의 댓글을 담아냄 -->
+                            <span class="id"><%=dto.getNickName() %></span>
+                            <span class="ment"><%=dto.getComment() %></span>
                             <button class="deletebutton">삭제</button>
                             <a href="#" class="commentheart"><i class="far fa-heart"></i></a>
-                        </div>
-
-                        <div class="comment">
-                            <span class="id">Amen</span>
-                            <span class="ment">점프수트 구매처 알수 있을까요???</span>
-                            <button class="deletebutton">삭제</button>
-                            <a href="#" class="commentheart"><i class="far fa-heart hearts"></i></a>
-                        </div>
-
-                        <div class="comment">
-                            <span class="id">legend_dev</span>
-                            <span class="ment">진짜 전설이다.
-                            </span>
-                            <button class="deletebutton">삭제</button>
-                            <a href="#" class="commentheart"><i class="far fa-heart"></i></a>
+                            </br>
+<%
+}
+%>
                         </div>
                     </div>
-                    <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment"
-                            onkeyup="if(window.event.keyCode==13){test()}"> <!--후반부에 구현할 댓글 입력을 위한 input 태그-->
+                    <form action="<%=request.getContextPath() %>/vintage/comment" method = "post" class="submit">
+                    <div>
+                    <%=vbr.getNickname() %>
+                    <input type="hidden" name="boardId" value="<%=vbr.getBoardId() %>"></input>
+                    <input type="hidden" name="nickName" value="<%=vbr.getNickname() %>"></input>
+                    <input type="text" placeholder="리뷰를 입력해주세요" class="inputcomments" name = "comment">
+                    	<input type="submit" value="입력" class="submit_button"></input>
+                    </input>
+                   	</div>
+                   	</form>
 			</div></div>
-
 </body>
 </html>
