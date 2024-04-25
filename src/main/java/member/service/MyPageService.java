@@ -37,5 +37,8 @@ public class MyPageService {
 	}
 	
 	
+	public boolean updateLoginPassword(int userId, String targetPassword) {
+		return myPageDao.updateMemberLoginPwd(userId, targetPassword);
+	}
 	
 }
