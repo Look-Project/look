@@ -16,8 +16,8 @@
 						<h2>내 정보</h2>
 					</div>
 					<div class ="profile-selector-box-main">
-						<p>프로필</p>
-						<p class="profile-selector-box-main-menu">계정 관리</p>
+						<p class="mypage-selector">프로필</p>
+						<a class="mypage-non-selector" href="<%=request.getContextPath() %>/mypage/user"><p class="profile-selector-box-main-menu">계정 관리</p></a>
 					</div>
 				</div>
 				<div class="profile-selector-box">
@@ -25,8 +25,8 @@
 						<h2>내 활동</h2>
 					</div>
 					<div class="profile-selector-box-main">
-						<p>내 게시글</p>
-						<p class="profile-selector-box-main-menu">내 댓글</p>
+						<a class="mypage-non-selector" href="/"><p >내 게시글</p></a>
+						<a class="mypage-non-selector" href="/"><p class="profile-selector-box-main-menu">내 댓글</p></a>
 					</div>
 				</div>
 			</div>

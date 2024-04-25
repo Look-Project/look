@@ -37,5 +37,18 @@ public class MyPageService {
 	}
 	
 	
+	/**
+	 * 마이페이지 비밀번호 업데이트
+	 * @param userId - 로그인한 사용자 아이디
+	 * @param targetPassword - 변경하고자 하는 비밀번호
+	 * @return true -> 업데이트 성공, false -> 업데이트 실패
+	 */
+	public boolean updateLoginPassword(int userId, String targetPassword) {
+		return myPageDao.updateMemberLoginPwd(userId, targetPassword);
+	}
+	
+	public void removeMember(int userId) {
+		myPageDao.deleteMember(userId);
+	}
 	
 }

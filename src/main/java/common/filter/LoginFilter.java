@@ -19,7 +19,7 @@ import common.SessionUtil;
 @WebFilter(urlPatterns = "/*")
 public class LoginFilter implements Filter {
 	
-	private static final List<String> LOGIN_REQUITED_LIST = new ArrayList<>(Arrays.asList("/mypage/profile", "/vintage/write"));
+	private static final List<String> LOGIN_REQUITED_LIST = new ArrayList<>(Arrays.asList("/mypage/profile", "/vintage/write", "/mypage/user"));
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

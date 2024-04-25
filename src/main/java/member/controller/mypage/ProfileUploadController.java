@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -31,6 +33,7 @@ public class ProfileUploadController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String contentType = request.getContentType();
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);
+		Map<String, String> requestValues = new HashMap<>();
 
 		if(contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
 
@@ -48,9 +51,8 @@ public class ProfileUploadController extends HttpServlet {
 						return;
 					}
 					
-					System.out.println("hello!");
 		            String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
-					
+		            
 					if(part.getSize() > 0 && loginMember != null) {
 						part.write("C:" + uploadPath + "\\" + newFileName);
 						part.delete();
@@ -62,6 +64,9 @@ public class ProfileUploadController extends HttpServlet {
 						}
 					}
 						
+				}else {
+					String formValue = request.getParameter(part.getName());
+					requestValues.put(part.getName(), formValue);
 				}
 
 			}//for end

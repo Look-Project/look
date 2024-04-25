@@ -1,0 +1,140 @@
+#width-100 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#profile-contents {
+	display: flex;
+	width: 1440px;
+	margin-top: 30px;
+}
+
+#profile-contents-left {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+}
+
+#profile-contents-right {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-top: 30px;
+}
+
+.profile-selector-box {
+	margin-top: 30px;
+}
+
+.profile-selector-box-main {
+	margin-top: 15px;
+}
+
+.profile-selector-box-main-menu {
+	margin-top: 5px;
+}
+
+.mypage-non-selector {
+	text-decoration: none;
+	color: #999999;
+}
+
+.mypage-selector {
+	color: red;
+	font-weight: 700;
+}
+
+.profile-common-button {
+	background-color: white;
+	border-radius: 30px;
+	width: 60px;
+	height: 30px;
+	border-color: #ADADAD;
+}
+
+.profile-span-font {
+	font-weight: 600;
+	font-size: 13px;
+	line-height: 18px;
+	color: #999999;
+}
+
+.mypage-user-h3 {
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.profile-user-password-input {
+	border-width: 0 0 1px;
+	width: 33%;
+	outline: none;
+	margin-top: 15px;
+	font-size: 15px;
+}
+
+#profile-password-send-btn {
+	width: 70px;
+    height: 35px;
+    margin-left: 10px;
+    background: #c9c9ca;
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.mypage-margin-top {
+	margin-top: 15px;
+}
+
+#mypage-user-pw-form {
+	margin-bottom: 5%;
+}
+
+#mypage-user-signout-guide-div {
+	width: 90%;
+	padding: 20px 0px 20px 0px;
+    font-weight: 600;
+    color: #999999;
+    font-size: 20px;
+    border: 1.5px solid #999999;
+    border-radius: 15px;
+}
+
+#mypage-user-signout-guide-div > p {
+	margin-left: 20px;
+}
+
+#mypage-user-signout-guide-div > p > strong {
+	color: red;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+#mypage-member-delete-form {
+	width: 90%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#mypage-member-delete-send-btn {
+	font-size: 15px;
+    font-weight: 800;
+    margin-top: 15px;
+    color: white;
+    background-color: red;
+    border: none;
+    width: 12%;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.password-change-errors-words {
+    font-size: 10px;
+    margin-top: 5px;
+    color: red;
+    font-weight: 700;
+}

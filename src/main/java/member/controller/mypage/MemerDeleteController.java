@@ -12,24 +12,21 @@ import common.SessionUtil;
 import member.dto.response.MemberResponse;
 import member.service.MyPageService;
 
-@WebServlet(urlPatterns = "/mypage/profile-intro")
-public class ProfileIntroController extends HttpServlet {
-
-	private final MyPageService myPageService = new MyPageService();
+@WebServlet(urlPatterns = "/mypage/user-delete")
+public class MemerDeleteController extends HttpServlet {
 	
+	private final MyPageService myPageService = new MyPageService();
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String intro = request.getParameter("intro");
-		
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);
 		
-		if(!myPageService.updateIntro(loginMember, intro)) {
-			response.sendError(response.SC_INTERNAL_SERVER_ERROR, "소개글 작성에 문제가 발생했습니다.");
-		}
+		myPageService.removeMember(loginMember.getMemberId());
 		
-		loginMember.setIntro(intro);
-		
-		response.sendRedirect(request.getContextPath() + "/mypage/profile");
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath() + "/main");
 	}
 
+	
+	
 }
