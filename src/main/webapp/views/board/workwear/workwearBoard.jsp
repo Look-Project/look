@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<%@ page import="java.util.List" %>
 <%@ page import="board.workwear.dto.response.WorkwearBoardResponse" %>
 <%@ page import="board.workwear.dto.response.CommentResponse" %>
 
@@ -32,18 +33,15 @@
 
                     <p class="seconddetail">
                     	<%=wbr.getContents() %>
-<%List<CommentResponse> list = (List<CommentResponse>)request.getAttribute("commentlist"); %>
                     <p class="reviewnav">리뷰</p>
+ <%List<CommentResponse> list = (List<CommentResponse>)request.getAttribute("commentlist"); %>
                     <div class="Allcomment"> <!--모든 댓글 내용을 담아내는 div 태그-->
-                        <div class="comment"> <!-- comment class는 각각 하나의 댓글을 담아냄 -->
-                            <%
-								//for 반복문으로 div에 태그 추가
-								for(CommentResponse dto : list){
-								//out.println("dto " + dto);
-							%>
+                            <%for(CommentResponse dto : list){%>
+					<div class="comment"> <!-- comment class는 각각 하나의 댓글을 담아냄 -->
 							<span class="id"><%=dto.getNickname()%></span>
                             <span class="ment"><%=dto.getContents()%></span>
                         </div>
+                    <%}%>
                     </div>
                     <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment">
                     <button class="reviewbutton">작성</button>

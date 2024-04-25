@@ -1,5 +1,7 @@
 package board.workwear.dto.response;
 
+import java.util.List;
+
 public class CommentResponse {
     private String nickname;
     private String comment;
