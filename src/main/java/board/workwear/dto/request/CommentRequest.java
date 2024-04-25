@@ -1,23 +1,28 @@
 package board.workwear.dto.request;
 
 public class CommentRequest {
-    private String nickname;
+	
+	private int boardId;
+    private int memberId;
     private String comment;
-
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getContents() {
-        return comment;
-    }
-
-    public void setContents(String contents) {
-        this.comment = contents;
-    }
+    
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+	public int getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+    
 }

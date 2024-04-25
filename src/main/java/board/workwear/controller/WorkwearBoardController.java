@@ -22,7 +22,7 @@ public class WorkwearBoardController extends HttpServlet{
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			int boardId = Integer.parseInt(request.getParameter("boardId").trim());
 			request.setAttribute("boarddetail", wbs.getDetailBoard(boardId));
-			request.setAttribute("commentlist", cbs.getAllComment(boardId));
+			request.setAttribute("commentlist", cbs.getAllComments(boardId));
 			request.getRequestDispatcher(WORKWEAR_BOARD).forward(request, response);
 		}
 

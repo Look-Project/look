@@ -1,43 +1,21 @@
 package board.workwear.dto.response;
 
-import java.util.List;
-
 public class CommentResponse {
-    private String nickname;
+
+    private String nickName;
     private String comment;
-    private int commentId;
-    
-    
-    public CommentResponse() {
-    }
 
-    public CommentResponse(String nickname, String contents, int commentId) {
-        this.nickname = nickname;
-        this.comment = contents;
-        this.commentId = commentId;
-        
-    }
-    
-    
-	public int getCommentId() {
-		return commentId;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setCommentId(int commentId) {
-		this.commentId = commentId;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getContents() {
-        return comment;
-    }
-
-    public void setContents(String contents) {
-        this.comment = contents;
-    }
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+    
 }
