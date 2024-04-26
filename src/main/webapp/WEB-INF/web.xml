@@ -9,7 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+  <context-param>
+	<param-name>POSTS_PER_PAGE</param-name>
+	<param-value>10</param-value>
+	</context-param>
+	<context-param>
+	<param-name>PAGES_PER_BLOCK</param-name>
+	<param-value>5</param-value>
+</context-param>
   <resource-ref>
 		<description>connection</description>
 		<res-ref-name>jdbc/pool</res-ref-name>

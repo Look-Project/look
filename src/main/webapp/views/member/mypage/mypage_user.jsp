@@ -29,6 +29,16 @@
 						<a class="mypage-non-selector" href="/"><p class="profile-selector-box-main-menu">내 댓글</p></a>
 					</div>
 				</div>
+				<c:if test="${not empty sessionScope.LOGIN_USER and sessionScope.LOGIN_USER.adminYn eq 'Y'}">
+				<div class="profile-selector-box">
+					<div>
+						<h2>관리자 모드</h2>
+					</div>
+					<div class="profile-selector-box-main">
+						<a class="mypage-non-selector" href="<%=request.getContextPath() %>/mypage/admin-member"><p>회원 관리</p></a>
+					</div>
+				</div>
+    			</c:if>
 			</div>
 			<div id="profile-contents-right">
 				<form id="mypage-user-pw-form">
