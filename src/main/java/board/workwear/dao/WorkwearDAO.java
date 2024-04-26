@@ -3,13 +3,17 @@ package board.workwear.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.freecycling.dto.request.FreeEditDTO;
 import board.vintage.dto.response.VintageBoardResponse;
+import board.workwear.dto.request.WorkwearEditRequest;
 import board.workwear.dto.request.WorkwearWriteRequest;
 import board.workwear.dto.response.WorkwearBoardResponse;
 import board.workwear.dto.response.WorkwearResponse;
+import board.workwear.service.WorkwearService;
 import common.DBConnectionUtil;
 import common.SessionUtil;
 
@@ -153,7 +157,73 @@ public class WorkwearDAO {
 		}
 		return wbr;
 	}
+	
+	//FreeEditCon 게시글 수정 
+	  public int updateBoard(WorkwearEditRequest ws) {
+		  con = DBConnectionUtil.getConnection();
+			int res = 0;			
+			String w = "W";
+			
+			try {
+				//text 타입 게시글 insert
+		         String boardText = "update board SET title = ?, contents = ? WHERE board_id = ?";
+		         pstmt = con.prepareStatement(boardText);
+		         
+		         //값을 매핑하기
+		         pstmt.setString(1, ws.getTitle());
+		         pstmt.setString(2, ws.getContents());
+		         pstmt.setInt(3, ws.getBoardId());
+		         
+		         res = pstmt.executeUpdate();
+		         
+		        
+		         //이미지 파일 insert
+		         String boardImg = "update board_img set img_src = ?, img_name= ? WHERE board_id = ?";
+		         pstmt = con.prepareStatement(boardImg);
+		         
+		         //값을 매핑하기
+		         pstmt.setString(1, ws.getImgSrc());
+		         pstmt.setString(2, ws.getImgName());
+		         pstmt.setInt(3, ws.getBoardId());
+		         
+		         res = pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("데이터 삽입 시 에러발생");
+				e.printStackTrace();
+			} finally {
+				DBConnectionUtil.close(con, pstmt, rs);
+			}
+			return res;
+	 
+}
 
+//FreeDeleteCon 게시글 삭제 
+	  public int deleteBoard(int num) throws SQLException {
+		  con = DBConnectionUtil.getConnection();
+		  int res = 0;
+		  
+		  try {
+				//text 타입 게시글 insert
+		         String sql = "update board SET delete_yn = 'Y' WHERE category = 'W' and board_id = ? ";
+		         pstmt = con.prepareStatement(sql);
+		         
+		         //값을 매핑하기
+		         
+		         pstmt.setInt(1, num);
+		         
+		         res = pstmt.executeUpdate();
+		         
+		       
+			} catch (Exception e) {
+				System.out.println("데이터 삭제 시 에러발생");
+				e.printStackTrace();
+			} finally {
+				DBConnectionUtil.close(con, pstmt, rs);
+			}
+			return res;
+	 
+	  }
+	
 }
 
 
