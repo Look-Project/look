@@ -53,10 +53,10 @@ board.vintage.controller.VintageBoardController" %>
 				if (session.getAttribute("LOGIN_USER") != null) {
 			    if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
 				%>
-					<form action="<%=request.getContextPath() %>/vintage/comment/delete" method="post">
-					<input type="button" value="삭제"/>
+				
+					<input type="button" value="삭제" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'"/>
 					</br>
-					</form>
+					
 			      <%  // 실행할 내용
 			    }
 			}
