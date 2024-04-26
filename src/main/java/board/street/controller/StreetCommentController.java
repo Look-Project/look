@@ -1,4 +1,4 @@
-package board.workwear.controller;
+package board.street.controller;
 
 import java.io.IOException;
 
@@ -8,22 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.street.dto.request.StreetCommentRequest;
+import board.street.service.StreetBoardService;
+import board.street.service.StreetCommentService;
 import board.vintage.service.VintageBoardService;
-import board.workwear.dto.request.CommentRequest;
-import board.workwear.service.CommentService;
-import board.workwear.service.WorkwearService;
 import comment.vintage.dto.request.VintageCommentRequest;
 import comment.vintage.service.VintageCommentService;
 import common.SessionUtil;
 
-@WebServlet(urlPatterns = "/workwear/comment")
-public class CommentController extends HttpServlet{
+@WebServlet(urlPatterns = "/street/comment")
+public class StreetCommentController extends HttpServlet{
 
 	private final String LOGIN = "/views/member/login.jsp";
-	private final String WORKWEAR_BOARD = "/workwear/detail";
+	private final String STREET_BOARD = "/street/detail";
 	
-	CommentService cs = new CommentService();
-	WorkwearService ws = new WorkwearService();
+	StreetCommentService scs = new StreetCommentService();
+	StreetBoardService sbs = new StreetBoardService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,16 +32,16 @@ public class CommentController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CommentRequest cr = new CommentRequest();
+		StreetCommentRequest scr = new StreetCommentRequest();
 		int boardId = Integer.parseInt(request.getParameter("boardId").trim());
 		
 		if(SessionUtil.getSessionMember(request) != null) {
-			cr.setBoardId(boardId);
-			cr.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
-			cr.setComment(request.getParameter("comment"));
-			cs.addComment(cr);
-			request.setAttribute("boardlist", ws.getAllBoard());
-			response.sendRedirect(request.getContextPath() + WORKWEAR_BOARD + "?boardId=" + boardId);
+			scr.setBoardId(boardId);
+			scr.setMemberId(SessionUtil.getSessionMember(request).getMemberId());
+			scr.setComment(request.getParameter("comment"));
+			scs.addComment(scr);
+			request.setAttribute("boardlist", sbs.getAllBoard());
+			response.sendRedirect(request.getContextPath() + STREET_BOARD + "?boardId=" + boardId);
 		}else {
 			request.getRequestDispatcher(LOGIN).forward(request, response);	
 		}

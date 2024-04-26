@@ -28,7 +28,7 @@
 				    </c:otherwise>
 				</c:choose>
                 
-                <div><a href="" class="tMenu">마이페이지</a></div>
+                <div><a href="<%= request.getContextPath()%>/mypage/profile" class="tMenu">마이페이지</a></div>
               </div>
               <!-- 로고 + 영역 -->
               <div class="logo_board">

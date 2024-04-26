@@ -1,6 +1,8 @@
-package board.workwear.dto.response;
+package board.street.dto.response;
 
-public class CommentResponse {
+import java.sql.Date;
+
+public class StreetCommentResponse {
 
     private String nickName;
     private String comment;
@@ -17,5 +19,5 @@ public class CommentResponse {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-    
 }
+    

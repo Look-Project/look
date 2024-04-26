@@ -1,22 +1,24 @@
 package board.workwear.service;
 
 import java.util.List;
+
 import board.workwear.dao.CommentDAO;
-import board.workwear.dao.WorkwearDAO;
 import board.workwear.dto.request.CommentRequest;
-import board.workwear.dto.request.WorkwearWriteRequest;
 import board.workwear.dto.response.CommentResponse;
-import board.workwear.dto.response.WorkwearResponse;
 
 public class CommentService {
 
-	CommentDAO cdao = new CommentDAO();
-	
-	public void post(CommentRequest cr){
-		cdao.insertComment(cr);
-	}
-	public List<CommentResponse> getAllComment(int boardId) {
-		return cdao.getAllComment(boardId);
-	}
-	
+    private CommentDAO cDAO;
+
+    public CommentService() {
+        this.cDAO = new CommentDAO();
+    }
+
+    public void addComment(CommentRequest cr) {
+        cDAO.addComment(cr);
+    }
+    
+    public List<CommentResponse> getAllComments(int boardId) {
+        return cDAO.getAllComments(boardId);
+    }
 }
