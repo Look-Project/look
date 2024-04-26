@@ -17,7 +17,7 @@ import board.street.service.StreetBoardService;
 @WebServlet(urlPatterns = "/street/boardlist")
 public class StreetBoardListController extends HttpServlet{
 
-   private final String STREET_BOARD_LIST = "/views/street/board/streetboardlist.jsp";
+   private final String STREET_BOARD_LIST = "/views/board/street/street.jsp";
    StreetBoardService sbs = new StreetBoardService();
    
    @Override
