@@ -36,6 +36,16 @@
 	margin-top: 5px;
 }
 
+.mypage-non-selector {
+	text-decoration: none;
+	color: #999999;
+}
+
+.mypage-selector {
+	color: red;
+	font-weight: 700;
+}
+
 #profile-user-image-div {
 	display: flex;
 	height: 300px;
@@ -208,12 +218,13 @@ tr{
 
 /* 검색창이 들어갈 영역 */
 .searchbar{
-	width:50%;
 	display:flex;
-	justify-content: flex-start;
-    height : 40px;
-    flex-wrap: wrap;
-    align-content: center;
+    height: 40px;
+    margin-top: 30px;
+}
+
+.searchbar > form {
+	display: flex;
 }
 
 .searchbar .bar{
