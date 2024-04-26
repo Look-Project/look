@@ -1,14 +1,22 @@
 package board.vintage.dto.response;
 
 public class VintageBoardResponse {
+	private int memberId;
 	private String nickname;
+	
 	private String title;
 	private String contents;
 	private String imgSrc;
 	private String imgName;
+	
 	private int boardId;
 	
-	
+	public int getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
 	public int getBoardId() {
 		return boardId;
 	}
