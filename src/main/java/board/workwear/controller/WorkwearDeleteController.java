@@ -19,7 +19,7 @@ public class WorkwearDeleteController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 삭제할 게시물의 번호(boardID)를 받아서
-        String boardIdParam = request.getParameter("boardId");
+        String boardIdParam = request.getParameter("num");
         int boardId = 0;
         if (boardIdParam != null && !boardIdParam.isEmpty()) {
             boardId = Integer.parseInt(boardIdParam);

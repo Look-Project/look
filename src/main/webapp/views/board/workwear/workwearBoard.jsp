@@ -23,10 +23,9 @@
                 <img src="<%=wbr.getImgSrc() %>/<%=wbr.getImgName() %>"  
                 		alt="">
                 	<c:if test="${authMember}">
-		 				<input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/WorkwearEditController?num=${viewdto.boardId }'">
-		 				<input type="button" value="삭제하기" onclick="location.href='<%=request.getContextPath() %>/controller/WorkwearDeleteController?num=${viewdto.boardId }'">
+		 				<input type="button" value="수정하기" onclick="location.href='<%=request.getContextPath() %>/controller/WorkwearEditController?num=<%=wbr.getBoardId() %>'">
+		 				<input type="button" value="삭제하기" onclick="location.href='<%=request.getContextPath() %>/controller/WorkwearDeleteController?num=<%=wbr.getBoardId() %>'">
 					</c:if>
-		 				<input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/workwear/boardlist'">		
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
