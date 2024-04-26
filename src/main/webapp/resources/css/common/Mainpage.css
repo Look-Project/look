@@ -10,7 +10,9 @@
   .top_base{
   top:0px;
   height: 100%;
-  width : 1440px;
+  min-width: 1200px;
+  width : 1200px;
+  padding: 0 40px;
   display: flex;
   margin-bottom: 5px;
   flex-wrap: wrap;
@@ -207,6 +209,23 @@
   animation-name: fade;
   animation-duration: 1.5s;
 }
+#headformal{
+  width:80px;
+}
+#headstreet{
+  width:70px;
+}
+
+#headwork{
+  width:118px;
+}
+#headvintage{
+  width:90px;
+}
+#headfree{
+  width:130px;
+}
+
 
 @keyframes fade {
   from {opacity: .4} 

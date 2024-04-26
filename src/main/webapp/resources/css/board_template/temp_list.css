@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/* 내용이 들어갈 큰영역 */
+.contents{
+  
+    width: 1200px;
+    padding : 0 40px;
+}
+.contents_body{
+  
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin : 0.2% 0;
+}
+
+/* 정렬 들어갈영역 */
+.board_sort{
+    top:0px;
+    height: 20px;
+    width : 100%;
+    display: flex;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.board_sort .sortbtn{
+    margin : 0 3px;
+}
+/* 게시글 전체 들어갈 영역 */
+.board_post{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    width : 100%;
+    /* background-color: darkgray; */
+}
+/* 게시글 1개 들어갈 영역 */
+.board_post .post{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    /* background-color: bisque; */
+    width : 285px;
+    height : 368px;
+    padding-top:  40px;
+    /* 영역 구분용 색상 */
+    /* border : 2px solid blueviolet; */
+}
+/* 게시글 이미지 영역 */
+.board_post .post .boardimg{
+    background-color:hotpink;
+    width:100%;
+    height:284px;
+    border-radius: 5px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+/* 이미지 태그 영역 */
+.board_post .post .boardimg .img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+/* 게시글 작성자 + 프로필사진 + 글제목영역 */
+.board_post .post .profile{
+    display: flex;
+    flex-wrap: nowrap;
+    /* background-color: aqua; */
+    width:100%;
+    height:82px;
+}
+ /* 게시글 프로필사진 영역 */
+.board_post .post .profile .pro_img{
+    /* background-color: brown; */
+    width:26px;
+    height:26px;
+    border-radius: 50%;
+} 
+.board_post .post .profile .pro_img .proimg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 50%;
+} 
+
+
+/*  게시글 프로필 + 글제목 영역 */
+.board_post .post .profile .pro_textbox{
+    /* background-color: blueviolet; */
+    align-items: center;
+    width:100%;
+    height:100%;
+    margin-top : 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* 게시글 프로필영역 */
+.board_post .post .profile .pro_textbox .pro1{
+    /* background-color: orange; */
+    width:254px;
+    height:18px;
+    font-size:15px;
+    padding-left: 5px;
+}
+/* 게시글 글제목 영역 */
+.board_post .post .profile .pro_textbox .text1{
+    /* background-color: rosybrown; */
+    width:100%;
+    height:62%;
+}
+/* 목록번호 + 글작성 버튼영역 */
+.board_bottom{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+}
+/* 목록번호 들어갈 영역 */
+.board_bottom .board_num{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0.5;
+}
+/* 목록번호 실사용 영역 */
+.board_num .num{
+    margin : 10px 2%;
+}
+
+/* 글작성 버튼 영역 */
+.board_writebtn{
+    width : 20%;
+}
+/* 글작성 버튼 모양 */
+.board_writebtn .btn{}
+

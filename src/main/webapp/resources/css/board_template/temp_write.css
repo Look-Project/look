@@ -1,0 +1,59 @@
+@charset "UTF-8";
+* {
+  	box-sizing: border-box;
+}
+
+input[type=text], textarea {
+ 	width: 100%;
+  	padding: 12px;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	resize: vertical;
+}
+
+label {
+  	padding: 12px 12px 12px 0;
+  	display: inline-block;
+}
+
+input[type=submit] {
+  	background-color: #676161;
+  	color: white;
+  	padding: 12px 20px;
+  	border: none;
+  	border-radius: 4px;
+  	cursor: pointer;
+  	float: right;
+}
+/* 글작성버튼 마우스오버 */
+input[type=submit]:hover {
+  	background-color: #BDB9B9;
+}
+/* 메인 컨텐츠 영역 */
+.vwrite-container {
+	width:100%;
+	display:flex;
+	justify-content:center;
+  	border-radius: 5px;
+  	padding: 20px;
+}
+/* 영역별 타이틀 공간 */
+.col-25 {
+  	width: 100%;
+  	margin-top: 6px;
+}
+/* 영역별 내용 작성 */
+.col-75 {
+  	width: 100%;
+  	margin-top: 6px;
+}
+/* 작성버튼 */
+.submit{
+	width:50%;
+    margin : 0 10%;
+}
+/* 이건뭐지 */
+#myFile{
+  	cursor: pointer;
+  	width: 100%;
+}

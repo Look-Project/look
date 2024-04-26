@@ -1,0 +1,159 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
+    <!-- <%@ include file="./common.jsp"%> -->
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/common/Mainpage.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/board_template/temp_list.css">
+    </head>
+    <body>
+      <!-- 상단메뉴 영역 -->
+      <div class="top_body">
+        <div class="top_base">
+          <!-- 마이메뉴 영역 -->
+          <div class="personal_menu">
+            <div><a href="" class="tMenu">고객센터</a></div>
+            <c:choose>
+                <c:when test="${empty sessionScope.LOGIN_USER}">
+                    <!-- 세션이 없는 경우 로그인 링크를 표시 -->
+                    <div><a href="<%= request.getContextPath() %>/member/login" class="tMenu">로그인</a></div>
+                </c:when>
+                <c:otherwise>
+                    <!-- 세션이 있는 경우 로그아웃 링크를 표시 -->
+                    <!-- <div><a href="<%= request.getContextPath() %>/member/logout" class="tMenu">로그아웃</a></div> -->
+                </c:otherwise>
+            </c:choose>
+            
+            <div><a href="" class="tMenu">마이페이지</a></div>
+          </div>
+          <!-- 로고 + 영역 -->
+          <div class="logo_board">
+            <a href="<%= request.getContextPath()%>/main"><img class="logo" src="../../../resources/image/common/Logo.png" id="login-contents-logo"></a>
+            <div style="width: 80px;"><a href="<%= request.getContextPath() %>/views/board/formal/formal_list.jsp" class="bMenu">Formal</a></div>
+            <div style="width: 70px;"><a href="<%= request.getContextPath() %>/views/board_street/street.jsp" class="bMenu">Street</a></div>
+            <div style="width: 118px;"><a href="<%= request.getContextPath() %>/workwear/boardlist" class="bMenu">Workwear</a></div>
+            <div style="width: 90px;"><a href="<%= request.getContextPath() %>/vintage/boardlist" class="bMenu">Vintage</a></div>
+            <div style="width: 130px;"><a href="<%= request.getContextPath()%>/controller/freecyclingListCon" class="bMenu">Freecycling</a></div>      
+            </div>
+          </div>	 
+          <!-- 게시판 이미지로 작성할 때 사용될것 -->
+          <!-- <div class="logo_board">
+            <img class="logo" src="../../resources/image/common/Logo.png" />
+            <img class="boardselect"   src="../../resources/image/common/Formal_T.jpg" alt="Formal">
+            <img class="boardselect"   src="../../resources/image/common/Street_T.jpg" alt="Street">
+            <img class="boardselect"  src="../../resources/image/common/Workwear_T.jpg" alt="Workwear">
+            <img class="boardselect"  src="../../resources/image/common/Vintage_T.jpg" alt="Activewear">
+            <img class="boardselect"  src="../../resources/image/common/Free_T.jpg" alt="Freecycling">
+          </div>  -->
+        </div>
+      </div>
+      <!-- -------------------------------------------------------------------------------------------------------------- -->
+	
+    <!-- 메인 컨텐츠 -->
+    <div class="contents_body">
+        <div class="contents">
+            <!-- 정렬 영역(미구현) -->
+            <!-- <div class="board_sort">
+                <div class="sortbtn"></div>
+                <div class="sortbtn"></div>
+                <div class="sortbtn"></div>
+            </div> -->
+
+            <!-- 게시글 영역 -->
+            <div class="board_post">
+                <!-- 게시글 1개 영역 -->
+                <div class="post">
+                    <!-- 게시글 미리보기 이미지 영역 -->
+                    <div class="boardimg">
+                        <img class="img" src="../../../resources/image/board/vintage/vintage2.jpg">
+                    </div>
+                    <!-- 게시글 내용 부분 -->
+                    <div class="profile">
+                        <!-- 프로필 + 게시글 제목 + 작성자 영역 -->
+                        <div class="pro_textbox">
+                            <!-- 프로필 이미지 + 작성자 영역 -->
+                            <div class="pro_img">
+                                <img class="proimg" src="../../../resources/image/common/profile_test.webp">
+                            </div>
+                            <!-- 작성자 닉네임 영역 -->
+                            <div class="pro1">여기가 내가 묻힐 자리인가</div>
+                            <!-- 게시글 제목 영역 -->
+                            <div class="text1">#Freedom #자유 #해방<br>우리는 여기있다</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 게시글 1개 영역 -->
+                <div class="post">
+                    <!-- 게시글 미리보기 이미지 영역 -->
+                    <div class="boardimg">
+                        <img class="img" src="../../../resources/image/board/vintage/vintage4.jpg">
+                    </div>
+                    <!-- 게시글 내용 부분 -->
+                    <div class="profile">
+                        <!-- 프로필 + 게시글 제목 + 작성자 영역 -->
+                        <div class="pro_textbox">
+                            <!-- 프로필 이미지 + 작성자 영역 -->
+                            <div class="pro_img">
+                                <img class="proimg" src="../../../resources/image/common/profile_test2.webp">
+                            </div>
+                            <!-- 작성자 닉네임 영역 -->
+                            <div class="pro1">메밀꽃 필무렵</div>
+                            <!-- 게시글 제목 영역 -->
+                            <div class="text1">#장돌뱅이 #허생원<br>애시당초 글러서</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 게시글 10개 보충용 자바스크립트 -->
+                <script>
+                  // 게시글을 추가할 클래스 선택
+                  const postContainer = document.querySelector('.board_post');
+          
+                  // HTM 생성
+                  function createPost(imageNumber) {
+                      return `
+                          <div class="post">
+                              <div class="boardimg">
+                                <!--이미지 생성 영역, 경로확인필요-->
+                                  <img class="img" src="../../../resources/image/board/vintage/vintage${imageNumber}.jpg">
+                              </div>
+                              <div class="profile">
+                                  <div class="pro_textbox">
+                                      <div class="pro_img">
+                                        <!--프로필 사진 들어가는 부분-->
+                                          <img class="proimg" src="../../../resources/image/common/profile_test.webp">
+                                      </div>
+                                      <div class="pro1">작성자 닉네임</div>
+                                      <div class="text1">#Freedom #자유 #해방<br>우리는 여기있다</div>
+                                  </div>
+                              </div>
+                          </div>
+                      `;
+                  }
+          
+                  // 반복 
+                  for (let i = 3; i <= 12; i++) {
+                      const postHTML = createPost(i);
+                      postContainer.innerHTML += postHTML;
+                  }
+              </script>
+            </div>
+
+            <!-- 목록 번호 + 글작성 영역 -->
+            <div class="board_bottom">
+                <div class="board_num">
+                    <div class="num">◀</div>
+                    <div class="num">1</div>
+                    <div class="num">2</div>
+                    <div class="num">3</div>
+                    <div class="num">4</div>
+                    <div class="num">5</div>
+                    <div class="num">▶</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
