@@ -2,7 +2,6 @@ package board.vintage.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,8 +42,7 @@ public class VintageBoardController extends HttpServlet{
 				  request.setAttribute("authMember",false); 
 			  } 
 		  }
-		 
-	 
+		  
 		//메인으로 보내주기
 		request.getRequestDispatcher(VINTAGE_BOARD).forward(request, response);
 

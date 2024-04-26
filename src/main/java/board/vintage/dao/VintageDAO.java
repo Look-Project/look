@@ -190,6 +190,7 @@ public class VintageDAO {
 		return res;
 	}
 	
+	//게시글 삭제 메서드
 	public int setDeleteBoard(int boardId) {
 		con = DBConnectionUtil.getConnection();
 		System.out.println("DAO boardId = " + boardId);

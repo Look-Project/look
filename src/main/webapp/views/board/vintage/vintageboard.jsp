@@ -1,3 +1,4 @@
+<%@page import="member.dto.response.MemberResponse"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, 
@@ -48,15 +49,24 @@ board.vintage.controller.VintageBoardController" %>
 %><!-- comment class는 각각 하나의 댓글을 담아냄 -->
 				<span class="nickname"><%=dto.getNickName() %></span>
 				<span class="comment_text"><%=dto.getComment() %></span>
-				<button class="deletebutton">삭제</button>
-				<a href="#" class="commentheart"><i class="far fa-heart"></i></a>
-				</br>
+				<%
+				if (session.getAttribute("LOGIN_USER") != null) {
+			    if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
+				%>
+				
+					<input type="button" value="삭제" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'"/>
+					</br>
+					
+			      <%  // 실행할 내용
+			    }
+			}
+				%>
 <%
 }
 %>
 			</div>
 		</div>
-		<form action="<%=request.getContextPath() %>/vintage/comment" method = "post" class="submit">
+		<form action="<%=request.getContextPath() %>/vintage/comment/write" method = "post" class="submit">
 			<div class="input_container">
 				<input type="hidden" name="boardId" value="<%=vbr.getBoardId() %>"></input>
 				<input type="hidden" name="nickName" value="<%=vbr.getNickname() %>"></input>

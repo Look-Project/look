@@ -1,42 +1,39 @@
-package board.vintage.controller;
+package comment.vintage.controller;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.vintage.service.VintageBoardService;
+import comment.vintage.service.VintageCommentService;
 import common.SessionUtil;
 import member.dto.response.MemberResponse;
 
-@MultipartConfig
-@WebServlet("/controller/delete")
-public class VBoardDeleteController extends HttpServlet {
+@WebServlet(urlPatterns = "/vintage/comment/delete")
+public class VCommentDeleteController extends HttpServlet {
 	
-	private final String VINTAGE_BOARD_LIST = "/vintage/boardlist";
-	
+	private final String VINTAGE_BOARD = "/vintage/detail";
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);// session for user info
-		VintageBoardService vbs = new VintageBoardService();
+		VintageCommentService vcs = new VintageCommentService();
 		
+		int commentId =Integer.parseInt(request.getParameter("commentId"));
 		int boardId =Integer.parseInt(request.getParameter("boardId"));
-		vbs.setDeleteBoard(boardId);
-		//System.out.println("컨트롤러 boardId = " + boardId);
 		
-		response.sendRedirect(request.getContextPath() + VINTAGE_BOARD_LIST);
+		vcs.setDeleteComment(commentId);
 		
+		response.sendRedirect(request.getContextPath() + VINTAGE_BOARD + "?boardId=" + boardId);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 	
-
 }
