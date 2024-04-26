@@ -5,7 +5,6 @@
     <head>
     <meta charset="UTF-8">
     <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
-    <!-- <%@ include file="./common.jsp"%> -->
     <%@ include file="/views/common/header_v2.jsp"%>	
 	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/board_template/temp_read.css">
     </head>
@@ -16,7 +15,7 @@
   <div class="container">
     <!--왼쪽, 업로드 이미지 표현 구역-->
     <div class="left_contents">
-      <img class="board_img" src="../../../resources/image/board/workwear/03.jpg" alt="">
+      <img class="board_img" src="<%= request.getContextPath() %>/resources/image/board/workwear/03.jpg" alt="">
     </div>
   
   <!--우측 게시글 + 댓글 보이는 구역-->
@@ -30,7 +29,7 @@
       
       <!-- 글 내용 담기는곳 -->
       <div class="board_content">
-        <p >여기에 글이 들어가는거 같은데요?? <!-- <%=wbr.getContents() %> --></p>                 
+        <p >여기에 글이 들어가는거 같은데요??<%--  <!-- <%=wbr.getContents() %> --> --%></p>                 
       </div>
       <!-- ----------------------------------- -->
       
@@ -39,77 +38,27 @@
         <p>리뷰</p>
       </div>
       <!-- ----------------------------------- -->
-      <!-- <%List<CommentResponse> list = (List<CommentResponse>)request.getAttribute("commentlist"); %> -->
+     <%--  <!-- <%List<CommentResponse> list = (List<CommentResponse>)request.getAttribute("commentlist"); %> --> --%>
         <!--모든 댓글 내용을 담아내는 div 태그-->
         <div class="Allcomment"> 
-          <!--    <%for(CommentResponse dto : list){%>-->
+       <%--    <!--    <%for(CommentResponse dto : list){%>--> --%>
           <!-- comment class는 각각 하나의 댓글을 담아냄 -->
 
           <!-- 댓글 달리는 구역 -->
           <div class="commentarea"> 
             <!-- 댓글 1개 달리는 구역 -->
             <div class="comment">
-              <span class="id">김헌종<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">댓글내용<!--<%=dto.getContents()%>--></span>
+              <span class="id">김헌종<%-- <!--<%=dto.getNickname()%>--> --%></span>
+              <span class="ment">댓글내용<%-- <!--<%=dto.getContents()%>--> --%></span>
               <button class="button_del">삭제</button>   
             </div>
             <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현임성현임성현임성현임성현임성현임성현임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
-              <button class="button_del">삭제</button>   
-            </div>
-            <div class="comment">
-              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
-              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <span class="id">임성현<%-- <!--<%=dto.getNickname()%>--> --%></span>
+              <span class="ment">성현아 사랑해<%-- <!--<%=dto.getContents()%>--> --%></span>
               <button class="button_del">삭제</button>   
             </div>
           </div>
-          <!-- <%}%> -->
+        <%--   <!-- <%}%> --> --%>
         <!-- 리뷰 작성 + 작성완료 버튼 -->
           <div class="writer_review">
             <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment">

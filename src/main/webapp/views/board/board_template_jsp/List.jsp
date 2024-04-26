@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
    	<%@ include file="/views/common/header_v2.jsp"%>	
-	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/board_template/temp_list.css">
+	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_list.css">
     </head>
     <body>
     <!-- 메인 컨텐츠 -->
@@ -24,7 +24,7 @@
                 <div class="post">
                     <!-- 게시글 미리보기 이미지 영역 -->
                     <div class="boardimg">
-                        <img class="img" src="../../../resources/image/board/vintage/vintage2.jpg">
+                        <img class="img" src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage2.jpg">
                     </div>
                     <!-- 게시글 내용 부분 -->
                     <div class="profile">
@@ -32,7 +32,7 @@
                         <div class="pro_textbox">
                             <!-- 프로필 이미지 + 작성자 영역 -->
                             <div class="pro_img">
-                                <img class="proimg" src="../../../resources/image/common/profile_test.webp">
+                                <img class="proimg" src="<%= request.getContextPath() %>/resources/image/common/profile_test.webp">
                             </div>
                             <!-- 작성자 닉네임 영역 -->
                             <div class="pro1">여기가 내가 묻힐 자리인가</div>
@@ -45,7 +45,7 @@
                 <div class="post">
                     <!-- 게시글 미리보기 이미지 영역 -->
                     <div class="boardimg">
-                        <img class="img" src="../../../resources/image/board/vintage/vintage4.jpg">
+                        <img class="img" src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage4.jpg">
                     </div>
                     <!-- 게시글 내용 부분 -->
                     <div class="profile">
@@ -53,7 +53,7 @@
                         <div class="pro_textbox">
                             <!-- 프로필 이미지 + 작성자 영역 -->
                             <div class="pro_img">
-                                <img class="proimg" src="../../../resources/image/common/profile_test2.webp">
+                                <img class="proimg" src="<%= request.getContextPath() %>/resources/image/common/profile_test2.webp">
                             </div>
                             <!-- 작성자 닉네임 영역 -->
                             <div class="pro1">메밀꽃 필무렵</div>
@@ -73,13 +73,13 @@
                           <div class="post">
                               <div class="boardimg">
                                 <!--이미지 생성 영역, 경로확인필요-->
-                                  <img class="img" src="../../../resources/image/board/vintage/vintage${imageNumber}.jpg">
+                                  <img class="img" src="<%= request.getContextPath() %>/resources/image/board/vintage/vintage${imageNumber}.jpg">
                               </div>
                               <div class="profile">
                                   <div class="pro_textbox">
                                       <div class="pro_img">
                                         <!--프로필 사진 들어가는 부분-->
-                                          <img class="proimg" src="../../../resources/image/common/profile_test.webp">
+                                          <img class="proimg" src="<%= request.getContextPath() %>/resources/image/common/profile_test.webp">
                                       </div>
                                       <div class="pro1">작성자 닉네임</div>
                                       <div class="text1">#Freedom #자유 #해방<br>우리는 여기있다</div>

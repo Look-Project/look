@@ -92,10 +92,11 @@
   .main_contents{
   
   height: 100%;
-  width : 1440px;
+  width : 1280px;
   display: flex;
   margin: 20px 0;
   flex-wrap: wrap;
+  justify-content: center;
   }
   /* 슬라이드쇼 배너 */
   .mainbanner{
