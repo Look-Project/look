@@ -1,74 +1,98 @@
-package board.workwear.dto.response;
+package board.workwear.dto.request;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class WorkwearBoardResponse {
+public class WorkwearUpdateRequest {
 
-	private String nickname;
-	private String title;
-	private String contents;
 	private String imgSrc;
 	private String imgName;
 	private int boardId;
-	
+	private String title;
+	private String contents;
 	private int views;
 	private Date createAt;
-	private int userId;
+	private String nickname;
+
+
+	public String getImgSrc() {
+		return imgSrc;
+	}
+
+
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
+
+
+	public String getImgName() {
+		return imgName;
+	}
+
+
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+
+	
 	
 	
 	public int getBoardId() {
 		return boardId;
 	}
+
+
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+
+
 	public String getTitle() {
 		return title;
 	}
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 	public String getContents() {
 		return contents;
 	}
+
+
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getImgSrc() {
-		return imgSrc;
-	}
-	public void setImgSrc(String imgSrc) {
-		this.imgSrc = imgSrc;
-	}
-	public String getImgName() {
-		return imgName;
-	}
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
-	}
+
+
 	public int getViews() {
 		return views;
 	}
+
+
 	public void setViews(int views) {
 		this.views = views;
 	}
+
+
 	public Date getCreateAt() {
 		return createAt;
 	}
+
+
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	public int getUserId() {
-		return userId;
+
+
+	public String getNickname() {
+		return nickname;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 }
