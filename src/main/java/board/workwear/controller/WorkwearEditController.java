@@ -131,6 +131,6 @@ public class WorkwearEditController extends HttpServlet {
 
         // DB에 수정 내용 반영
         wws.workwearEditService(wer);
-		response.sendRedirect(request.getContextPath() + "/workwear/detail");
+		response.sendRedirect(request.getContextPath() + "/workwear/detail?boardId=" + boardId);
     }
 }

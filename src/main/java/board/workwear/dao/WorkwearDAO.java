@@ -121,7 +121,7 @@ public class WorkwearDAO {
 		WorkwearBoardResponse wbr = new WorkwearBoardResponse();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT m.NICKNAME, b.BOARD_ID, b.TITLE, m.USER_ID, b.CONTENTS, i.IMG_SRC, i.IMG_NAME "
+		String sql = "SELECT m.NICKNAME, b.BOARD_ID, b.TITLE, b.CONTENTS, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
 				+ "inner join Board_IMG i "
@@ -146,7 +146,6 @@ public class WorkwearDAO {
 				wbr.setContents(rs.getString("CONTENTS"));
 				wbr.setImgSrc(rs.getString("IMG_SRC"));
 				wbr.setImgName(rs.getString("IMG_NAME"));
-				wbr.setBoardId(rs.getInt("USER_ID"));
 				System.out.println(rs.getString("NICKNAME"));
 			}
 			
@@ -159,7 +158,7 @@ public class WorkwearDAO {
 		return wbr;
 	}
 	
-	//FreeEditCon 게시글 수정 
+	//게시글 수정 
 	  public int updateBoard(WorkwearEditRequest ws) {
 		  con = DBConnectionUtil.getConnection();
 			int res = 0;			

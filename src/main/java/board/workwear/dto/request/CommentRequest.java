@@ -5,6 +5,7 @@ public class CommentRequest {
 	private int boardId;
     private int memberId;
     private String comment;
+    private int userId;
     
 	public int getBoardId() {
 		return boardId;
@@ -24,5 +25,10 @@ public class CommentRequest {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-    
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 }

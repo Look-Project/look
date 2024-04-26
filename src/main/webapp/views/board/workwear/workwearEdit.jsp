@@ -54,15 +54,9 @@
 		</td>	
 	</tr>
 	<tr height="80">
-		<td align="center" colspan="3">
-    <input type="file" id="userFile" name="filename" accept="image/*" >
-    </td>
-	</tr>
-	<tr height="80">
 		<td align="center" colspan="4">
 		 <input type="hidden" name="boardId" id="boardId" value="${onecondto.boardId }">
-		 <input type="submit" value="수정하기" >
-		 <input type="button" value="삭제하기" onclick="location.href='BoardDeleteCon.do?num=${bean.num }'">
+		 <input type="submit" value="수정하기">
 		 <input type="button" value="목록보기" onclick="location.href='<%=request.getContextPath() %>/workwear/boardlist'">
 	</tr>
 	
