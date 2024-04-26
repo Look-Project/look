@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
+    <!-- <%@ include file="./common.jsp"%> -->
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/common/Mainpage.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/board_template/temp_read.css">
+    </head>
+    <body>
+      <!-- 상단메뉴 영역 -->
+      <div class="top_body">
+        <div class="top_base">
+          <!-- 마이메뉴 영역 -->
+          <div class="personal_menu">
+            <div><a href="" class="tMenu">고객센터</a></div>
+            <c:choose>
+                <c:when test="${empty sessionScope.LOGIN_USER}">
+                    <!-- 세션이 없는 경우 로그인 링크를 표시 -->
+                    <div><a href="<%= request.getContextPath() %>/member/login" class="tMenu">로그인</a></div>
+                </c:when>
+                <c:otherwise>
+                    <!-- 세션이 있는 경우 로그아웃 링크를 표시 -->
+                    <!-- <div><a href="<%= request.getContextPath() %>/member/logout" class="tMenu">로그아웃</a></div> -->
+                </c:otherwise>
+            </c:choose>
+            
+            <div><a href="" class="tMenu">마이페이지</a></div>
+          </div>
+          <!-- 로고 + 영역 -->
+          <div class="logo_board">
+            <a href="<%= request.getContextPath()%>/main"><img class="logo" src="../../../resources/image/common/Logo.png" id="login-contents-logo"></a>
+            <div style="width: 80px;"><a href="<%= request.getContextPath() %>/views/board/formal/formal_list.jsp" class="bMenu">Formal</a></div>
+            <div style="width: 70px;"><a href="<%= request.getContextPath() %>/views/board_street/street.jsp" class="bMenu">Street</a></div>
+            <div style="width: 118px;"><a href="<%= request.getContextPath() %>/workwear/boardlist" class="bMenu">Workwear</a></div>
+            <div style="width: 90px;"><a href="<%= request.getContextPath() %>/vintage/boardlist" class="bMenu">Vintage</a></div>
+            <div style="width: 130px;"><a href="<%= request.getContextPath()%>/controller/freecyclingListCon" class="bMenu">Freecycling</a></div>      
+            </div>
+          </div>	 
+          <!-- 게시판 이미지로 작성할 때 사용될것 -->
+          <!-- <div class="logo_board">
+            <img class="logo" src="../../resources/image/common/Logo.png" />
+            <img class="boardselect"   src="../../resources/image/common/Formal_T.jpg" alt="Formal">
+            <img class="boardselect"   src="../../resources/image/common/Street_T.jpg" alt="Street">
+            <img class="boardselect"  src="../../resources/image/common/Workwear_T.jpg" alt="Workwear">
+            <img class="boardselect"  src="../../resources/image/common/Vintage_T.jpg" alt="Activewear">
+            <img class="boardselect"  src="../../resources/image/common/Free_T.jpg" alt="Freecycling">
+          </div>  -->
+        </div>
+      </div>
+      <!-- -------------------------------------------------------------------------------------------------------------- -->
+	
+<!-- 중반부 전체를 감싸는 div 태그-->
+<div class="container_body"> 
+  <div class="container">
+    <!--왼쪽, 업로드 이미지 표현 구역-->
+    <div class="left_contents">
+      <img class="board_img" src="../../../resources/image/board/workwear/03.jpg" alt="">
+    </div>
+  
+  <!--우측 게시글 + 댓글 보이는 구역-->
+    <div class="right_contents"> 
+      <div class="contents_body">
+      <!-- ----------------------------------- -->
+      <!-- 글 제목 담는곳 -->
+      <div class="title_area">
+        <p class="board_title">여기에 글제목이 들어갑니다.</p>
+      </div>
+      
+      <!-- 글 내용 담기는곳 -->
+      <div class="board_content">
+        <p >여기에 글이 들어가는거 같은데요?? <!-- <%=wbr.getContents() %> --></p>                 
+      </div>
+      <!-- ----------------------------------- -->
+      
+      <!-- 리뷰 제목 area -->
+      <div  class="reviewnav">
+        <p>리뷰</p>
+      </div>
+      <!-- ----------------------------------- -->
+      <!-- <%List<CommentResponse> list = (List<CommentResponse>)request.getAttribute("commentlist"); %> -->
+        <!--모든 댓글 내용을 담아내는 div 태그-->
+        <div class="Allcomment"> 
+          <!--    <%for(CommentResponse dto : list){%>-->
+          <!-- comment class는 각각 하나의 댓글을 담아냄 -->
+
+          <!-- 댓글 달리는 구역 -->
+          <div class="commentarea"> 
+            <!-- 댓글 1개 달리는 구역 -->
+            <div class="comment">
+              <span class="id">김헌종<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">댓글내용<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현임성현임성현임성현임성현임성현임성현임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+            <div class="comment">
+              <span class="id">임성현<!--<%=dto.getNickname()%>--></span>
+              <span class="ment">성현아 사랑해<!--<%=dto.getContents()%>--></span>
+              <button class="button_del">삭제</button>   
+            </div>
+          </div>
+          <!-- <%}%> -->
+        <!-- 리뷰 작성 + 작성완료 버튼 -->
+          <div class="writer_review">
+            <input text="" placeholder="리뷰를 입력해주세요" class="reviewcomment">
+            <button class="button">글수정</button>        
+            <button class="button">리뷰작성</button>     
+            
+          </div>  
+      </div> <!--댓글 부분 종료-->
+    </div><!--내용 컨텐츠 크기 조정-->
+    </div><!--내용 컨텐츠 위치 조정-->
+  </div><!--본문 컨텐츠 크기조정-->
+</div><!--본문 컨텐츠 위치조정-->
+    </body>
+</html>

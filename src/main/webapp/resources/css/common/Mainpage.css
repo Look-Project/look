@@ -10,7 +10,9 @@
   .top_base{
   top:0px;
   height: 100%;
-  width : 1440px;
+  min-width: 1200px;
+  width : 1200px;
+  padding: 0 40px;
   display: flex;
   margin-bottom: 5px;
   flex-wrap: wrap;
@@ -90,10 +92,11 @@
   .main_contents{
   
   height: 100%;
-  width : 1440px;
+  width : 1280px;
   display: flex;
   margin: 20px 0;
   flex-wrap: wrap;
+  justify-content: center;
   }
   /* 슬라이드쇼 배너 */
   .mainbanner{
@@ -207,6 +210,23 @@
   animation-name: fade;
   animation-duration: 1.5s;
 }
+#headformal{
+  width:80px;
+}
+#headstreet{
+  width:70px;
+}
+
+#headwork{
+  width:118px;
+}
+#headvintage{
+  width:90px;
+}
+#headfree{
+  width:130px;
+}
+
 
 @keyframes fade {
   from {opacity: .4} 
