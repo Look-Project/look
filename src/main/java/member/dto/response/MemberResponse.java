@@ -6,12 +6,19 @@ public class MemberResponse {
 	private int memberId;
 	private String password;
 	private String nickname; //닉네임
+	private String adminYn;
 	private String profileSrc;
 	private String profileName;
 	private String intro;
 	private LocalDateTime createAt; //가입일
 	
 	
+	public String getAdminYn() {
+		return adminYn;
+	}
+	public void setAdminYn(String adminYn) {
+		this.adminYn = adminYn;
+	}
 	public String getPassword() {
 		return password;
 	}
