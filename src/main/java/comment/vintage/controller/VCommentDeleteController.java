@@ -25,6 +25,7 @@ public class VCommentDeleteController extends HttpServlet {
 		
 		int commentId =Integer.parseInt(request.getParameter("commentId"));
 		int boardId =Integer.parseInt(request.getParameter("boardId"));
+		
 		vcs.setDeleteComment(commentId);
 		
 		response.sendRedirect(request.getContextPath() + VINTAGE_BOARD + "?boardId=" + boardId);
