@@ -18,11 +18,11 @@ import member.dto.response.MemberResponse;
 public class WorkwearDeleteController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //삭제할 게시물의 번호를 받아서
-        String numParam = request.getParameter("num");
-        int num = 0;
-        if (numParam != null && !numParam.isEmpty()) {
-            num = Integer.parseInt(numParam);
+        // 삭제할 게시물의 번호(boardID)를 받아서
+        String boardIdParam = request.getParameter("boardId");
+        int boardId = 0;
+        if (boardIdParam != null && !boardIdParam.isEmpty()) {
+            boardId = Integer.parseInt(boardIdParam);
         } else {
             // 예외 처리: 빈 문자열이거나 null일 때의 처리
             // 예를 들어 기본값을 설정하거나 오류 메시지를 출력할 수 있습니다.
@@ -33,13 +33,13 @@ public class WorkwearDeleteController extends HttpServlet {
         WorkwearService ds = new WorkwearService();
         
         try {
-            ds.workwearDelService(num);
+            ds.workwearDelService(boardId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        //수정이 완료 되었다면 전체 게시글 보기로 이동 
-        request.setAttribute("msg","삭제가 완료 되었습니다");
+        // 수정이 완료되었다면 전체 게시글 보기로 이동 
+        request.setAttribute("msg", "삭제가 완료 되었습니다");
         RequestDispatcher dis = request.getRequestDispatcher("/workwear/boardlist");
         dis.forward(request ,response);
     }
