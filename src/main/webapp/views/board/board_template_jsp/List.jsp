@@ -111,7 +111,11 @@
             </div>
         </div>
     </div>
-
+<button class="vwritebutton">
+	<a href="<%= request.getContextPath() %>/views/board/board_template_jsp/Write.jsp">
+	<img src="<%= request.getContextPath() %>/resources/image/board/vintage/write_icon.jpg" class="vwritebutton-icon">
+	</a>
+</button>
 
 </body>
 </html>

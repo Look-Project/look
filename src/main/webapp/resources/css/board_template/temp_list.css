@@ -137,6 +137,15 @@
 .board_writebtn{
     width : 20%;
 }
-/* 글작성 버튼 모양 */
-.board_writebtn .btn{}
 
+.vwritebutton{
+	position : fixed;
+	bottom : 20px;
+	right : 20px;
+	float : right;
+	border : none;
+}
+.vwritebutton-icon{
+	width : 70px;
+	height : 70px;
+}
