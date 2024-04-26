@@ -189,5 +189,32 @@ public class VintageDAO {
 		
 		return res;
 	}
+	
+	public int setDeleteBoard(int boardId) {
+		con = DBConnectionUtil.getConnection();
+		System.out.println("DAO boardId = " + boardId);
+		//데이터 초기화
+		String v = "V"; //게시판 카테고리
+		int res = 0;
+		try {
+			//게시글 삭제
+			String boardText = "update BOARD "
+					+ "set DELETE_YN = 'Y' "
+					+ "where CATEGORY = 'V' and BOARD_ID = ? ";
+			pstmt = con.prepareStatement(boardText);
+			
+			//값을 매핑하기
+			pstmt.setInt(1, boardId);
+			
+			res = pstmt.executeUpdate();
+		
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			//커넥션 반납
+			DBConnectionUtil.close(con, pstmt, rs);
+		}
+		return res;
+	}
 }
-

@@ -24,4 +24,8 @@ public class VintageBoardService {
 	public int setEditBoard(VintageEditRequest dto) {
 		return vdao.setEditBoard(dto);
 	}
+	public int setDeleteBoard(int boardId) {
+		System.out.println("서비스 boardId = " + boardId);
+		return vdao.setDeleteBoard(boardId);
+	}
 }
