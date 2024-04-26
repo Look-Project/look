@@ -22,4 +22,8 @@ public class VintageCommentService {
     public List<VintageCommentResponse> getAllComments(int boardId) {
         return cDAO.getAllComments(boardId);
     }
+    
+    public int setDeleteComment(int commentId) {
+    	return cDAO.setDeleteComment(commentId);
+    }
 }
