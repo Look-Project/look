@@ -25,7 +25,7 @@ import member.dto.response.MemberResponse;
 @WebServlet(urlPatterns = "/controller/FreeInsertCon")
 public class FreeInsertCon extends HttpServlet {
 
-	public final String FREECYCLING_WRITE_VIEW = "/views/board/freecycling/freeInsertForm.jsp";
+	public final String FREECYCLING_WRITE_VIEW = "/views/board/freecycling/Write.jsp";
 	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
 	private final String LOGIN = "/views/member/login.jsp";
 	FreecyclingBoardService bservice = new FreecyclingBoardService();
@@ -77,7 +77,8 @@ public class FreeInsertCon extends HttpServlet {
 					
 					if(part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
 		                 // response.sendRedirect(request.getContextPath() + FREECYCLING_WRITE_VIEW);
-		                  response.sendRedirect(FREECYCLING_WRITE_VIEW);
+		                  response.sendRedirect(request.getContextPath() + FREECYCLING_WRITE_VIEW);
+		                  return;
 		               }
 					
 		            String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
