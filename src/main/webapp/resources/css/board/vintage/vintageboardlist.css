@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/* 상세게시글 링크 */
+a{
+	text-decoration:none;
+	color: black;
+} 
+
 /* .vorderby-wrap-div{
 	display:flex; 
 	justify-content :flex-end;
@@ -7,13 +13,9 @@
 .vorderby{
 	margin-right:10px;
 	color:black;
-} */
-a{
-	text-decoration:none;
-	color: black;
-}
+} 
 
-/* .vgallery-img{
+.vgallery-img{
 	width:250px;
 	height: auto;
 	object-fit:cover;

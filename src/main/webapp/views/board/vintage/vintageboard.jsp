@@ -12,6 +12,25 @@ board.vintage.controller.VintageBoardController" %>
 <title>Insert title here</title>
 <%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboard.css">
+<!-- 아래 css는 게시글 수정 및 삭제 버튼
+.contents-column{
+	    flex-direction: column;
+}
+
+.edit-delete-button{
+	display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.ed-de{
+	width:100px;
+    float: right;
+    height:31px;
+    border-radius: 5px;
+    margin : 0 2px;
+} -->
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_read.css">
 </head>
 <body>
