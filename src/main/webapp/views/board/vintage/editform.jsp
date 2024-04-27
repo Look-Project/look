@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 <%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_update.css">
+<!-- 아래 css는 게시글 내용 입력란 
+#contents {
+ 	width: 100%;
+ 	height: 300px;
+  	padding: 12px;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	resize: none;
+} -->
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintagewriteform.css">
 </head>
 <body>

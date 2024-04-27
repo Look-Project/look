@@ -12,6 +12,25 @@ board.vintage.controller.VintageBoardController" %>
 <title>Insert title here</title>
 <%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboard.css">
+<!-- 아래 css는 게시글 수정 및 삭제 버튼
+.contents-column{
+	    flex-direction: column;
+}
+
+.edit-delete-button{
+	display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.ed-de{
+	width:100px;
+    float: right;
+    height:31px;
+    border-radius: 5px;
+    margin : 0 2px;
+} -->
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_read.css">
 </head>
 <body>
@@ -61,7 +80,9 @@ board.vintage.controller.VintageBoardController" %>
 	if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
 %>
 				
-				<button class="button_del">삭제</button>
+				<button class="button_del" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'">삭제</button>
+            </div>
+            <!-- 리뷰 리스트 -->
 <%  // 실행할 내용
 			}
 		}
@@ -74,14 +95,14 @@ board.vintage.controller.VintageBoardController" %>
 						<input type="text" name="comment"placeholder="리뷰를 입력해주세요" class="reviewcomment">
 						<input type="submit" value="입력" class="button"></input>
 					</div>
+		            <!-- 리뷰 작성 + 작성완료 버튼 -->
 				</form>               
-            </div>
-            <!-- 리뷰 작성 + 작성완료 버튼 -->
       	</div> <!--댓글 부분 종료-->
     </div><!--내용 컨텐츠 크기 조정-->
     </div><!--내용 컨텐츠 위치 조정-->
   </div><!--본문 컨텐츠 크기조정-->
 </div><!--본문 컨텐츠 위치조정-->
+
 <div class="edit-delete-button"><!-- 본문 수정 및 삭제 -->
 			<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
 			<c:if test="${authMember}">

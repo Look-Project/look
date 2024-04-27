@@ -28,10 +28,10 @@
 }
 /* 게시글 전체 들어갈 영역 */
 .board_post{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-    justify-content: space-between;
+     display: grid;
+    grid-template-columns: repeat(4,305px);
+    grid-template-rows: repeat(3, 408px);
+    place-items: center;
     width : 100%;
     /* background-color: darkgray; */
 }

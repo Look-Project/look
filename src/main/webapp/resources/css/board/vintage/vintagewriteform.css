@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/* * {
-  	box-sizing: border-box;
-} */
 
 #contents {
  	width: 100%;
@@ -11,6 +8,11 @@
   	border-radius: 4px;
   	resize: none;
 }
+
+/* * {
+  	box-sizing: border-box;
+} */
+
 
 /* label {
   	padding: 12px 12px 12px 0;

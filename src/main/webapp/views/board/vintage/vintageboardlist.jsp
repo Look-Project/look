@@ -15,7 +15,12 @@
 <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
 <%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_list.css">
-	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboardlist.css">
+<!-- 아래 css는 상세게시글 경로의 a 태그 속성 
+a{
+	text-decoration:none;
+	color: black;
+}  -->
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboardlist.css">
 </head>
 <body>
 
@@ -98,6 +103,30 @@
 		</a>
 	</button>
 
+	   <script>
+        // 게시글 수에 따른 그리드 행 조정
+        function adjustGridRows() {
+            // 게시글 영역 선택
+            const boardPost = document.querySelector('.board_post');
+            
+            // 게시글 수 확인
+            const postCount = boardPost.children.length;
+            
+            // 한 행에 포함되는 게시글 수
+            const columnsPerRow = 4; // 그리드의 열 수
+            
+            // 행의 수 계산
+            const rowCount = Math.ceil(postCount / columnsPerRow);
+            
+            // grid-template-rows 속성 조정
+            boardPost.style.gridTemplateRows = `repeat(${rowCount}, 1fr)`;
+        }
+
+        // 페이지 로드 후 그리드 행 조정
+        window.onload = function() {
+            adjustGridRows();
+        };
+    </script>
 
 </body>
 </html>
