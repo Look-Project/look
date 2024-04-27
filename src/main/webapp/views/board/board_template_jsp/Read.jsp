@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
     <%@ include file="/views/common/header_v2.jsp"%>	
-	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/board_template/temp_read.css">
+	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_read.css">
     </head>
     <body>
 

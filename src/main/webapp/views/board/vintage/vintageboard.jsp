@@ -12,70 +12,82 @@ board.vintage.controller.VintageBoardController" %>
 <title>Insert title here</title>
 <%@ include file="/views/common/header_v2.jsp"%>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboard.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_read.css">
 </head>
 <body>
 <%VintageBoardResponse vbr = (VintageBoardResponse)request.getAttribute("boarddetail"); %>
 <%List<VintageCommentResponse> list = (List<VintageCommentResponse>)request.getAttribute("commentslist"); %>
-<div class="container"> <!-- 중반부 전체를 감싸는 div 태그-->
-	<div class="left_img"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-		<img src="<%=vbr.getImgSrc() %>/<%=vbr.getImgName() %>" class="img">
+<!-- 중반부 전체를 감싸는 div 태그-->
+<div class="container_body"> 
+  <div class="container">
+  <!--왼쪽, 업로드 이미지 표현 구역-->
+    <div class="left_contents">
+    	<img src="<%=vbr.getImgSrc() %>/<%=vbr.getImgName() %>" class="board_img">
 	</div>
-	<div class="right_content"> <!--중반부 를 두개의 div태그로 나누어 오른쪽 절반의 구역으로 나눠줌--><br>
-		<div class="content_container">
-			<div><%=vbr.getBoardId() %></div>
-			<div class="title">
-				<p><%=vbr.getTitle() %></p>
-			</div>
-			<div class="contents">
-				<p><%=vbr.getContents() %></p>
-			</div>
-			<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
-			<div class="button">
-			<c:if test="${authMember}">
-			<input type="button" value="수정" onclick="location.href='<%=request.getContextPath() %>/controller/edit?boardId=<%=vbr.getBoardId() %>'"/>
-			<input type="button" value="삭제" onclick="location.href='<%=request.getContextPath() %>/controller/delete?boardId=<%=vbr.getBoardId() %>'"/>
-			<br/>
-			</c:if>
-			</div>
-		</div>
-		<p class="review">리뷰</p>
-		<div class="Allcomment">
-			<!--모든 댓글 내용을 담아내는 div 태그-->
-			<div class="comment"> 
+	
+	<!--우측 게시글 + 댓글 보이는 구역-->
+    <div class="right_contents"> 
+      <div class="contents_body">
+      <!-- ----------------------------------- -->
+      <!-- 글 제목 담는곳 -->
+      <div class="title_area">
+        <p class="board_title"><%=vbr.getTitle() %></p>
+      </div>
+      
+      <!-- 글 내용 담기는곳 -->
+      <div class="board_content">
+        <p ><%=vbr.getContents() %></p>                 
+      </div>
+      <!-- ----------------------------------- -->
+      
+       <!-- 리뷰 제목 area -->
+      <div  class="reviewnav">
+        <p>리뷰</p>
+      </div>
+      
+      <div class="commentarea">        
 <%
 	//for 반복문으로 span에 태그 추가
 	for(VintageCommentResponse dto : list){
 		//out.println("dto " + dto);
 %><!-- comment class는 각각 하나의 댓글을 담아냄 -->
-				<span class="nickname"><%=dto.getNickName() %></span>
-				<span class="comment_text"><%=dto.getComment() %></span>
-				<%
-				if (session.getAttribute("LOGIN_USER") != null) {
-			    if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
-				%>
-				
-					<input type="button" value="삭제" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'"/>
-					</br>
-					
-			      <%  // 실행할 내용
-			    }
-			}
-				%>
+            <!-- 댓글 1개 달리는 구역 -->
+			<div class="comment">
+              <span class="id"><%=dto.getNickName() %></span>
+              <span class="ment"><%=dto.getComment() %></span>
+              
 <%
-}
+	if (session.getAttribute("LOGIN_USER") != null) {
+	if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
 %>
-			</div>
-		</div>
-		<form action="<%=request.getContextPath() %>/vintage/comment/write" method = "post" class="submit">
-			<div class="input_container">
-				<input type="hidden" name="boardId" value="<%=vbr.getBoardId() %>"></input>
-				<input type="hidden" name="nickName" value="<%=vbr.getNickname() %>"></input>
-				<%-- <%=vbr.getNickname() %> --%>
-				<input type="text" placeholder="리뷰를 입력해주세요" class="inputcomments" name = "comment"></input>
-				<input type="submit" value="입력" class="submit_button"></input>
-			</div>
-		</form>
-	</div>
+				
+				<button class="button_del">삭제</button>
+<%  // 실행할 내용
+			}
+		}
+	}
+%>
+				<form action="<%=request.getContextPath() %>/vintage/comment/write" method = "post" class="submit">
+					<div class="writer_review">
+						<input type="hidden" name="boardId" value="<%=vbr.getBoardId() %>"></input>
+						<input type="hidden" name="nickName" value="<%=vbr.getNickname() %>"></input>
+						<input type="text" name="comment"placeholder="리뷰를 입력해주세요" class="reviewcomment">
+						<input type="submit" value="입력" class="button"></input>
+					</div>
+				</form>               
+            </div>
+            <!-- 리뷰 작성 + 작성완료 버튼 -->
+      	</div> <!--댓글 부분 종료-->
+    </div><!--내용 컨텐츠 크기 조정-->
+    </div><!--내용 컨텐츠 위치 조정-->
+  </div><!--본문 컨텐츠 크기조정-->
+</div><!--본문 컨텐츠 위치조정-->
+<div class="edit-delete-button"><!-- 본문 수정 및 삭제 -->
+			<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
+			<c:if test="${authMember}">
+			<input type="button" value="글삭제" class="ed-de" onclick="location.href='<%=request.getContextPath() %>/controller/delete?boardId=<%=vbr.getBoardId() %>'"/>
+			<input type="button" value="글수정" class="ed-de" onclick="location.href='<%=request.getContextPath() %>/controller/edit?boardId=<%=vbr.getBoardId() %>'"/>
+			</c:if>
 </div>
 </body>
 </html>
