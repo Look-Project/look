@@ -19,7 +19,7 @@ import board.freecycling.service.FreecyclingBoardService;
 @WebServlet("/controller/freecyclingListCon")
 public class freeMainListCon extends HttpServlet {
 	
-	private final String FREECYCLING_LIST_VIEW_NAME = "/views/board/freecycling/freecyclingMain.jsp";
+	private final String FREECYCLING_LIST_VIEW_NAME = "/views/board/freecycling/List.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.파라미터받기
