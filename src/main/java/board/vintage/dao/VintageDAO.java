@@ -171,15 +171,17 @@ public class VintageDAO {
 	         res = pstmt.executeUpdate();
 	         
 	         if(dto.getImgSrc() != null) {
-	         //이미지 파일 update
-	         String boardImg = "update board_img set img_src = ?, img_name= ? WHERE board_id = ?";
-	         pstmt = con.prepareStatement(boardImg);
-	         //값을 매핑하기
-	         pstmt.setString(1, dto.getImgSrc());
-	         pstmt.setString(2, dto.getImgName());
-	         pstmt.setInt(3, dto.getBoardId());
-	         res = pstmt.executeUpdate();
-	         }
+		         //이미지 파일 update
+		         String boardImg = "update board_img set img_src = ?, img_name= ? WHERE board_id = ?";
+		         pstmt = con.prepareStatement(boardImg);
+		         
+		         //값을 매핑하기
+		         pstmt.setString(1, dto.getImgSrc());
+		         pstmt.setString(2, dto.getImgName());
+		         pstmt.setInt(3, dto.getBoardId());
+		         
+		         res = pstmt.executeUpdate();
+					 } 
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

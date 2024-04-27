@@ -40,7 +40,7 @@ public class VBoardEditController extends HttpServlet {
 		
 		//수정할 게시물의 번호를 받아서 
 		int boardId = boardId =Integer.parseInt(request.getParameter("boardId"));
-		//System.out.println("boardId="+boardId);
+		System.out.println("boardId="+boardId);
 		 
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);// session for user info
 
@@ -64,8 +64,8 @@ public class VBoardEditController extends HttpServlet {
 		String contentType = request.getContentType();
 		
 		//수정할 게시물의 번호를 받아서 
-		int boardId = boardId =Integer.parseInt(request.getParameter("boardId"));
-		// System.out.println("boardId="+boardId);
+		int boardId =Integer.parseInt(request.getParameter("boardId"));
+		System.out.println("edit boardId="+boardId);
 		
 		Map<String, String> requestValues = new HashMap<String, String>();
 
@@ -76,55 +76,38 @@ public class VBoardEditController extends HttpServlet {
 
 			for (Part part : parts) {
 
-				// System.out.println();
-				// System.out.printf("파라미터 명 : %s, contentType : %s, size : %d bytes \n",
-				// part.getName(), part.getContentType(), part.getSize());
-				/**
-				 * input 태그의 type속성이 file일 경우 if문을 실행 그 외의 type일 경우 else문을 실행
-				 */
-
-				if (part.getHeader("Content-Disposition").contains("filename=")) {
+				if(part.getHeader("Content-Disposition").contains("filename=")) {
 					String todayDate = FileUploadUtil.getTodayDateString();
-
+					
 					String uploadPath = IMAGE_UPLOAD_PATH + todayDate;
-					// System.out.println("저장하고자 하는 파일의 경로 => " + uploadPath);
-
+					
 					FileUploadUtil.createUploadDirectory(uploadPath);
-					// System.out.println("사용자가 전달한 파일명 => " + part.getSubmittedFileName());
-
-					if (part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
-						response.sendRedirect(request.getContextPath() + EDIT);
-					}
-
-					String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
-
-					// System.out.printf("업로드 파일 명 : %s \n", newFileName);
-					// System.out.println("최종적으로 저장되는 파일의 경로 + 파일명 => " + uploadPath + "\\" +
-					// newFileName);
-
-					if (part.getSize() > 0) {
+				
+				if (part.getSubmittedFileName() != null && !part.getSubmittedFileName().isBlank()) {
+					
+					String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName()); 
+					
+					if (part.getSize() > 0) { 
 						part.write("C:" + uploadPath + "\\" + newFileName);
 						part.delete();
-						dto.setImgSrc(uploadPath);
+						dto.setImgSrc(uploadPath); 
 						dto.setImgName(newFileName);
-
+						}
 					}
-
+				
 				} else {
-					// 게시글의 제목 및 내용과 같은 input태그의 경우 실행되는 로직으로, 해당 데이터들을 저장하고자 한다면 여기에 작성하면 됩니다.
 
 					String formValue = request.getParameter(part.getName());
 					requestValues.put(part.getName(), formValue);
-					// System.out.printf("name : %s, value : %s \n", part.getName(), formValue);
-					// //콘솔확인용
-				} // else end
+					
+				}
 
-			} // for end
-		} // if end
+			}
+		}
 
 		// 수정 내용을 매개변수에서 얻어옴
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);// session for user info
-		// int memberId = request.getParameter("memberId") ;
+		
 		dto.setBoardId(boardId);
 		dto.setTitle(requestValues.get("title"));
 		dto.setContents(requestValues.get("contents"));
