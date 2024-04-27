@@ -81,6 +81,8 @@ board.vintage.controller.VintageBoardController" %>
 %>
 				
 				<button class="button_del" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'">삭제</button>
+            </div>
+            <!-- 리뷰 리스트 -->
 <%  // 실행할 내용
 			}
 		}
@@ -93,9 +95,8 @@ board.vintage.controller.VintageBoardController" %>
 						<input type="text" name="comment"placeholder="리뷰를 입력해주세요" class="reviewcomment">
 						<input type="submit" value="입력" class="button"></input>
 					</div>
+		            <!-- 리뷰 작성 + 작성완료 버튼 -->
 				</form>               
-            </div>
-            <!-- 리뷰 작성 + 작성완료 버튼 -->
       	</div> <!--댓글 부분 종료-->
     </div><!--내용 컨텐츠 크기 조정-->
     </div><!--내용 컨텐츠 위치 조정-->
