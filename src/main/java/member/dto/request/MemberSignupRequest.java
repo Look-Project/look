@@ -5,6 +5,8 @@ public class MemberSignupRequest {
 	private String nickname;
 	private String password;
 	private String passwordCheck;
+	private String profileSrc;
+	private String profileName;
 	
 	public String getLoginId() {
 		return loginId;
@@ -29,6 +31,18 @@ public class MemberSignupRequest {
 	}
 	public void setPasswordCheck(String passwordCheck) {
 		this.passwordCheck = passwordCheck;
+	}
+	public String getProfileSrc() {
+		return profileSrc;
+	}
+	public void setProfileSrc(String profileSrc) {
+		this.profileSrc = profileSrc;
+	}
+	public String getProfileName() {
+		return profileName;
+	}
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
 	}
 	
 	
