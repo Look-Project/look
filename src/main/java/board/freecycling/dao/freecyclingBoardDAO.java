@@ -76,7 +76,7 @@ public class freecyclingBoardDAO {
 		  
 		  con = DBConnectionUtil.getConnection();
 		  
-		  String sql = "select m.nickname, b.title, b.board_id, bi.img_src, bi.img_name "
+		  String sql = "select m.nickname, m.profile_src, m.profile_name, b.title, b.board_id, bi.img_src, bi.img_name "
 				 + "from member m inner join board b "
 				 + "on m.user_id = b.user_id "
 				 + "inner join board_img bi "
@@ -94,6 +94,8 @@ public class freecyclingBoardDAO {
 	    	mldto.setBoardId(rs.getInt("board_id"));
 	    	mldto.setImgSrc(rs.getString("img_src"));
 	    	mldto.setImgName(rs.getString("img_name"));
+	    	mldto.setProfileSrc(rs.getString("profile_src"));
+	    	mldto.setProfileName(rs.getString("profile_name"));
 			//패키징한 데이터를 List에 저장
 	    	listdto.add(mldto);
 		}

@@ -5,6 +5,10 @@ public class FreeMainListDTO {
 	private String nickname;
 	private String title;
 	private int boardId;
+	private String profileSrc;
+	private String profileName;
+	
+	
 	
 	private String imgSrc;
 	private String imgName;
@@ -29,6 +33,20 @@ public class FreeMainListDTO {
 	}
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
+	}
+	
+	
+	public String getProfileSrc() {
+		return profileSrc;
+	}
+	public void setProfileSrc(String profileSrc) {
+		this.profileSrc = profileSrc;
+	}
+	public String getProfileName() {
+		return profileName;
+	}
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
 	}
 	public String getImgSrc() {
 		return imgSrc;
