@@ -80,7 +80,7 @@ board.vintage.controller.VintageBoardController" %>
 	if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
 %>
 				
-				<button class="button_del">삭제</button>
+				<button class="button_del" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'">삭제</button>
 <%  // 실행할 내용
 			}
 		}
@@ -101,6 +101,7 @@ board.vintage.controller.VintageBoardController" %>
     </div><!--내용 컨텐츠 위치 조정-->
   </div><!--본문 컨텐츠 크기조정-->
 </div><!--본문 컨텐츠 위치조정-->
+
 <div class="edit-delete-button"><!-- 본문 수정 및 삭제 -->
 			<!-- 글쓴이 본인에게만 수정하기 삭제하기 버튼 보임  -->
 			<c:if test="${authMember}">
