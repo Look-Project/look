@@ -11,46 +11,93 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Vintage</title>
+<!-- 아래 CSS랑 헤더부분은 import로 대채될 예정 -->
 <%@ include file="/views/common/header_v2.jsp"%>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboardlist.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board_template/temp_list.css">
+	 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/board/vintage/vintageboardlist.css">
 </head>
 <body>
 
 <%List<VintageBoardListResponse> list = (List<VintageBoardListResponse>)request.getAttribute("boardlist"); %>
+<!-- 메인 컨텐츠 -->
+	<div class="contents_body">
+		<div class="contents">
+			<!-- 정렬 영역(미구현) -->
+			<!-- <div class="board_sort">
+			<div class="sortbtn"></div>
+			<div class="sortbtn"></div>
+			<div class="sortbtn"></div>
+			</div> -->
 
-<div class="vorderby-wrap-div">
-	<div class="vorderby"><a href="#">최신순</a></div>
-	<div class="vorderby"><a href="#">조회수</a></div>
-</div>
-
-<div class="vgallery">
-	<div class="vgallery-line-frame">
+            <!-- 게시글 영역 -->
+			<div class="board_post">
+			
 <%
 	//for 반복문으로 div에 태그 추가
 	for(VintageBoardListResponse dto : list){
-		//out.println("dto " + dto);
+	//out.println("dto " + dto);
 %>
-		<a href="<%= request.getContextPath() %>/vintage/detail?boardId=<%= dto.getBoardId()%>">
-			<div class="vimg-frame">
+				<a href="<%= request.getContextPath() %>/vintage/detail?boardId=<%= dto.getBoardId()%>">
+                <!-- 게시글 1개 영역 -->
+	                <div class="post">
+	                    <!-- 게시글 미리보기 이미지 영역 -->
+	                    <div class="boardimg">
+	                        <img class="img" src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>">
+	                    </div>
+	                    <!-- 게시글 내용 부분 -->
+	                    <div class="profile">
+	                        <!-- 프로필 + 게시글 제목 + 작성자 영역 -->
+	                        <div class="pro_textbox">
+	                            <!-- 프로필 이미지 + 작성자 영역 -->
+	                            <div class="pro_img">
+	                                <img class="proimg" src="<%= request.getContextPath() %>/resources/image/common/profile_test.webp">
+	                            </div><!-- pro_img -->
+	                            <!-- 작성자 닉네임 영역 -->
+	                            <div class="pro1"><%=dto.getNickname()%></div>
+	                            <!-- 게시글 제목 영역 -->
+	                            <div class="text1"><%=dto.getTitle()%></div>
+	                        </div><!-- pro_textbox -->
+	                    </div><!-- profile -->
+	                </div><!-- post -->
+                </a>
+<%
+}
+%>
+
+		
+<%-- 			<div class="vimg-frame">
 				<img src="<%=dto.getImgSrc() %>/<%=dto.getImgName() %>" class="vgallery-img">
 				<div class="vcontent-frame">
 					<h3 class="vcontent-title"><%=dto.getNickname()%></h3>
 					<hr/>
 					<p class="vgallery-content"><%=dto.getTitle()%></p>
 				</div>
-			</div>
+			</div> --%>
+		
+
+			</div><!-- board_post -->
+
+            <!-- 목록 번호 + 글작성 영역 -->
+            <div class="board_bottom">
+                <div class="board_num">
+                    <div class="num">◀</div>
+                    <div class="num">1</div>
+                    <div class="num">2</div>
+                    <div class="num">3</div>
+                    <div class="num">4</div>
+                    <div class="num">5</div>
+                    <div class="num">▶</div>
+                </div><!-- board_num -->
+            </div><!-- board_bottom -->
+        </div><!-- contents -->
+    </div><!-- contents_body -->
+	<button class="vwritebutton">
+		<a href="<%= request.getContextPath() %>/vintage/write">
+		<img src="<%= request.getContextPath() %>/resources/image/board/vintage/write_icon.jpg" class="vwritebutton-icon">
 		</a>
-<%
-}
-%>
-	</div>
-<button class="vwritebutton">
-	<a href="<%= request.getContextPath() %>/vintage/write">
-	<img src="<%= request.getContextPath() %>/resources/image/board/vintage/write_icon.jpg" class="vwritebutton-icon">
-	</a>
-</button>
-</div>
+	</button>
+
 
 </body>
 </html>
