@@ -51,7 +51,7 @@
 	                        <div class="pro_textbox">
 	                            <!-- 프로필 이미지 + 작성자 영역 -->
 	                            <div class="pro_img">
-	                                <img class="proimg" src="<%= request.getContextPath() %>/resources/image/common/profile_test.webp">
+	                                <img class="proimg" src="<%=dto.getUserImgSrc()%>/<%=dto.getUserImgName()%>"/>
 	                            </div><!-- pro_img -->
 	                            <!-- 작성자 닉네임 영역 -->
 	                            <div class="pro1"><%=dto.getNickname()%></div>

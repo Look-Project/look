@@ -73,7 +73,7 @@ public class VintageDAO {
 		List<VintageBoardListResponse> vblr = new ArrayList<VintageBoardListResponse>();
 		
 		//쿼리 실행 준비
-		String sql = "SELECT m.NICKNAME, b.TITLE, b.BOARD_ID, i.IMG_SRC, i.IMG_NAME "
+		String sql = "SELECT m.NICKNAME, m.PROFILE_SRC, m.PROFILE_NAME, b.TITLE, b.BOARD_ID, i.IMG_SRC, i.IMG_NAME "
 				+ "FROM BOARD b inner join MEMBER m "
 				+ "on b.USER_ID = m.USER_ID "
 				+ "inner join Board_IMG i "
@@ -93,6 +93,8 @@ public class VintageDAO {
 				
 				tmp.setBoardId(rs.getInt("BOARD_ID"));
 				tmp.setNickname(rs.getString("NICKNAME"));
+				tmp.setUserImgSrc(rs.getString("PROFILE_SRC"));
+				tmp.setUserImgName(rs.getString("PROFILE_NAME"));
 				tmp.setTitle(rs.getString("TITLE"));
 				tmp.setImgSrc(rs.getString("IMG_SRC"));
 				tmp.setImgName(rs.getString("IMG_NAME"));
