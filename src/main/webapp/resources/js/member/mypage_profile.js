@@ -10,12 +10,6 @@ $('#profile-user-img-save-btn').change(function (e) {
         $('#profile-user-image').attr('src', photo_path);
         return
     }
-    if(my_photo.size > 1024*1024){
-        alert(Math.round(my_photo.size/1024/1024) + 'MB(1MB까지만 업로드 가능)');
-        $('#profile-user-image').attr('src',photo_path);
-        $(this).val('');
-        return;			
-    }
     //이미지 미리보기 처리
     let reader = new FileReader();
     reader.readAsDataURL(my_photo);

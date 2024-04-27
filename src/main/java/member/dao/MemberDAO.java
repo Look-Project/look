@@ -65,7 +65,7 @@ public class MemberDAO {
 	
 	
 	public boolean insertMember(MemberSignupRequest member) {
-		String sql = "insert into member(login_id, login_pwd, nickname) values(?, ?, ?)";
+		String sql = "insert into member(login_id, login_pwd, nickname, profile_src, profile_name) values(?, ?, ?, ?, ?)";
 		int result = 0;
 		
 		try {
@@ -74,6 +74,8 @@ public class MemberDAO {
 			pstmt.setString(1, member.getLoginId());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getNickname());
+			pstmt.setString(4, member.getProfileSrc());
+			pstmt.setString(5, member.getProfileName());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
