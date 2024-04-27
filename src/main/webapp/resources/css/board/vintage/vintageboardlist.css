@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.vorderby-wrap-div{
+/* .vorderby-wrap-div{
 	display:flex; 
 	justify-content :flex-end;
 	flex-direction : row;
@@ -7,13 +7,13 @@
 .vorderby{
 	margin-right:10px;
 	color:black;
-}
-.vorderby > a{
+} */
+a{
 	text-decoration:none;
 	color: black;
 }
 
-.vgallery-img{
+/* .vgallery-img{
 	width:250px;
 	height: auto;
 	object-fit:cover;
@@ -59,4 +59,4 @@
 .vwritebutton-icon{
 	width : 70px;
 	height : 70px;
-}
+} */
