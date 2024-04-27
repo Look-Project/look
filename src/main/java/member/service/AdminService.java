@@ -42,9 +42,9 @@ public class AdminService {
 		int pageTemp = (((pageNum-1)/blockPage)*blockPage)+1;
 		//페이지가 1이 아닐 때에만 첫 페이지와 이전 블록 링크를 출력한다.
 		if(pageTemp!=1) {
-			pagingStr+="<a href='"+reqUrl+"?pageNum=1'>[첫 페이지]</a>";
+			pagingStr+="<a class='block-font-size' href='"+reqUrl+"?pageNum=1'>&laquo;</a>";
 			pagingStr+="&nbsp;";
-			pagingStr+="<a href='"+reqUrl+"?pageNum="+(pageTemp-1)+"'>[이전블록]</a>";
+			pagingStr+="<a class='block-font-size' href='"+reqUrl+"?pageNum="+(pageTemp-1)+"'>&lsaquo;</a>";
 		}
 		//각 페이지 번호 출력
         int blockCount = 1;
@@ -66,11 +66,11 @@ public class AdminService {
         //마지막 페이지로 바로가기 링크는 PageNum값으로 전체 페이지수를 사용한다.
         //다음 페이지 블록 바로가기 출력
         if (pageTemp <= totalPages) {
-            pagingStr += "<a href='" + reqUrl + "?pageNum=" + pageTemp
-                         + "'>[다음 블록]</a>";
+            pagingStr += "<a class='block-font-size' href='" + reqUrl + "?pageNum=" + pageTemp
+                         + "'>&rsaquo;</a>";
             pagingStr += "&nbsp;";
-            pagingStr += "<a href='" + reqUrl + "?pageNum=" + totalPages
-                         + "'>[마지막 페이지]</a>";
+            pagingStr += "<a class='block-font-size' href='" + reqUrl + "?pageNum=" + totalPages
+                         + "'>&raquo;</a>";
         }
 
         return pagingStr;
@@ -87,9 +87,9 @@ public class AdminService {
 		int pageTemp = (((pageNum-1)/blockPage)*blockPage)+1;
 		//페이지가 1이 아닐 때에만 첫 페이지와 이전 블록 링크를 출력한다.
 		if(pageTemp!=1) {
-			pagingStr+="<a href='"+reqUrl+"?pageNum=1" + "&searchWord=" + searchWord + "'>[첫 페이지]</a>";
+			pagingStr+="<a class='block-font-size' href='"+reqUrl+"?pageNum=1" + "&searchWord=" + searchWord + "'>&laquo;</a>";
 			pagingStr+="&nbsp;";
-			pagingStr+="<a href='"+reqUrl+"?pageNum="+(pageTemp-1) + "&searchWord="+ searchWord + "'>[이전블록]</a>";
+			pagingStr+="<a class='block-font-size' href='"+reqUrl+"?pageNum="+(pageTemp-1) + "&searchWord="+ searchWord + "'>&lsaquo;</a>";
 		}
 		//각 페이지 번호 출력
         int blockCount = 1;
@@ -111,11 +111,11 @@ public class AdminService {
         //마지막 페이지로 바로가기 링크는 PageNum값으로 전체 페이지수를 사용한다.
         //다음 페이지 블록 바로가기 출력
         if (pageTemp <= totalPages) {
-            pagingStr += "<a href='" + reqUrl + "?pageNum=" + pageTemp  + "&searchWord="+ searchWord
-                         + "'>[다음 블록]</a>";
+            pagingStr += "<a class='block-font-size' href='" + reqUrl + "?pageNum=" + pageTemp  + "&searchWord="+ searchWord
+                         + "'>&rsaquo;</a>";
             pagingStr += "&nbsp;";
-            pagingStr += "<a href='" + reqUrl + "?pageNum=" + totalPages  + "&searchWord="+ searchWord
-                         + "'>[마지막 페이지]</a>";
+            pagingStr += "<a class='block-font-size' href='" + reqUrl + "?pageNum=" + totalPages  + "&searchWord="+ searchWord
+                         + "'>&raquo;</a>";
         }
 
         return pagingStr;
