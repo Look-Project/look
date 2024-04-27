@@ -45,7 +45,9 @@ public class SignupController extends HttpServlet {
 		member.setNickname(request.getParameter("nickname"));
 		member.setPassword(request.getParameter("password"));
 		member.setPasswordCheck(request.getParameter("passwordCheck"));
-        
+		member.setProfileSrc(request.getContextPath() + "/resources/image/member");
+		member.setProfileName("default_profile.jpg");
+		
         Map<String, String> errors = validateSignup(member);
         JSONObject jObj = new JSONObject();
         
