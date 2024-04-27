@@ -59,6 +59,7 @@ public class VintageWriteController extends HttpServlet {
 					
 					if(part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
 						response.sendRedirect(request.getContextPath() + VINTAGE_BOARD_WRITE);
+						return;
 					}
 					
 					String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
