@@ -28,7 +28,7 @@ import member.dto.response.MemberResponse;
 public class FreeEditCon extends HttpServlet {
 	
 	private final String LOGIN = "/views/member/login.jsp";
-	public final String FREE_EDIT_VIEW = "/views/board/freecycling/freeEditForm.jsp";
+	public final String FREE_EDIT_VIEW = "/views/board/freecycling/Update.jsp";
 	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
 
     @Override
@@ -84,6 +84,7 @@ public class FreeEditCon extends HttpServlet {
 					
 					if(part.getSubmittedFileName() == null || part.getSubmittedFileName().isBlank()) {
 		                  response.sendRedirect(request.getContextPath() + FREE_EDIT_VIEW);
+		                  return;
 		               }
 					
 		            String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
