@@ -40,7 +40,7 @@ public class VBoardEditController extends HttpServlet {
 		
 		//수정할 게시물의 번호를 받아서 
 		int boardId = boardId =Integer.parseInt(request.getParameter("boardId"));
-		System.out.println("boardId="+boardId);
+		//System.out.println("boardId="+boardId);
 		 
 		MemberResponse loginMember = SessionUtil.getSessionMember(request);// session for user info
 
@@ -65,7 +65,7 @@ public class VBoardEditController extends HttpServlet {
 		
 		//수정할 게시물의 번호를 받아서 
 		int boardId =Integer.parseInt(request.getParameter("boardId"));
-		System.out.println("edit boardId="+boardId);
+		//System.out.println("edit boardId="+boardId);
 		
 		Map<String, String> requestValues = new HashMap<String, String>();
 
