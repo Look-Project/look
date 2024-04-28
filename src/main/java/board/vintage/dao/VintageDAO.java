@@ -163,18 +163,19 @@ public class VintageDAO {
 		
 		try {
 			//text 타입 게시글 update
-			 String boardText = "update board SET title = ?, contents = ? WHERE board_id = ?";
+			 String boardText = "update BOARd set TITLE = ?, CONTENTS = ? where BOARD_ID = ? and CATEGORY = ? ";
 	         pstmt = con.prepareStatement(boardText);
 	         
 	         pstmt.setString(1, dto.getTitle());
 	         pstmt.setString(2, dto.getContents());
 	         pstmt.setInt(3, dto.getBoardId());
+	         pstmt.setString(4, v);
 	         
 	         res = pstmt.executeUpdate();
 	         
 	         if(dto.getImgSrc() != null) {
 		         //이미지 파일 update
-		         String boardImg = "update board_img set img_src = ?, img_name= ? WHERE board_id = ?";
+		         String boardImg = "update BOARD_IMG set IMG_SRC = ?, IMG_NAME = ? where BOARD_ID = ?";
 		         pstmt = con.prepareStatement(boardImg);
 		         
 		         //값을 매핑하기
@@ -197,7 +198,7 @@ public class VintageDAO {
 	//게시글 삭제 메서드
 	public int setDeleteBoard(int boardId) {
 		con = DBConnectionUtil.getConnection();
-		System.out.println("DAO boardId = " + boardId);
+		//System.out.println("DAO boardId = " + boardId);
 		//데이터 초기화
 		String v = "V"; //게시판 카테고리
 		int res = 0;
