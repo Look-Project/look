@@ -42,7 +42,7 @@ $("#signup-form-nickname-duplicate-check").click(function(){
 		data: {nickname: $("#signup-form-nickname-input").val()},
         success:function(data){
 			if(!!data.errors) {
-				if(data.errors.nickname) markingErrorMessage("#ssignup-form-nickname-inputlist", data.errors.nickname);
+				if(data.errors.nickname) markingErrorMessage("#signup-form-nickname-inputlist", data.errors.nickname);
 				else deleteErrorMessage("#signup-form-nickname-inputlist");
 			}else if(data.success){
 				duplicateNicknameCheck = true;
