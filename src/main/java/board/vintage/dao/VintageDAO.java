@@ -16,14 +16,15 @@ public class VintageDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs;
+	private final String VINTAGE_CATEGORY = "V"; //게시판 카테고리
 	
 	
 	//하나의 새로운 게시글이 저장되는 메서드
 	public int insertBoard(VintageWriteRequest vwr) {
 		con = DBConnectionUtil.getConnection();
 		//데이터 초기화
-		String v = "V"; //게시판 카테고리
 		int res = 0;
+		
 		try {
 			//text 타입 게시글 insert
 			String boardText = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
@@ -33,7 +34,7 @@ public class VintageDAO {
 			pstmt.setInt(1,vwr.getMemberId() );
 			pstmt.setString(2, vwr.getTitle());
 			pstmt.setString(3, vwr.getContents());
-			pstmt.setString(4, v);
+			pstmt.setString(4, VINTAGE_CATEGORY);
 			
 			res = pstmt.executeUpdate();
 			
@@ -78,12 +79,16 @@ public class VintageDAO {
 				+ "on b.USER_ID = m.USER_ID "
 				+ "inner join Board_IMG i "
 				+ "on b.BOARD_ID = i.BOARD_ID "
-				+ "WHERE CATEGORY = 'V' AND DELETE_YN = 'N' "
+				+ "WHERE CATEGORY = ? AND DELETE_YN = 'N' "
 				+ "ORDER BY b.CREATE_AT desc";
 		
 		try {
+			
 			//쿼리 실행할 객체 선언
 			pstmt = con.prepareStatement(sql);
+			
+			//값을 매핑하기
+			pstmt.setString(1, VINTAGE_CATEGORY);
 			
 			//쿼리 실행 후 결과 저장
 			rs = pstmt.executeQuery();
@@ -124,14 +129,17 @@ public class VintageDAO {
 					+ "on b.USER_ID = m.USER_ID "
 					+ "inner join Board_IMG i "
 					+ "on b.BOARD_ID = i.BOARD_ID "
-					+ "WHERE b.CATEGORY = 'V' AND b.DELETE_YN = 'N' AND b.BOARD_ID = ? "
+					+ "WHERE b.BOARD_ID = ? AND b.DELETE_YN = 'N' AND b.CATEGORY = ? "
 					+ "ORDER BY b.CREATE_AT desc";
 		
 		try {
 			//쿼리 실행할 객체 선언
 			pstmt = con.prepareStatement(sql);
 			
+			//값을 매핑하기
 			pstmt.setInt(1, boardId );
+			pstmt.setString(2, VINTAGE_CATEGORY);
+			
 			//쿼리 실행 후 결과 저장
 			rs = pstmt.executeQuery();
 				
@@ -158,7 +166,6 @@ public class VintageDAO {
 	public int setEditBoard(VintageEditRequest dto) {
 		con = DBConnectionUtil.getConnection();
 		//데이터 초기화
-		String v = "V"; //게시판 카테고리
 		int res = 0;
 		
 		try {
@@ -169,7 +176,7 @@ public class VintageDAO {
 	         pstmt.setString(1, dto.getTitle());
 	         pstmt.setString(2, dto.getContents());
 	         pstmt.setInt(3, dto.getBoardId());
-	         pstmt.setString(4, v);
+	         pstmt.setString(4, VINTAGE_CATEGORY);
 	         
 	         res = pstmt.executeUpdate();
 	         
@@ -200,17 +207,18 @@ public class VintageDAO {
 		con = DBConnectionUtil.getConnection();
 		//System.out.println("DAO boardId = " + boardId);
 		//데이터 초기화
-		String v = "V"; //게시판 카테고리
+		
 		int res = 0;
 		try {
 			//게시글 삭제
 			String boardText = "update BOARD "
 					+ "set DELETE_YN = 'Y' "
-					+ "where CATEGORY = 'V' and BOARD_ID = ? ";
+					+ "where BOARD_ID = ? and CATEGORY = ? ";
 			pstmt = con.prepareStatement(boardText);
 			
 			//값을 매핑하기
 			pstmt.setInt(1, boardId);
+			pstmt.setString(2, VINTAGE_CATEGORY);
 			
 			res = pstmt.executeUpdate();
 		
