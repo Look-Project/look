@@ -159,11 +159,11 @@ public class freecyclingBoardDAO {
 	  	  
 	  	  con = DBConnectionUtil.getConnection();
 		  String viewsql = "UPDATE board SET " + " views=views+1 "
-				  		    + " WHERE board_id=? category=? "; 
+				  		    + " WHERE board_id=? "; 
 		  try { 
 		  pstmt = con.prepareStatement(viewsql);
 		  pstmt.setInt(1, num);
-		  pstmt.setString(2, FREE_CATEGORY);
+		  
 		  pstmt.executeQuery(); 
 		  }catch(Exception e) {
 		 System.out.println("게시물 조회수 증가 중 예외 발생"); 
