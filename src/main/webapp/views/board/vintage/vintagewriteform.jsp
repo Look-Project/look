@@ -42,7 +42,7 @@
       		</div>
       		<!-- text write area -->
       		<div class="col-75">
-        		<textarea id="contents" name="contents" placeholder="내용을 입력하세요" style="height:200px"></textarea>
+        		<textarea id="contents" name="contents" placeholder="내용을 입력하세요"></textarea>
     		</div>
     	</div>
     	<!-- 이미지 업로드 영역 -->
