@@ -55,7 +55,7 @@ board.vintage.controller.VintageBoardController" %>
       
       <!-- 글 내용 담기는곳 -->
       <div class="board_content">
-        <p ><%=vbr.getContents() %></p>                 
+        <p ><xmp><%=vbr.getContents() %></xmp></p>                 
       </div>
       <!-- ----------------------------------- -->
       
