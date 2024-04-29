@@ -19,6 +19,9 @@
     margin : 0 2px;
 }
 
+#comment-form {
+	width: 100%;
+}
 
 /* body {
   margin: 0;

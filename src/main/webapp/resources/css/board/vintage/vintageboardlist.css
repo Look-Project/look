@@ -5,6 +5,16 @@ a{
 	color: black;
 } 
 
+#vintage-board-list-search-form {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.search-form-margin {
+	margin-right: 10px;
+}
+
 /* .vorderby-wrap-div{
 	display:flex; 
 	justify-content :flex-end;

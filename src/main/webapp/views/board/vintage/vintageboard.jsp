@@ -37,7 +37,7 @@ board.vintage.controller.VintageBoardController" %>
 <%VintageBoardResponse vbr = (VintageBoardResponse)request.getAttribute("boarddetail"); %>
 <%List<VintageCommentResponse> list = (List<VintageCommentResponse>)request.getAttribute("commentslist"); %>
 <!-- 중반부 전체를 감싸는 div 태그-->
-<div class="container_body"> 
+<div class="container_body "> 
   <div class="container">
   <!--왼쪽, 업로드 이미지 표현 구역-->
     <div class="left_contents">
@@ -81,12 +81,14 @@ board.vintage.controller.VintageBoardController" %>
 %>
 				
 				<button class="button_del" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'">삭제</button>
-            </div>
             <!-- 리뷰 리스트 -->
 <%  // 실행할 내용
-			}
-		}
-	}
+         }
+      }
+%>
+            </div>
+<%
+   }
 %>
 				<form action="<%=request.getContextPath() %>/vintage/comment/write" method = "post" class="submit">
 					<div class="writer_review">
