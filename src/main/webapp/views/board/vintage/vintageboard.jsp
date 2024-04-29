@@ -70,14 +70,14 @@ board.vintage.controller.VintageBoardController" %>
 	for(VintageCommentResponse dto : list){
 		//out.println("dto " + dto);
 %><!-- comment class는 각각 하나의 댓글을 담아냄 -->
-            <!-- 댓글 1개 달리는 구역 -->
+            <!-- 댓글 1개 달리는 구역 --> 
 			<div class="comment">
               <span class="id"><%=dto.getNickName() %></span>
               <span class="ment"><%=dto.getComment() %></span>
               
 <%
 	if (session.getAttribute("LOGIN_USER") != null) {
-	if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId()) {
+	if (((MemberResponse)session.getAttribute("LOGIN_USER")).getMemberId() == dto.getMemberId() || ((MemberResponse)session.getAttribute("LOGIN_USER")).getAdminYn().equals("Y")) {
 %>
 				
 				<button class="button_del" onclick="location.href='<%=request.getContextPath() %>/vintage/comment/delete?boardId=<%=vbr.getBoardId() %>&commentId=<%=dto.getCommentId() %>'">삭제</button>

@@ -36,7 +36,7 @@ public class VintageBoardController extends HttpServlet{
 		//글쓴이와 동일한 회원인지 검증 후 수정, 삭제하기 버튼 보여줌	
 		
 		  if(loginMember != null) {
-			  if(loginMember.getMemberId()== vbr.getMemberId()) {
+			  if(loginMember.getMemberId()== vbr.getMemberId() || loginMember.getAdminYn().equals("Y")) {
 				  request.setAttribute("authMember",true); 
 			  }else {
 				  request.setAttribute("authMember",false); 
