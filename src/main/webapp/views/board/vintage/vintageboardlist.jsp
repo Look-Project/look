@@ -28,13 +28,14 @@ a{
 <!-- 메인 컨텐츠 -->
 	<div class="contents_body">
 		<div class="contents">
-			<!-- 정렬 영역(미구현) -->
-			<!-- <div class="board_sort">
-			<div class="sortbtn"></div>
-			<div class="sortbtn"></div>
-			<div class="sortbtn"></div>
-			</div> -->
-
+			<form id ="vintage-board-list-search-form" action="<%= request.getContextPath() %>/vintage/boardlist" method = "get">
+				<select class="search-form-margin" name="searchField" id="searchField">
+				    <option value="title">제목</option>
+				    <option value="contents">내용</option>
+				</select>
+				<input class="search-form-margin" name="searchWord" type="text" id="searchKeyword" placeholder="검색어를 입력하세요">
+				<button type="submit">검색</button>
+			</form>
             <!-- 게시글 영역 -->
 			<div class="board_post">
 			
@@ -86,13 +87,13 @@ a{
             <!-- 목록 번호 + 글작성 영역 -->
             <div class="board_bottom">
                 <div class="board_num">
-                    <div class="num">◀</div>
-                    <div class="num">1</div>
-                    <div class="num">2</div>
-                    <div class="num">3</div>
-                    <div class="num">4</div>
-                    <div class="num">5</div>
-                    <div class="num">▶</div>
+	   				<table style="width:90%" border="1">
+					<tr align="center">
+					<td>
+					${map.pagingImg }
+					</td>
+					</tr>
+					</table>
                 </div><!-- board_num -->
             </div><!-- board_bottom -->
         </div><!-- contents -->

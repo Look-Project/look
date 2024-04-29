@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import board.vintage.dto.request.VintageEditRequest;
 import board.vintage.dto.request.VintageWriteRequest;
 import board.vintage.dto.response.VintageBoardListResponse;
 import board.vintage.dto.response.VintageBoardResponse;
 import common.DBConnectionUtil;
+import member.dto.response.AdminMemberResponse;
 
 public class VintageDAO {
 	Connection con = null;
@@ -223,4 +225,93 @@ public class VintageDAO {
 		}
 		return res;
 	}
+	
+	
+	public int selectCount(Map<String, Object> map) {
+		int totalCount=0;
+		
+		//쿼리문 준비
+		String query="SELECT COUNT(*) FROM board WHERE category = 'V' AND delete_yn = 'N'";
+		
+		//검색 조건 WHERE절
+        if (map.get("searchWord") != null) {
+            query += " AND " + map.get("searchField") + " "
+                   + " LIKE '%" + map.get("searchWord") + "%'";
+        }
+        try {
+        	con = DBConnectionUtil.getConnection();
+        	//쿼리문 생성
+        	pstmt = con.prepareStatement(query);
+        	//쿼리문 실행
+        	rs = pstmt.executeQuery();
+        	rs.next();
+        	//검색된 게시물 개수 저장
+        	totalCount = rs.getInt(1);
+        }
+        catch(Exception e) {
+        	System.out.println("게시물 카운트 중 예외 발생");
+        	e.printStackTrace();
+        }finally {
+			DBConnectionUtil.close(con, pstmt, rs);
+		}
+    	//게시물 개수 서블릿으로 반환
+    	return totalCount;
+	}
+	
+    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
+    public List<VintageBoardListResponse> selectListPage(Map<String,Object> map) {
+    	List<VintageBoardListResponse> boardList = new ArrayList<>();
+    	
+        String query = " "
+                     + "SELECT * FROM ( "
+                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
+                     + "        SELECT * FROM BOARD b inner join MEMBER m "
+                     + "				on b.USER_ID = m.USER_ID "
+                     + "				inner join BOARD_IMG i "
+                     + "				on b.BOARD_ID = i.BOARD_ID "
+                     + "				WHERE b.CATEGORY = 'V' AND b.DELETE_YN = 'N' ";
+
+        if (map.get("searchWord") != null)
+        {
+            query += " AND " + map.get("searchField")
+                   + " LIKE '%" + map.get("searchWord") + "%' ";
+        }
+
+        query += "        ORDER BY b.create_at DESC "
+               + "    ) Tb "
+               + " ) "
+               + " WHERE rNum BETWEEN ? AND ?";
+
+        
+        try {
+        	con = DBConnectionUtil.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, map.get("start").toString());
+			pstmt.setString(2, map.get("end").toString());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+            	VintageBoardListResponse board = new VintageBoardListResponse();
+            	board.setBoardId(rs.getInt("BOARD_ID"));
+            	board.setNickname(rs.getString("NICKNAME"));
+            	board.setUserImgSrc(rs.getString("PROFILE_SRC"));
+            	board.setUserImgName(rs.getString("PROFILE_NAME"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setImgSrc(rs.getString("IMG_SRC"));
+				board.setImgName(rs.getString("IMG_NAME"));
+
+				boardList.add(board);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("게시물 조회 중 예외 발생");
+            e.printStackTrace();
+        }finally {
+			DBConnectionUtil.close(con, pstmt, rs);
+		}
+        //목록 반환
+        return boardList;
+    }
+    
+	
 }
