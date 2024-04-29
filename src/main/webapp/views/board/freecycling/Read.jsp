@@ -38,7 +38,7 @@
       <!-- 글 내용 담기는곳 -->
       <div class="board_content">
      
-        <p >${viewdto.contents }<%--  <!-- <%=wbr.getContents() %> --> --%></p>                 
+        <p ><xmp>${viewdto.contents }</xmp><%--  <!-- <%=wbr.getContents() %> --> --%></p>               
       </div>
       
       <!-- ----------------------------------- -->

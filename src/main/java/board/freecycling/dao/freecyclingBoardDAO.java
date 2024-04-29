@@ -20,23 +20,23 @@ public class freecyclingBoardDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	private final String FREE_CATEGORY = "C";
 
 // FreeInsertCon 하나의 게시글을 저장하는 메서드 호출
 	public int insertBoard(FreeInsertDTO dto) {
 		con = DBConnectionUtil.getConnection();
 		int res = 0;
 		
-		String c = "C";
 		try {
 			//text 타입 게시글 insert
-	         String boardText = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?)";
+	         String boardText = "insert into board(USER_ID,TITLE,CONTENTS,CATEGORY) values(?,?,?,?) ";
 	         pstmt = con.prepareStatement(boardText);
 	         
 	         //값을 매핑하기
 	         pstmt.setInt(1,dto.getMemberId() );
 	         pstmt.setString(2, dto.getTitle());
 	         pstmt.setString(3, dto.getContents());
-	         pstmt.setString(4, c);
+	         pstmt.setString(4, FREE_CATEGORY);
 	         
 	         res = pstmt.executeUpdate();
 	         
@@ -51,7 +51,7 @@ public class freecyclingBoardDAO {
 	         }
 	         
 	         //이미지 파일 insert
-	         String boardImg = "insert into board_img(board_id, img_src, img_name) values(?,?,?)";
+	         String boardImg = "insert into board_img(board_id, img_src, img_name) values(?,?,?) ";
 	         pstmt = con.prepareStatement(boardImg);
 	         
 	         //값을 매핑하기
@@ -110,7 +110,6 @@ public class freecyclingBoardDAO {
 	  
 //게시글 상세보기
 	  public FreeOneContentDTO getoneBoard(int num) {
-		   
 		  con = DBConnectionUtil.getConnection();
 				//한 게시글에 대한 정보를 리턴해주는 쿼리를 작성
 		  String sql = "select m.user_id, m.nickname, b.board_id, b.create_at, b.title, b.contents, b.views, bi.img_name, bi.img_src "
@@ -118,7 +117,7 @@ public class freecyclingBoardDAO {
 				  + "on m.user_id = b.user_id "
 				  + "inner join board_img bi "
 				  + "on b.board_id = bi.board_id "
-				  + "where b.board_id=? ";
+				  + "where b.board_id = ? and b.category = ? ";
 		  FreeOneContentDTO onedto = new FreeOneContentDTO();
 	  try { 
 		  	pstmt = con.prepareStatement(sql);
@@ -127,6 +126,7 @@ public class freecyclingBoardDAO {
 			//pstmt.executeUpdate();
 			
 		    pstmt.setInt(1, num);
+		    pstmt.setString(2, FREE_CATEGORY);
 		    rs = pstmt.executeQuery();
 		  
 	    while(rs.next()) {
@@ -156,12 +156,14 @@ public class freecyclingBoardDAO {
 //게시글 조회수 증가
 		
 	  	public void viewUp(int num) {
+	  	  
 	  	  con = DBConnectionUtil.getConnection();
 		  String viewsql = "UPDATE board SET " + " views=views+1 "
-				  		    + " WHERE board_id=?"; 
+				  		    + " WHERE board_id=? "; 
 		  try { 
 		  pstmt = con.prepareStatement(viewsql);
-		  pstmt.setInt(1, num); 
+		  pstmt.setInt(1, num);
+		  
 		  pstmt.executeQuery(); 
 		  }catch(Exception e) {
 		 System.out.println("게시물 조회수 증가 중 예외 발생"); 
@@ -174,17 +176,18 @@ public class freecyclingBoardDAO {
 	  public int updateBoard(FreeEditDTO dto) {
 		  con = DBConnectionUtil.getConnection();
 			int res = 0;			
-			String c = "C";
+			
 			
 			try {
 				//text 타입 게시글 insert
-		         String boardText = "update board SET title = ?, contents = ? WHERE board_id = ?";
+		         String boardText = "update board SET title = ?, contents = ? WHERE board_id = ? and category = ? ";
 		         pstmt = con.prepareStatement(boardText);
 		         
 		         //값을 매핑하기
 		         pstmt.setString(1, dto.getTitle());
 		         pstmt.setString(2, dto.getContents());
 		         pstmt.setInt(3, dto.getBoardId());
+		         pstmt.setString(4, FREE_CATEGORY);
 		         
 		         res = pstmt.executeUpdate();
 		         
@@ -216,12 +219,13 @@ public class freecyclingBoardDAO {
 		  
 		  try {
 				//text 타입 게시글 insert
-		         String sql = "update board SET delete_yn = 'Y' WHERE category = 'C' and board_id = ? ";
+		         String sql = "update board SET delete_yn = 'Y' WHERE board_id = ? and category = ? ";
 		         pstmt = con.prepareStatement(sql);
 		         
 		         //값을 매핑하기
 		         
 		         pstmt.setInt(1, num);
+		         pstmt.setString(2, FREE_CATEGORY);
 		         
 		         res = pstmt.executeUpdate();
 		         
@@ -243,8 +247,12 @@ public class freecyclingBoardDAO {
 			int count = 0;
 			
 			try {
-				String sql="select count(*) from board where delete_yn = 'N' ";
+				String sql="select count(*) from board where delete_yn = 'N' category= ? ";
+				
 				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setString(1, FREE_CATEGORY);
+				
 				rs = pstmt.executeQuery();
 				if(rs.next()) {//데이터가 있다면
 					count=rs.getInt(1);
