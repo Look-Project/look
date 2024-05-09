@@ -25,7 +25,8 @@ public class WorkwearWriteController extends HttpServlet {
 	private final String WORKWEAR_BOARD_WRITE = "/views/board/workwear/workwearWrite.jsp";
 	private final String LOGIN = "/views/member/login.jsp";
 	private final String WORKWEAR_BOARD_LIST = "/workwear/boardlist";
-	private final String IMAGE_UPLOAD_PATH = "/Users/sukchoi/git/image/workwear/";
+//	private final String IMAGE_UPLOAD_PATH = "/Users/sukchoi/git/image/workwear/";
+	private final String IMAGE_UPLOAD_PATH = "\\look-images\\workwear\\";
 	WorkwearService wbs = new WorkwearService();
 	
 	@Override
@@ -65,7 +66,7 @@ public class WorkwearWriteController extends HttpServlet {
 					String newFileName = FileUploadUtil.generateUniqueFileName(part.getSubmittedFileName());
 					
 					if(part.getSize() > 0) {
-						part.write(uploadPath + "/" + newFileName);
+						part.write("C:" + uploadPath + "\\" + newFileName);
 						part.delete();
 						wwr.setImgSrc(uploadPath);
 						wwr.setImgName(newFileName);

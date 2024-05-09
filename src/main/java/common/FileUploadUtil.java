@@ -24,7 +24,7 @@ public class FileUploadUtil {
 	 * @param directoryPath => 폴더를 생성하고자 하는 경로
 	 */
 	public static void createUploadDirectory(String directoryPath) {
-	    File uploadDir = new File(directoryPath);
+	    File uploadDir = new File("C:" + directoryPath);
 	    // 해당 경로가 없으면 폴더를 생성
 	    if (!uploadDir.exists()) uploadDir.mkdir();
 	}

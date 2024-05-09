@@ -29,7 +29,8 @@ public class FreeEditCon extends HttpServlet {
 	
 	private final String LOGIN = "/views/member/login.jsp";
 	public final String FREE_EDIT_VIEW = "/views/board/freecycling/Update.jsp";
-	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
+//	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
+	private final String FREECYCLING_UPLOAD_PATH = "\\look-images\\freecycling\\";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

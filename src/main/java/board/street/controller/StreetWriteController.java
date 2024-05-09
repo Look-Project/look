@@ -31,7 +31,8 @@ public class StreetWriteController extends HttpServlet{
 	private final String STREET_BOARD_WRTIE = "/views/board/street/street_write.jsp";
 	private final String LOGIN = "/views.member/login.jsp";
 	private final String STREET_BOARD_LIST = "/street/write";
-	private final String IMAGE_UPLOAD_PATH = "/image/board/street";
+//	private final String IMAGE_UPLOAD_PATH = "/image/board/street";
+	private final String IMAGE_UPLOAD_PATH = "\\look-images\\street\\";
 	StreetBoardService sbs = new StreetBoardService();
 	
 	@Override

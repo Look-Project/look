@@ -24,7 +24,8 @@ public class VintageWriteController extends HttpServlet {
 	private final String VINTAGE_BOARD_WRITE = "/views/board/vintage/vintagewriteform.jsp";
 	private final String LOGIN = "/views/member/login.jsp";
 	private final String VINTAGE_BOARD_LIST = "/vintage/boardlist";
-	private final String IMAGE_UPLOAD_PATH = "\\Users\\pi\\Look\\imgs\\vintage\\";
+//	private final String IMAGE_UPLOAD_PATH = "\\Users\\pi\\Look\\imgs\\vintage\\";
+	private final String IMAGE_UPLOAD_PATH = "\\look-images\\vintage\\";
 	VintageBoardService vbs = new VintageBoardService();
 	
 	@Override

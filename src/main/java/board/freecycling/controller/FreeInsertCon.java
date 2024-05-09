@@ -26,7 +26,8 @@ import member.dto.response.MemberResponse;
 public class FreeInsertCon extends HttpServlet {
 
 	public final String FREECYCLING_WRITE_VIEW = "/views/board/freecycling/Write.jsp";
-	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
+//	private final String FREECYCLING_UPLOAD_PATH = "\\webStudy\\lookIMG\\";
+	private final String FREECYCLING_UPLOAD_PATH = "\\look-images\\freecycling\\";
 	private final String LOGIN = "/views/member/login.jsp";
 	FreecyclingBoardService bservice = new FreecyclingBoardService();
 	@Override

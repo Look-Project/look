@@ -63,7 +63,7 @@
           <!--메인 게시판 아이콘 영역 -->
           <div class="main_board">
             <!-- 개별 -->
-            <a href="<%= request.getContextPath() %>/views/board/formal/formal_list.jsp" class="bMenu">
+            <a href="<%= request.getContextPath() %>/views/board/formal/List.jsp" class="bMenu">
             <img class="boardimg" id="img1" src="<%= request.getContextPath() %>/resources/image/common/Formal.jpg" alt="Formal" onmouseover="changeImage('img1', '<%= request.getContextPath() %>/resources/image/common/Formal_T.jpg')" onmouseout="resetImage('img1', '<%= request.getContextPath() %>/resources/image/common/Formal.jpg')"></a>
             <a href="<%= request.getContextPath() %>/views/board_street/street.jsp" class="bMenu">
             <img class="boardimg" id="img2" src="<%= request.getContextPath() %>/resources/image/common/Street.jpg" alt="Street" onmouseover="changeImage('img2', '<%= request.getContextPath() %>/resources/image/common/Street_T.jpg')" onmouseout="resetImage('img2', '<%= request.getContextPath() %>/resources/image/common/Street.jpg')"></a>

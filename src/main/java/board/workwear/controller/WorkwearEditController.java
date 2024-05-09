@@ -27,7 +27,8 @@ public class WorkwearEditController extends HttpServlet {
 	
 	private final String LOGIN = "/views/member/login.jsp";
 	public final String WORKWEAR_EDIT_VIEW = "/views/board/workwear/workwearEdit.jsp";
-	private final String WORKWEAR_UPLOAD_PATH = "/Users/sukchoi/git/image/workwear/";
+//	private final String WORKWEAR_UPLOAD_PATH = "/Users/sukchoi/git/image/workwear/";
+	private final String WORKWEAR_UPLOAD_PATH = "\\look-images\\workwear\\";
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

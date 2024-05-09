@@ -27,7 +27,8 @@ public class VBoardEditController extends HttpServlet {
 	private final String VINTAGE_BOARD = "/vintage/detail";
 	
 	private final String EDIT = "/views/board/vintage/editform.jsp";
-	private final String IMAGE_UPLOAD_PATH = "\\Users\\pi\\Look\\imgs\\vintage\\";
+//	private final String IMAGE_UPLOAD_PATH = "\\Users\\pi\\Look\\imgs\\vintage\\";
+	private final String IMAGE_UPLOAD_PATH = "\\look-images\\vintage\\";
 
 	VintageBoardService vbs = new VintageBoardService();
 
